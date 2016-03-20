@@ -1,0 +1,232 @@
+/*
+ * GccApplication6.cpp
+ *
+ * Created: 3/11/2016 1:40:51 PM
+ * Author : Aditya
+ */ 
+
+#include <avr/io.h>
+#define F_CPU 8000000UL
+#include <util/delay.h>
+#include<avr/uart/uart.h>
+#include<string.h>
+
+
+int main(void)
+{//all initializations
+	
+	int i=0;
+	uart_init();
+	
+	while(1){i=0;
+int grabbed=0;
+			char input9[100]=" ";
+		while(1) {input9[i] = uart_read();
+			if (input9[i]=='.') 
+			break;
+			i++;}
+		
+		if(strcmp(input9,"Grab.")==0)
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//code to hold cube in 2 brackets, add delay and then hold with other 2 brackets if you want
+
+	
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		grabbed=1;
+		uart_string("Grabbed.\n");
+			}
+		else if(strcmp(input9[i],"Ungrab.")==0)
+			{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//all brackets go back,leaving cube
+
+	
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		grabbed=0;
+		uart_string("Ungrabbed.\n");
+		
+			}
+		else if(strcmp(input9[i],"Start")==0)
+			{
+if (grabbed==1;)
+{
+uart_string("Ready.\n");
+goto right;}
+			}
+
+
+		}
+
+	
+		//*******************************************************************************************//Ready-Start
+		restart:
+		while (1) {
+			i=0;
+			char input5[100]=" ";
+		while(1) {input5[i] = uart_read();
+			if (input5[i]=='.') 
+			break;
+			i++;}
+		
+		if(strcmp(input5,"\nStart.")==0)
+		{uart_string("Ready.\n");
+		}
+		else goto restart;
+		//*******************************************************************************************//Right	
+		right:
+		i=0;
+		char input6[100]=" ";
+		
+		while(1) {
+			input6[i] = uart_read();//read char
+			if (input6[i]=='.')
+			break;
+			i++;
+			
+		}
+		
+		
+		
+		if(strcmp(input6,"\nRight.")==0)
+		{
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//code to bring R to the top face
+
+	
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Right.\n");
+		}
+		else goto right;
+		//*******************************************************************************************//front
+		front:
+		i=0;
+		char input1[100]=" ";
+		
+		
+		while(1) {
+			input1[i] = uart_read();//read char
+			if (input1[i]=='.')
+			break;
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input1,"\nFront.")==0)
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring F to the top face
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Front.\n");
+		}	
+		else goto front;
+		//*******************************************************************************************//down
+		down:
+		i=0;
+		char input2[100]=" ";
+		
+		
+		while(1) {
+			input2[i] = uart_read();//read char
+			if (input2[i]=='.')
+			break;
+			i++;
+			
+		}
+		
+		if(strcmp(input2,"\nDown.")==0)
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring D to the top face
+			
+			
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		uart_string("Down.\n");
+		}
+		else goto down;
+		//*******************************************************************************************//left
+		left:
+		i=0;
+		char input3[100]=" ";
+		
+		
+		while(1) {
+			input3[i] = uart_read();//read char
+			if (input3[i]=='.')
+			break;
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input3,"\nLeft.")==0)
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring L to the top face
+
+
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Left.\n");
+		}
+		else goto left;
+		//*******************************************************************************************//back
+		back:
+		i=0;
+		char input4[100]=" ";
+		
+		
+		while(1) {
+			input4[i] = uart_read();//read char
+			if (input4[i]=='.')
+			break;
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input4,"\nBack.")==0)
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring B to the top face
+
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Back.\n");
+		}
+		else goto back;
+		//*******************************************************************************************//
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//write code to bring U on top again
+
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//*******************************************************************************************//
+		i=0;
+		char input[100]=" ";
+		
+		
+		while(1) {
+			input[i] = uart_read();//read char
+			if (input[i]=='.')
+			break;
+			i++;
+			
+		}
+//*******************************************************************************************//solve cube
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//now code for solving the cube //solution is char input [100]
+
+		
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		
+//*******************************************************************************************//done
+	uart_string("Done\n");
+	}
+}
+
+
+
