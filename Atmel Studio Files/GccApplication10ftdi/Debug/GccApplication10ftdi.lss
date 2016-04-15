@@ -1,0 +1,4797 @@
+
+GccApplication10ftdi.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001c20  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000090  00800060  00001c20  00001c94  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00001d24  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001d54  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000050  00000000  00000000  00001d90  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00003597  00000000  00000000  00001de0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000244  00000000  00000000  00005377  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000d17  00000000  00000000  000055bb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000b0  00000000  00000000  000062d4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002d9  00000000  00000000  00006384  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000034e4  00000000  00000000  0000665d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000058  00000000  00000000  00009b41  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+       2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+       4:	23 c0       	rjmp	.+70     	; 0x4c <__bad_interrupt>
+       6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+       8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+       a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+       c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+       e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+      10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+      12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+      14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+      16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+      18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+      1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+      1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+      1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+      20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+      22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+      24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+      26:	11 24       	eor	r1, r1
+      28:	1f be       	out	0x3f, r1	; 63
+      2a:	cf e5       	ldi	r28, 0x5F	; 95
+      2c:	d4 e0       	ldi	r29, 0x04	; 4
+      2e:	de bf       	out	0x3e, r29	; 62
+      30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+      32:	10 e0       	ldi	r17, 0x00	; 0
+      34:	a0 e6       	ldi	r26, 0x60	; 96
+      36:	b0 e0       	ldi	r27, 0x00	; 0
+      38:	e0 e2       	ldi	r30, 0x20	; 32
+      3a:	fc e1       	ldi	r31, 0x1C	; 28
+      3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+      3e:	05 90       	lpm	r0, Z+
+      40:	0d 92       	st	X+, r0
+      42:	a0 3f       	cpi	r26, 0xF0	; 240
+      44:	b1 07       	cpc	r27, r17
+      46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+      48:	67 d0       	rcall	.+206    	; 0x118 <main>
+      4a:	e8 cd       	rjmp	.-1072   	; 0xfffffc1c <__eeprom_end+0xff7efc1c>
+
+0000004c <__bad_interrupt>:
+      4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
+
+0000004e <_Z10uart_delayi>:
+#define _UART_H_
+
+void uart_delay(int delaytime)
+{
+	unsigned int dc;
+	for(dc=0;dc<=delaytime;dc++)
+      4e:	20 e0       	ldi	r18, 0x00	; 0
+      50:	30 e0       	ldi	r19, 0x00	; 0
+	...
+      66:	2f 5f       	subi	r18, 0xFF	; 255
+      68:	3f 4f       	sbci	r19, 0xFF	; 255
+      6a:	82 17       	cp	r24, r18
+      6c:	93 07       	cpc	r25, r19
+      6e:	88 f7       	brcc	.-30     	; 0x52 <_Z10uart_delayi+0x4>
+	{
+		asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+		asm("nop");asm("nop");asm("nop");asm("nop");
+	}
+}
+      70:	08 95       	ret
+
+00000072 <_Z9uart_initv>:
+void uart_init()
+{
+	UCSRA=0x00;
+      72:	1b b8       	out	0x0b, r1	; 11
+	UCSRB=0x18;
+      74:	88 e1       	ldi	r24, 0x18	; 24
+      76:	8a b9       	out	0x0a, r24	; 10
+	UCSRC=0x86;
+      78:	86 e8       	ldi	r24, 0x86	; 134
+      7a:	80 bd       	out	0x20, r24	; 32
+	UBRRH=0x00;
+      7c:	10 bc       	out	0x20, r1	; 32
+	UBRRL=0x33;
+      7e:	83 e3       	ldi	r24, 0x33	; 51
+      80:	89 b9       	out	0x09, r24	; 9
+	uart_delay(100);
+      82:	84 e6       	ldi	r24, 0x64	; 100
+      84:	90 e0       	ldi	r25, 0x00	; 0
+      86:	e3 df       	rcall	.-58     	; 0x4e <_Z10uart_delayi>
+      88:	08 95       	ret
+
+0000008a <_Z9uart_charc>:
+}
+
+void uart_char(char uchar)
+{
+	UDR=uchar;
+      8a:	8c b9       	out	0x0c, r24	; 12
+	while((UCSRA&0x40)==0x00);
+      8c:	5e 9b       	sbis	0x0b, 6	; 11
+      8e:	fe cf       	rjmp	.-4      	; 0x8c <_Z9uart_charc+0x2>
+	uart_delay(1000);
+      90:	88 ee       	ldi	r24, 0xE8	; 232
+      92:	93 e0       	ldi	r25, 0x03	; 3
+      94:	dc df       	rcall	.-72     	; 0x4e <_Z10uart_delayi>
+      96:	08 95       	ret
+
+00000098 <_Z11uart_stringPKc>:
+}
+ 
+void uart_string(const char *ustring)
+{
+      98:	cf 93       	push	r28
+      9a:	df 93       	push	r29
+      9c:	ec 01       	movw	r28, r24
+	while ( *ustring )
+      9e:	98 81       	ld	r25, Y
+      a0:	99 23       	and	r25, r25
+      a2:	51 f0       	breq	.+20     	; 0xb8 <_Z11uart_stringPKc+0x20>
+      a4:	21 96       	adiw	r28, 0x01	; 1
+	{
+		UDR=*ustring++;
+      a6:	9c b9       	out	0x0c, r25	; 12
+		while((UCSRA&0x40)==0x00);
+      a8:	5e 9b       	sbis	0x0b, 6	; 11
+      aa:	fe cf       	rjmp	.-4      	; 0xa8 <_Z11uart_stringPKc+0x10>
+		uart_delay(1000);
+      ac:	88 ee       	ldi	r24, 0xE8	; 232
+      ae:	93 e0       	ldi	r25, 0x03	; 3
+      b0:	ce df       	rcall	.-100    	; 0x4e <_Z10uart_delayi>
+	uart_delay(1000);
+}
+ 
+void uart_string(const char *ustring)
+{
+	while ( *ustring )
+      b2:	99 91       	ld	r25, Y+
+      b4:	91 11       	cpse	r25, r1
+      b6:	f7 cf       	rjmp	.-18     	; 0xa6 <_Z11uart_stringPKc+0xe>
+	{
+		UDR=*ustring++;
+		while((UCSRA&0x40)==0x00);
+		uart_delay(1000);
+	}
+}
+      b8:	df 91       	pop	r29
+      ba:	cf 91       	pop	r28
+      bc:	08 95       	ret
+
+000000be <_Z8uart_numc>:
+ 
+void uart_num(char num)
+{
+      be:	cf 93       	push	r28
+      c0:	df 93       	push	r29
+      c2:	28 2f       	mov	r18, r24
+    unsigned char H=0,T=0,O=0;
+	H=num/100;
+      c4:	39 e2       	ldi	r19, 0x29	; 41
+      c6:	83 9f       	mul	r24, r19
+      c8:	31 2d       	mov	r19, r1
+      ca:	11 24       	eor	r1, r1
+      cc:	32 95       	swap	r19
+      ce:	3f 70       	andi	r19, 0x0F	; 15
+	T=(num - (H*100))/10;
+      d0:	4c e9       	ldi	r20, 0x9C	; 156
+      d2:	43 03       	mulsu	r20, r19
+      d4:	c0 01       	movw	r24, r0
+      d6:	11 24       	eor	r1, r1
+      d8:	82 0f       	add	r24, r18
+      da:	91 1d       	adc	r25, r1
+      dc:	6a e0       	ldi	r22, 0x0A	; 10
+      de:	70 e0       	ldi	r23, 0x00	; 0
+      e0:	6d dd       	rcall	.-1318   	; 0xfffffbbc <__eeprom_end+0xff7efbbc>
+      e2:	d6 2f       	mov	r29, r22
+      e4:	20 5d       	subi	r18, 0xD0	; 208
+      e6:	c2 2f       	mov	r28, r18
+      e8:	34 9f       	mul	r19, r20
+      ea:	c0 0d       	add	r28, r0
+      ec:	11 24       	eor	r1, r1
+	O=(num - (H*100) - (T*10));
+	
+	uart_char(H+48);
+      ee:	80 e3       	ldi	r24, 0x30	; 48
+      f0:	83 0f       	add	r24, r19
+      f2:	cb df       	rcall	.-106    	; 0x8a <_Z9uart_charc>
+	uart_char(T+48);
+      f4:	80 e3       	ldi	r24, 0x30	; 48
+      f6:	8d 0f       	add	r24, r29
+      f8:	c8 df       	rcall	.-112    	; 0x8a <_Z9uart_charc>
+void uart_num(char num)
+{
+    unsigned char H=0,T=0,O=0;
+	H=num/100;
+	T=(num - (H*100))/10;
+	O=(num - (H*100) - (T*10));
+      fa:	dd 0f       	add	r29, r29
+      fc:	8d 2f       	mov	r24, r29
+      fe:	88 0f       	add	r24, r24
+     100:	88 0f       	add	r24, r24
+     102:	d8 0f       	add	r29, r24
+	
+	uart_char(H+48);
+	uart_char(T+48);
+	uart_char(O+48);	
+     104:	8c 2f       	mov	r24, r28
+     106:	8d 1b       	sub	r24, r29
+     108:	c0 df       	rcall	.-128    	; 0x8a <_Z9uart_charc>
+}
+     10a:	df 91       	pop	r29
+     10c:	cf 91       	pop	r28
+     10e:	08 95       	ret
+
+00000110 <_Z9uart_readv>:
+ 
+unsigned char uart_read()
+{
+	while((UCSRA&0x80)==0x00);
+     110:	5f 9b       	sbis	0x0b, 7	; 11
+     112:	fe cf       	rjmp	.-4      	; 0x110 <_Z9uart_readv>
+	return UDR;
+     114:	8c b1       	in	r24, 0x0c	; 12
+}
+     116:	08 95       	ret
+
+00000118 <main>:
+#include <avr/uart/uart.h>
+#include<string.h>
+
+
+int main(void)
+{//all initializations
+     118:	cf 93       	push	r28
+     11a:	df 93       	push	r29
+     11c:	cd b7       	in	r28, 0x3d	; 61
+     11e:	de b7       	in	r29, 0x3e	; 62
+     120:	ca 56       	subi	r28, 0x6A	; 106
+     122:	d2 40       	sbci	r29, 0x02	; 2
+     124:	0f b6       	in	r0, 0x3f	; 63
+     126:	f8 94       	cli
+     128:	de bf       	out	0x3e, r29	; 62
+     12a:	0f be       	out	0x3f, r0	; 63
+     12c:	cd bf       	out	0x3d, r28	; 61
+	int i,j,z,n;
+	z=1;
+i=0;
+j=0;
+DDRB|=0xFF;
+     12e:	87 b3       	in	r24, 0x17	; 23
+     130:	8f ef       	ldi	r24, 0xFF	; 255
+     132:	87 bb       	out	0x17, r24	; 23
+DDRD|=0xFF;
+     134:	91 b3       	in	r25, 0x11	; 17
+     136:	81 bb       	out	0x11, r24	; 17
+DDRC|=0xFF;
+     138:	94 b3       	in	r25, 0x14	; 20
+     13a:	84 bb       	out	0x14, r24	; 20
+TCCR1A|=(1<<WGM11)|(1<<COM1B1)|(1<<COM1A1)|(1<<COM1A0)|(1<<COM1B0);
+     13c:	8f b5       	in	r24, 0x2f	; 47
+     13e:	82 6f       	ori	r24, 0xF2	; 242
+     140:	8f bd       	out	0x2f, r24	; 47
+TCCR1B|=(1<<WGM13)|(1<<WGM12)|(1<<CS11);
+     142:	8e b5       	in	r24, 0x2e	; 46
+     144:	8a 61       	ori	r24, 0x1A	; 26
+     146:	8e bd       	out	0x2e, r24	; 46
+ICR1=19999;
+     148:	8f e1       	ldi	r24, 0x1F	; 31
+     14a:	9e e4       	ldi	r25, 0x4E	; 78
+     14c:	97 bd       	out	0x27, r25	; 39
+     14e:	86 bd       	out	0x26, r24	; 38
+	
+	
+	uart_init();
+     150:	90 df       	rcall	.-224    	; 0x72 <_Z9uart_initv>
+
+
+int main(void)
+{//all initializations
+	int i,j,z,n;
+	z=1;
+     152:	22 24       	eor	r2, r2
+     154:	23 94       	inc	r2
+     156:	31 2c       	mov	r3, r1
+i=0;
+j=0;
+     158:	41 2c       	mov	r4, r1
+     15a:	51 2c       	mov	r5, r1
+
+	
+		//*******************************************************************************************//Right	
+		right:
+		i=0;
+		char input6[100]=" ";
+     15c:	9e 01       	movw	r18, r28
+     15e:	2b 50       	subi	r18, 0x0B	; 11
+     160:	3e 4f       	sbci	r19, 0xFE	; 254
+     162:	c7 5a       	subi	r28, 0xA7	; 167
+     164:	dd 4f       	sbci	r29, 0xFD	; 253
+     166:	39 83       	std	Y+1, r19	; 0x01
+     168:	28 83       	st	Y, r18
+     16a:	c9 55       	subi	r28, 0x59	; 89
+     16c:	d2 40       	sbci	r29, 0x02	; 2
+     16e:	a9 01       	movw	r20, r18
+     170:	4c 5f       	subi	r20, 0xFC	; 252
+     172:	5f 4f       	sbci	r21, 0xFF	; 255
+     174:	cd 59       	subi	r28, 0x9D	; 157
+     176:	dd 4f       	sbci	r29, 0xFD	; 253
+     178:	59 83       	std	Y+1, r21	; 0x01
+     17a:	48 83       	st	Y, r20
+     17c:	c3 56       	subi	r28, 0x63	; 99
+     17e:	d2 40       	sbci	r29, 0x02	; 2
+			goto right;
+		}
+		//*******************************************************************************************//front
+		front:
+		i=0;
+		char input1[100]=" ";
+     180:	be 01       	movw	r22, r28
+     182:	6f 56       	subi	r22, 0x6F	; 111
+     184:	7e 4f       	sbci	r23, 0xFE	; 254
+     186:	c5 5a       	subi	r28, 0xA5	; 165
+     188:	dd 4f       	sbci	r29, 0xFD	; 253
+     18a:	79 83       	std	Y+1, r23	; 0x01
+     18c:	68 83       	st	Y, r22
+     18e:	cb 55       	subi	r28, 0x5B	; 91
+     190:	d2 40       	sbci	r29, 0x02	; 2
+     192:	cb 01       	movw	r24, r22
+     194:	04 96       	adiw	r24, 0x04	; 4
+     196:	cb 59       	subi	r28, 0x9B	; 155
+     198:	dd 4f       	sbci	r29, 0xFD	; 253
+     19a:	99 83       	std	Y+1, r25	; 0x01
+     19c:	88 83       	st	Y, r24
+     19e:	c5 56       	subi	r28, 0x65	; 101
+     1a0:	d2 40       	sbci	r29, 0x02	; 2
+		}	
+		else goto front;
+		//*******************************************************************************************//down
+		down:
+		i=0;
+		char input2[100]=" ";
+     1a2:	de 01       	movw	r26, r28
+     1a4:	a3 5d       	subi	r26, 0xD3	; 211
+     1a6:	be 4f       	sbci	r27, 0xFE	; 254
+     1a8:	c3 5a       	subi	r28, 0xA3	; 163
+     1aa:	dd 4f       	sbci	r29, 0xFD	; 253
+     1ac:	b9 83       	std	Y+1, r27	; 0x01
+     1ae:	a8 83       	st	Y, r26
+     1b0:	cd 55       	subi	r28, 0x5D	; 93
+     1b2:	d2 40       	sbci	r29, 0x02	; 2
+     1b4:	fd 01       	movw	r30, r26
+     1b6:	34 96       	adiw	r30, 0x04	; 4
+     1b8:	c9 59       	subi	r28, 0x99	; 153
+     1ba:	dd 4f       	sbci	r29, 0xFD	; 253
+     1bc:	f9 83       	std	Y+1, r31	; 0x01
+     1be:	e8 83       	st	Y, r30
+     1c0:	c7 56       	subi	r28, 0x67	; 103
+     1c2:	d2 40       	sbci	r29, 0x02	; 2
+		}
+		else goto down;
+		//*******************************************************************************************//left
+		left:
+		i=0;
+		char input3[100]=" ";
+     1c4:	2c 52       	subi	r18, 0x2C	; 44
+     1c6:	31 40       	sbci	r19, 0x01	; 1
+     1c8:	c1 5a       	subi	r28, 0xA1	; 161
+     1ca:	dd 4f       	sbci	r29, 0xFD	; 253
+     1cc:	39 83       	std	Y+1, r19	; 0x01
+     1ce:	28 83       	st	Y, r18
+     1d0:	cf 55       	subi	r28, 0x5F	; 95
+     1d2:	d2 40       	sbci	r29, 0x02	; 2
+     1d4:	a9 01       	movw	r20, r18
+     1d6:	4c 5f       	subi	r20, 0xFC	; 252
+     1d8:	5f 4f       	sbci	r21, 0xFF	; 255
+     1da:	c7 59       	subi	r28, 0x97	; 151
+     1dc:	dd 4f       	sbci	r29, 0xFD	; 253
+     1de:	59 83       	std	Y+1, r21	; 0x01
+     1e0:	48 83       	st	Y, r20
+     1e2:	c9 56       	subi	r28, 0x69	; 105
+     1e4:	d2 40       	sbci	r29, 0x02	; 2
+	while(1){
+		
+		
+			while(1){i=0;
+int grabbed=0;
+			char input9[100]=" ";
+     1e6:	50 e2       	ldi	r21, 0x20	; 32
+     1e8:	59 83       	std	Y+1, r21	; 0x01
+     1ea:	1a 82       	std	Y+2, r1	; 0x02
+     1ec:	1b 82       	std	Y+3, r1	; 0x03
+     1ee:	1c 82       	std	Y+4, r1	; 0x04
+     1f0:	fe 01       	movw	r30, r28
+     1f2:	35 96       	adiw	r30, 0x05	; 5
+     1f4:	80 e6       	ldi	r24, 0x60	; 96
+     1f6:	df 01       	movw	r26, r30
+     1f8:	1d 92       	st	X+, r1
+     1fa:	8a 95       	dec	r24
+     1fc:	e9 f7       	brne	.-6      	; 0x1f8 <main+0xe0>
+     1fe:	8e 01       	movw	r16, r28
+     200:	0f 5f       	subi	r16, 0xFF	; 255
+     202:	1f 4f       	sbci	r17, 0xFF	; 255
+		while(1) {input9[i] = uart_read();
+     204:	85 df       	rcall	.-246    	; 0x110 <_Z9uart_readv>
+     206:	f8 01       	movw	r30, r16
+     208:	81 93       	st	Z+, r24
+     20a:	8f 01       	movw	r16, r30
+			if (input9[i]=='.') 
+     20c:	8e 32       	cpi	r24, 0x2E	; 46
+     20e:	d1 f7       	brne	.-12     	; 0x204 <main+0xec>
+			break;
+			i++;}
+		
+		if(strcmp(input9,"Grab.")==0||strcmp(input9,"\nGrab.")==0)
+     210:	61 e6       	ldi	r22, 0x61	; 97
+     212:	70 e0       	ldi	r23, 0x00	; 0
+     214:	ce 01       	movw	r24, r28
+     216:	01 96       	adiw	r24, 0x01	; 1
+     218:	f8 dc       	rcall	.-1552   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     21a:	89 2b       	or	r24, r25
+     21c:	39 f0       	breq	.+14     	; 0x22c <main+0x114>
+     21e:	60 e6       	ldi	r22, 0x60	; 96
+     220:	70 e0       	ldi	r23, 0x00	; 0
+     222:	ce 01       	movw	r24, r28
+     224:	01 96       	adiw	r24, 0x01	; 1
+     226:	f1 dc       	rcall	.-1566   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     228:	89 2b       	or	r24, r25
+     22a:	01 f5       	brne	.+64     	; 0x26c <main+0x154>
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//code to hold cube in 2 brackets, add delay and then hold with other 2 brackets if you want
+PORTC=0b00001000;//select linear RL
+     22c:	88 e0       	ldi	r24, 0x08	; 8
+     22e:	85 bb       	out	0x15, r24	; 21
+		OCR1A=19150;
+     230:	8e ec       	ldi	r24, 0xCE	; 206
+     232:	9a e4       	ldi	r25, 0x4A	; 74
+     234:	9b bd       	out	0x2b, r25	; 43
+     236:	8a bd       	out	0x2a, r24	; 42
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     238:	ff ef       	ldi	r31, 0xFF	; 255
+     23a:	21 e1       	ldi	r18, 0x11	; 17
+     23c:	3a e7       	ldi	r19, 0x7A	; 122
+     23e:	f1 50       	subi	r31, 0x01	; 1
+     240:	20 40       	sbci	r18, 0x00	; 0
+     242:	30 40       	sbci	r19, 0x00	; 0
+     244:	e1 f7       	brne	.-8      	; 0x23e <main+0x126>
+     246:	00 c0       	rjmp	.+0      	; 0x248 <main+0x130>
+     248:	00 00       	nop
+		_delay_ms(5000);
+		PORTC=0b00000001;//select linear FB
+     24a:	21 e0       	ldi	r18, 0x01	; 1
+     24c:	25 bb       	out	0x15, r18	; 21
+		OCR1B=19150;
+     24e:	99 bd       	out	0x29, r25	; 41
+     250:	88 bd       	out	0x28, r24	; 40
+     252:	4f ef       	ldi	r20, 0xFF	; 255
+     254:	51 e1       	ldi	r21, 0x11	; 17
+     256:	6a e7       	ldi	r22, 0x7A	; 122
+     258:	41 50       	subi	r20, 0x01	; 1
+     25a:	50 40       	sbci	r21, 0x00	; 0
+     25c:	60 40       	sbci	r22, 0x00	; 0
+     25e:	e1 f7       	brne	.-8      	; 0x258 <main+0x140>
+     260:	00 c0       	rjmp	.+0      	; 0x262 <main+0x14a>
+     262:	00 00       	nop
+		_delay_ms(5000);
+	
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		grabbed=1;
+		uart_string("Grabbed.\n");
+     264:	87 e6       	ldi	r24, 0x67	; 103
+     266:	90 e0       	ldi	r25, 0x00	; 0
+     268:	17 df       	rcall	.-466    	; 0x98 <_Z11uart_stringPKc>
+     26a:	bd cf       	rjmp	.-134    	; 0x1e6 <main+0xce>
+			}
+		else if(strcmp(input9,"Ungrab.")==0||strcmp(input9,"\nUngrab.")==0)
+     26c:	62 e7       	ldi	r22, 0x72	; 114
+     26e:	70 e0       	ldi	r23, 0x00	; 0
+     270:	ce 01       	movw	r24, r28
+     272:	01 96       	adiw	r24, 0x01	; 1
+     274:	ca dc       	rcall	.-1644   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     276:	89 2b       	or	r24, r25
+     278:	39 f0       	breq	.+14     	; 0x288 <main+0x170>
+     27a:	61 e7       	ldi	r22, 0x71	; 113
+     27c:	70 e0       	ldi	r23, 0x00	; 0
+     27e:	ce 01       	movw	r24, r28
+     280:	01 96       	adiw	r24, 0x01	; 1
+     282:	c3 dc       	rcall	.-1658   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     284:	89 2b       	or	r24, r25
+     286:	a1 f4       	brne	.+40     	; 0x2b0 <main+0x198>
+			{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//all brackets go back,leaving cube
+PORTC=0b00000000;//select linear RL and FB
+     288:	15 ba       	out	0x15, r1	; 21
+			OCR1A=17200;
+     28a:	80 e3       	ldi	r24, 0x30	; 48
+     28c:	93 e4       	ldi	r25, 0x43	; 67
+     28e:	9b bd       	out	0x2b, r25	; 43
+     290:	8a bd       	out	0x2a, r24	; 42
+			OCR1B=17200;
+     292:	99 bd       	out	0x29, r25	; 41
+     294:	88 bd       	out	0x28, r24	; 40
+     296:	7f ef       	ldi	r23, 0xFF	; 255
+     298:	81 e1       	ldi	r24, 0x11	; 17
+     29a:	9a e7       	ldi	r25, 0x7A	; 122
+     29c:	71 50       	subi	r23, 0x01	; 1
+     29e:	80 40       	sbci	r24, 0x00	; 0
+     2a0:	90 40       	sbci	r25, 0x00	; 0
+     2a2:	e1 f7       	brne	.-8      	; 0x29c <main+0x184>
+     2a4:	00 c0       	rjmp	.+0      	; 0x2a6 <main+0x18e>
+     2a6:	00 00       	nop
+			_delay_ms(5000);
+	
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		grabbed=0;
+		uart_string("Ungrabbed.\n");
+     2a8:	8a e7       	ldi	r24, 0x7A	; 122
+     2aa:	90 e0       	ldi	r25, 0x00	; 0
+     2ac:	f5 de       	rcall	.-534    	; 0x98 <_Z11uart_stringPKc>
+     2ae:	9b cf       	rjmp	.-202    	; 0x1e6 <main+0xce>
+		
+			}
+		else if(strcmp(input9,"Start.")==0||strcmp(input9,"\nStart.")==0)
+     2b0:	67 e8       	ldi	r22, 0x87	; 135
+     2b2:	70 e0       	ldi	r23, 0x00	; 0
+     2b4:	ce 01       	movw	r24, r28
+     2b6:	01 96       	adiw	r24, 0x01	; 1
+     2b8:	a8 dc       	rcall	.-1712   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     2ba:	89 2b       	or	r24, r25
+     2bc:	39 f0       	breq	.+14     	; 0x2cc <main+0x1b4>
+     2be:	66 e8       	ldi	r22, 0x86	; 134
+     2c0:	70 e0       	ldi	r23, 0x00	; 0
+     2c2:	ce 01       	movw	r24, r28
+     2c4:	01 96       	adiw	r24, 0x01	; 1
+     2c6:	a1 dc       	rcall	.-1726   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     2c8:	89 2b       	or	r24, r25
+     2ca:	21 f5       	brne	.+72     	; 0x314 <main+0x1fc>
+			{
+				
+//if (grabbed==1)
+//{
+uart_string("Ready.\n");
+     2cc:	8e e8       	ldi	r24, 0x8E	; 142
+     2ce:	90 e0       	ldi	r25, 0x00	; 0
+     2d0:	e3 de       	rcall	.-570    	; 0x98 <_Z11uart_stringPKc>
+
+	
+		//*******************************************************************************************//Right	
+		right:
+		i=0;
+		char input6[100]=" ";
+     2d2:	68 94       	set
+     2d4:	77 24       	eor	r7, r7
+     2d6:	75 f8       	bld	r7, 5
+     2d8:	81 2c       	mov	r8, r1
+     2da:	91 2c       	mov	r9, r1
+     2dc:	a1 2c       	mov	r10, r1
+     2de:	0f 2e       	mov	r0, r31
+     2e0:	f0 e6       	ldi	r31, 0x60	; 96
+     2e2:	bf 2e       	mov	r11, r31
+     2e4:	f0 2d       	mov	r31, r0
+     2e6:	c7 5a       	subi	r28, 0xA7	; 167
+     2e8:	dd 4f       	sbci	r29, 0xFD	; 253
+     2ea:	c8 80       	ld	r12, Y
+     2ec:	c9 55       	subi	r28, 0x59	; 89
+     2ee:	d2 40       	sbci	r29, 0x02	; 2
+     2f0:	c6 5a       	subi	r28, 0xA6	; 166
+     2f2:	dd 4f       	sbci	r29, 0xFD	; 253
+     2f4:	d8 80       	ld	r13, Y
+     2f6:	ca 55       	subi	r28, 0x5A	; 90
+     2f8:	d2 40       	sbci	r29, 0x02	; 2
+     2fa:	cf 59       	subi	r28, 0x9F	; 159
+     2fc:	dd 4f       	sbci	r29, 0xFD	; 253
+     2fe:	f9 82       	std	Y+1, r15	; 0x01
+     300:	e8 82       	st	Y, r14
+     302:	c1 56       	subi	r28, 0x61	; 97
+     304:	d2 40       	sbci	r29, 0x02	; 2
+     306:	cd 59       	subi	r28, 0x9D	; 157
+     308:	dd 4f       	sbci	r29, 0xFD	; 253
+     30a:	e8 80       	ld	r14, Y
+     30c:	f9 80       	ldd	r15, Y+1	; 0x01
+     30e:	c3 56       	subi	r28, 0x63	; 99
+     310:	d2 40       	sbci	r29, 0x02	; 2
+     312:	0d c0       	rjmp	.+26     	; 0x32e <main+0x216>
+goto right;
+	//}
+			}
+
+
+else {uart_string("Invalid.\n");
+     314:	86 e9       	ldi	r24, 0x96	; 150
+     316:	90 e0       	ldi	r25, 0x00	; 0
+     318:	bf de       	rcall	.-642    	; 0x98 <_Z11uart_stringPKc>
+	uart_num(strcmp(input9,"Start."));
+     31a:	67 e8       	ldi	r22, 0x87	; 135
+     31c:	70 e0       	ldi	r23, 0x00	; 0
+     31e:	ce 01       	movw	r24, r28
+     320:	01 96       	adiw	r24, 0x01	; 1
+     322:	73 dc       	rcall	.-1818   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     324:	cc de       	rcall	.-616    	; 0xbe <_Z8uart_numc>
+	uart_string(input9);
+     326:	ce 01       	movw	r24, r28
+     328:	01 96       	adiw	r24, 0x01	; 1
+     32a:	b6 de       	rcall	.-660    	; 0x98 <_Z11uart_stringPKc>
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		
+//*******************************************************************************************//done
+	uart_string("Done\n");
+	}
+     32c:	5c cf       	rjmp	.-328    	; 0x1e6 <main+0xce>
+
+	
+		//*******************************************************************************************//Right	
+		right:
+		i=0;
+		char input6[100]=" ";
+     32e:	cb 50       	subi	r28, 0x0B	; 11
+     330:	de 4f       	sbci	r29, 0xFE	; 254
+     332:	78 82       	st	Y, r7
+     334:	c5 5f       	subi	r28, 0xF5	; 245
+     336:	d1 40       	sbci	r29, 0x01	; 1
+     338:	ca 50       	subi	r28, 0x0A	; 10
+     33a:	de 4f       	sbci	r29, 0xFE	; 254
+     33c:	88 82       	st	Y, r8
+     33e:	c6 5f       	subi	r28, 0xF6	; 246
+     340:	d1 40       	sbci	r29, 0x01	; 1
+     342:	c9 50       	subi	r28, 0x09	; 9
+     344:	de 4f       	sbci	r29, 0xFE	; 254
+     346:	98 82       	st	Y, r9
+     348:	c7 5f       	subi	r28, 0xF7	; 247
+     34a:	d1 40       	sbci	r29, 0x01	; 1
+     34c:	c8 50       	subi	r28, 0x08	; 8
+     34e:	de 4f       	sbci	r29, 0xFE	; 254
+     350:	a8 82       	st	Y, r10
+     352:	c8 5f       	subi	r28, 0xF8	; 248
+     354:	d1 40       	sbci	r29, 0x01	; 1
+     356:	d7 01       	movw	r26, r14
+     358:	eb 2d       	mov	r30, r11
+     35a:	1d 92       	st	X+, r1
+     35c:	ea 95       	dec	r30
+     35e:	e9 f7       	brne	.-6      	; 0x35a <main+0x242>
+     360:	0c 2d       	mov	r16, r12
+     362:	1d 2d       	mov	r17, r13
+		
+		while(1) {
+			input6[i] = uart_read();//read char
+     364:	d5 de       	rcall	.-598    	; 0x110 <_Z9uart_readv>
+     366:	d8 01       	movw	r26, r16
+     368:	8d 93       	st	X+, r24
+     36a:	8d 01       	movw	r16, r26
+			if (input6[i]=='.')
+     36c:	8e 32       	cpi	r24, 0x2E	; 46
+     36e:	d1 f7       	brne	.-12     	; 0x364 <main+0x24c>
+			
+		}
+		
+		
+		
+		if(strcmp(input6,"\nRight.")==0)
+     370:	60 ea       	ldi	r22, 0xA0	; 160
+     372:	70 e0       	ldi	r23, 0x00	; 0
+     374:	8c 2d       	mov	r24, r12
+     376:	9d 2d       	mov	r25, r13
+     378:	48 dc       	rcall	.-1904   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     37a:	00 97       	sbiw	r24, 0x00	; 0
+     37c:	09 f0       	breq	.+2      	; 0x380 <main+0x268>
+     37e:	b4 c0       	rjmp	.+360    	; 0x4e8 <__stack+0x89>
+     380:	cf 59       	subi	r28, 0x9F	; 159
+     382:	dd 4f       	sbci	r29, 0xFD	; 253
+     384:	e8 80       	ld	r14, Y
+     386:	f9 80       	ldd	r15, Y+1	; 0x01
+     388:	c1 56       	subi	r28, 0x61	; 97
+     38a:	d2 40       	sbci	r29, 0x02	; 2
+		{
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		//code to bring R to the top face
+
+PORTC=0b00000001;//select linear FB
+     38c:	41 e0       	ldi	r20, 0x01	; 1
+     38e:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     390:	20 e3       	ldi	r18, 0x30	; 48
+     392:	33 e4       	ldi	r19, 0x43	; 67
+     394:	39 bd       	out	0x29, r19	; 41
+     396:	28 bd       	out	0x28, r18	; 40
+     398:	bf ef       	ldi	r27, 0xFF	; 255
+     39a:	e0 e7       	ldi	r30, 0x70	; 112
+     39c:	f2 e0       	ldi	r31, 0x02	; 2
+     39e:	b1 50       	subi	r27, 0x01	; 1
+     3a0:	e0 40       	sbci	r30, 0x00	; 0
+     3a2:	f0 40       	sbci	r31, 0x00	; 0
+     3a4:	e1 f7       	brne	.-8      	; 0x39e <main+0x286>
+     3a6:	00 c0       	rjmp	.+0      	; 0x3a8 <main+0x290>
+     3a8:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     3aa:	54 e2       	ldi	r21, 0x24	; 36
+     3ac:	55 bb       	out	0x15, r21	; 21
+		OCR1A=17200;
+     3ae:	3b bd       	out	0x2b, r19	; 43
+     3b0:	2a bd       	out	0x2a, r18	; 42
+		OCR1B=19150;
+     3b2:	8e ec       	ldi	r24, 0xCE	; 206
+     3b4:	9a e4       	ldi	r25, 0x4A	; 74
+     3b6:	99 bd       	out	0x29, r25	; 41
+     3b8:	88 bd       	out	0x28, r24	; 40
+     3ba:	6f ef       	ldi	r22, 0xFF	; 255
+     3bc:	70 e7       	ldi	r23, 0x70	; 112
+     3be:	a2 e0       	ldi	r26, 0x02	; 2
+     3c0:	61 50       	subi	r22, 0x01	; 1
+     3c2:	70 40       	sbci	r23, 0x00	; 0
+     3c4:	a0 40       	sbci	r26, 0x00	; 0
+     3c6:	e1 f7       	brne	.-8      	; 0x3c0 <main+0x2a8>
+     3c8:	00 c0       	rjmp	.+0      	; 0x3ca <main+0x2b2>
+     3ca:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     3cc:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     3ce:	99 bd       	out	0x29, r25	; 41
+     3d0:	88 bd       	out	0x28, r24	; 40
+     3d2:	bf ef       	ldi	r27, 0xFF	; 255
+     3d4:	e0 e7       	ldi	r30, 0x70	; 112
+     3d6:	f2 e0       	ldi	r31, 0x02	; 2
+     3d8:	b1 50       	subi	r27, 0x01	; 1
+     3da:	e0 40       	sbci	r30, 0x00	; 0
+     3dc:	f0 40       	sbci	r31, 0x00	; 0
+     3de:	e1 f7       	brne	.-8      	; 0x3d8 <main+0x2c0>
+     3e0:	00 c0       	rjmp	.+0      	; 0x3e2 <main+0x2ca>
+     3e2:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     3e4:	e8 e0       	ldi	r30, 0x08	; 8
+     3e6:	e5 bb       	out	0x15, r30	; 21
+		OCR1A=17200;
+     3e8:	3b bd       	out	0x2b, r19	; 43
+     3ea:	2a bd       	out	0x2a, r18	; 42
+     3ec:	6f ef       	ldi	r22, 0xFF	; 255
+     3ee:	70 e7       	ldi	r23, 0x70	; 112
+     3f0:	a2 e0       	ldi	r26, 0x02	; 2
+     3f2:	61 50       	subi	r22, 0x01	; 1
+     3f4:	70 40       	sbci	r23, 0x00	; 0
+     3f6:	a0 40       	sbci	r26, 0x00	; 0
+     3f8:	e1 f7       	brne	.-8      	; 0x3f2 <main+0x2da>
+     3fa:	00 c0       	rjmp	.+0      	; 0x3fc <main+0x2e4>
+     3fc:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     3fe:	55 bb       	out	0x15, r21	; 21
+		OCR1A=18250;
+     400:	6a e4       	ldi	r22, 0x4A	; 74
+     402:	77 e4       	ldi	r23, 0x47	; 71
+     404:	7b bd       	out	0x2b, r23	; 43
+     406:	6a bd       	out	0x2a, r22	; 42
+		OCR1B=18250;
+     408:	79 bd       	out	0x29, r23	; 41
+     40a:	68 bd       	out	0x28, r22	; 40
+     40c:	bf ef       	ldi	r27, 0xFF	; 255
+     40e:	f0 e7       	ldi	r31, 0x70	; 112
+     410:	52 e0       	ldi	r21, 0x02	; 2
+     412:	b1 50       	subi	r27, 0x01	; 1
+     414:	f0 40       	sbci	r31, 0x00	; 0
+     416:	50 40       	sbci	r21, 0x00	; 0
+     418:	e1 f7       	brne	.-8      	; 0x412 <main+0x2fa>
+     41a:	00 c0       	rjmp	.+0      	; 0x41c <main+0x304>
+     41c:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     41e:	52 e1       	ldi	r21, 0x12	; 18
+     420:	55 bb       	out	0x15, r21	; 21
+		OCR1B=17200;
+     422:	39 bd       	out	0x29, r19	; 41
+     424:	28 bd       	out	0x28, r18	; 40
+		OCR1A=19150;
+     426:	9b bd       	out	0x2b, r25	; 43
+     428:	8a bd       	out	0x2a, r24	; 42
+     42a:	af ef       	ldi	r26, 0xFF	; 255
+     42c:	b0 e7       	ldi	r27, 0x70	; 112
+     42e:	f2 e0       	ldi	r31, 0x02	; 2
+     430:	a1 50       	subi	r26, 0x01	; 1
+     432:	b0 40       	sbci	r27, 0x00	; 0
+     434:	f0 40       	sbci	r31, 0x00	; 0
+     436:	e1 f7       	brne	.-8      	; 0x430 <main+0x318>
+     438:	00 c0       	rjmp	.+0      	; 0x43a <main+0x322>
+     43a:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     43c:	e5 bb       	out	0x15, r30	; 21
+		OCR1A=19150;
+     43e:	9b bd       	out	0x2b, r25	; 43
+     440:	8a bd       	out	0x2a, r24	; 42
+     442:	af ef       	ldi	r26, 0xFF	; 255
+     444:	b0 e7       	ldi	r27, 0x70	; 112
+     446:	e2 e0       	ldi	r30, 0x02	; 2
+     448:	a1 50       	subi	r26, 0x01	; 1
+     44a:	b0 40       	sbci	r27, 0x00	; 0
+     44c:	e0 40       	sbci	r30, 0x00	; 0
+     44e:	e1 f7       	brne	.-8      	; 0x448 <main+0x330>
+     450:	00 c0       	rjmp	.+0      	; 0x452 <main+0x33a>
+     452:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     454:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     456:	39 bd       	out	0x29, r19	; 41
+     458:	28 bd       	out	0x28, r18	; 40
+     45a:	ff ef       	ldi	r31, 0xFF	; 255
+     45c:	20 e7       	ldi	r18, 0x70	; 112
+     45e:	32 e0       	ldi	r19, 0x02	; 2
+     460:	f1 50       	subi	r31, 0x01	; 1
+     462:	20 40       	sbci	r18, 0x00	; 0
+     464:	30 40       	sbci	r19, 0x00	; 0
+     466:	e1 f7       	brne	.-8      	; 0x460 <__stack+0x1>
+     468:	00 c0       	rjmp	.+0      	; 0x46a <__stack+0xb>
+     46a:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     46c:	55 bb       	out	0x15, r21	; 21
+		OCR1B=18250;
+     46e:	79 bd       	out	0x29, r23	; 41
+     470:	68 bd       	out	0x28, r22	; 40
+		OCR1A=18250;
+     472:	7b bd       	out	0x2b, r23	; 43
+     474:	6a bd       	out	0x2a, r22	; 42
+     476:	5f ef       	ldi	r21, 0xFF	; 255
+     478:	60 e7       	ldi	r22, 0x70	; 112
+     47a:	72 e0       	ldi	r23, 0x02	; 2
+     47c:	51 50       	subi	r21, 0x01	; 1
+     47e:	60 40       	sbci	r22, 0x00	; 0
+     480:	70 40       	sbci	r23, 0x00	; 0
+     482:	e1 f7       	brne	.-8      	; 0x47c <__stack+0x1d>
+     484:	00 c0       	rjmp	.+0      	; 0x486 <__stack+0x27>
+     486:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     488:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     48a:	99 bd       	out	0x29, r25	; 41
+     48c:	88 bd       	out	0x28, r24	; 40
+     48e:	8f ef       	ldi	r24, 0xFF	; 255
+     490:	90 e7       	ldi	r25, 0x70	; 112
+     492:	a2 e0       	ldi	r26, 0x02	; 2
+     494:	81 50       	subi	r24, 0x01	; 1
+     496:	90 40       	sbci	r25, 0x00	; 0
+     498:	a0 40       	sbci	r26, 0x00	; 0
+     49a:	e1 f7       	brne	.-8      	; 0x494 <__stack+0x35>
+     49c:	00 c0       	rjmp	.+0      	; 0x49e <__stack+0x3f>
+     49e:	00 00       	nop
+		_delay_ms(100);
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Right.\n");
+     4a0:	88 ea       	ldi	r24, 0xA8	; 168
+     4a2:	90 e0       	ldi	r25, 0x00	; 0
+     4a4:	f9 dd       	rcall	.-1038   	; 0x98 <_Z11uart_stringPKc>
+			goto right;
+		}
+		//*******************************************************************************************//front
+		front:
+		i=0;
+		char input1[100]=" ";
+     4a6:	68 94       	set
+     4a8:	77 24       	eor	r7, r7
+     4aa:	75 f8       	bld	r7, 5
+     4ac:	81 2c       	mov	r8, r1
+     4ae:	91 2c       	mov	r9, r1
+     4b0:	a1 2c       	mov	r10, r1
+     4b2:	0f 2e       	mov	r0, r31
+     4b4:	f0 e6       	ldi	r31, 0x60	; 96
+     4b6:	bf 2e       	mov	r11, r31
+     4b8:	f0 2d       	mov	r31, r0
+     4ba:	c5 5a       	subi	r28, 0xA5	; 165
+     4bc:	dd 4f       	sbci	r29, 0xFD	; 253
+     4be:	c8 80       	ld	r12, Y
+     4c0:	cb 55       	subi	r28, 0x5B	; 91
+     4c2:	d2 40       	sbci	r29, 0x02	; 2
+     4c4:	c4 5a       	subi	r28, 0xA4	; 164
+     4c6:	dd 4f       	sbci	r29, 0xFD	; 253
+     4c8:	d8 80       	ld	r13, Y
+     4ca:	cc 55       	subi	r28, 0x5C	; 92
+     4cc:	d2 40       	sbci	r29, 0x02	; 2
+     4ce:	cf 59       	subi	r28, 0x9F	; 159
+     4d0:	dd 4f       	sbci	r29, 0xFD	; 253
+     4d2:	f9 82       	std	Y+1, r15	; 0x01
+     4d4:	e8 82       	st	Y, r14
+     4d6:	c1 56       	subi	r28, 0x61	; 97
+     4d8:	d2 40       	sbci	r29, 0x02	; 2
+     4da:	cb 59       	subi	r28, 0x9B	; 155
+     4dc:	dd 4f       	sbci	r29, 0xFD	; 253
+     4de:	e8 80       	ld	r14, Y
+     4e0:	f9 80       	ldd	r15, Y+1	; 0x01
+     4e2:	c5 56       	subi	r28, 0x65	; 101
+     4e4:	d2 40       	sbci	r29, 0x02	; 2
+     4e6:	02 c0       	rjmp	.+4      	; 0x4ec <__stack+0x8d>
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Right.\n");
+		}
+		else {
+		uart_num(strcmp(input6,"\nRight."));
+     4e8:	ea dd       	rcall	.-1068   	; 0xbe <_Z8uart_numc>
+			goto right;
+     4ea:	21 cf       	rjmp	.-446    	; 0x32e <main+0x216>
+		}
+		//*******************************************************************************************//front
+		front:
+		i=0;
+		char input1[100]=" ";
+     4ec:	cf 56       	subi	r28, 0x6F	; 111
+     4ee:	de 4f       	sbci	r29, 0xFE	; 254
+     4f0:	78 82       	st	Y, r7
+     4f2:	c1 59       	subi	r28, 0x91	; 145
+     4f4:	d1 40       	sbci	r29, 0x01	; 1
+     4f6:	ce 56       	subi	r28, 0x6E	; 110
+     4f8:	de 4f       	sbci	r29, 0xFE	; 254
+     4fa:	88 82       	st	Y, r8
+     4fc:	c2 59       	subi	r28, 0x92	; 146
+     4fe:	d1 40       	sbci	r29, 0x01	; 1
+     500:	cd 56       	subi	r28, 0x6D	; 109
+     502:	de 4f       	sbci	r29, 0xFE	; 254
+     504:	98 82       	st	Y, r9
+     506:	c3 59       	subi	r28, 0x93	; 147
+     508:	d1 40       	sbci	r29, 0x01	; 1
+     50a:	cc 56       	subi	r28, 0x6C	; 108
+     50c:	de 4f       	sbci	r29, 0xFE	; 254
+     50e:	a8 82       	st	Y, r10
+     510:	c4 59       	subi	r28, 0x94	; 148
+     512:	d1 40       	sbci	r29, 0x01	; 1
+     514:	f7 01       	movw	r30, r14
+     516:	2b 2d       	mov	r18, r11
+     518:	11 92       	st	Z+, r1
+     51a:	2a 95       	dec	r18
+     51c:	e9 f7       	brne	.-6      	; 0x518 <__stack+0xb9>
+     51e:	0c 2d       	mov	r16, r12
+     520:	1d 2d       	mov	r17, r13
+		
+		
+		while(1) {
+			input1[i] = uart_read();//read char
+     522:	f6 dd       	rcall	.-1044   	; 0x110 <_Z9uart_readv>
+     524:	d8 01       	movw	r26, r16
+     526:	8d 93       	st	X+, r24
+     528:	8d 01       	movw	r16, r26
+			if (input1[i]=='.')
+     52a:	8e 32       	cpi	r24, 0x2E	; 46
+     52c:	d1 f7       	brne	.-12     	; 0x522 <__stack+0xc3>
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input1,"\nFront.")==0)
+     52e:	60 eb       	ldi	r22, 0xB0	; 176
+     530:	70 e0       	ldi	r23, 0x00	; 0
+     532:	8c 2d       	mov	r24, r12
+     534:	9d 2d       	mov	r25, r13
+     536:	69 db       	rcall	.-2350   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     538:	89 2b       	or	r24, r25
+     53a:	c1 f6       	brne	.-80     	; 0x4ec <__stack+0x8d>
+     53c:	cf 59       	subi	r28, 0x9F	; 159
+     53e:	dd 4f       	sbci	r29, 0xFD	; 253
+     540:	e8 80       	ld	r14, Y
+     542:	f9 80       	ldd	r15, Y+1	; 0x01
+     544:	c1 56       	subi	r28, 0x61	; 97
+     546:	d2 40       	sbci	r29, 0x02	; 2
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring F to the top face
+		PORTC=0b00001000;//select linear RL
+     548:	48 e0       	ldi	r20, 0x08	; 8
+     54a:	45 bb       	out	0x15, r20	; 21
+		OCR1A=17200;
+     54c:	20 e3       	ldi	r18, 0x30	; 48
+     54e:	33 e4       	ldi	r19, 0x43	; 67
+     550:	3b bd       	out	0x2b, r19	; 43
+     552:	2a bd       	out	0x2a, r18	; 42
+     554:	bf ef       	ldi	r27, 0xFF	; 255
+     556:	e0 e7       	ldi	r30, 0x70	; 112
+     558:	f2 e0       	ldi	r31, 0x02	; 2
+     55a:	b1 50       	subi	r27, 0x01	; 1
+     55c:	e0 40       	sbci	r30, 0x00	; 0
+     55e:	f0 40       	sbci	r31, 0x00	; 0
+     560:	e1 f7       	brne	.-8      	; 0x55a <__stack+0xfb>
+     562:	00 c0       	rjmp	.+0      	; 0x564 <__stack+0x105>
+     564:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     566:	52 e1       	ldi	r21, 0x12	; 18
+     568:	55 bb       	out	0x15, r21	; 21
+		OCR1A=17200;
+     56a:	3b bd       	out	0x2b, r19	; 43
+     56c:	2a bd       	out	0x2a, r18	; 42
+		OCR1B=19150;
+     56e:	8e ec       	ldi	r24, 0xCE	; 206
+     570:	9a e4       	ldi	r25, 0x4A	; 74
+     572:	99 bd       	out	0x29, r25	; 41
+     574:	88 bd       	out	0x28, r24	; 40
+     576:	6f ef       	ldi	r22, 0xFF	; 255
+     578:	70 e7       	ldi	r23, 0x70	; 112
+     57a:	a2 e0       	ldi	r26, 0x02	; 2
+     57c:	61 50       	subi	r22, 0x01	; 1
+     57e:	70 40       	sbci	r23, 0x00	; 0
+     580:	a0 40       	sbci	r26, 0x00	; 0
+     582:	e1 f7       	brne	.-8      	; 0x57c <__stack+0x11d>
+     584:	00 c0       	rjmp	.+0      	; 0x586 <__stack+0x127>
+     586:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     588:	45 bb       	out	0x15, r20	; 21
+		OCR1A=19150;
+     58a:	9b bd       	out	0x2b, r25	; 43
+     58c:	8a bd       	out	0x2a, r24	; 42
+     58e:	bf ef       	ldi	r27, 0xFF	; 255
+     590:	e0 e7       	ldi	r30, 0x70	; 112
+     592:	f2 e0       	ldi	r31, 0x02	; 2
+     594:	b1 50       	subi	r27, 0x01	; 1
+     596:	e0 40       	sbci	r30, 0x00	; 0
+     598:	f0 40       	sbci	r31, 0x00	; 0
+     59a:	e1 f7       	brne	.-8      	; 0x594 <__stack+0x135>
+     59c:	00 c0       	rjmp	.+0      	; 0x59e <__stack+0x13f>
+     59e:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     5a0:	41 e0       	ldi	r20, 0x01	; 1
+     5a2:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     5a4:	39 bd       	out	0x29, r19	; 41
+     5a6:	28 bd       	out	0x28, r18	; 40
+     5a8:	2f ef       	ldi	r18, 0xFF	; 255
+     5aa:	30 e7       	ldi	r19, 0x70	; 112
+     5ac:	62 e0       	ldi	r22, 0x02	; 2
+     5ae:	21 50       	subi	r18, 0x01	; 1
+     5b0:	30 40       	sbci	r19, 0x00	; 0
+     5b2:	60 40       	sbci	r22, 0x00	; 0
+     5b4:	e1 f7       	brne	.-8      	; 0x5ae <__stack+0x14f>
+     5b6:	00 c0       	rjmp	.+0      	; 0x5b8 <__stack+0x159>
+     5b8:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     5ba:	55 bb       	out	0x15, r21	; 21
+		OCR1B=18250;
+     5bc:	2a e4       	ldi	r18, 0x4A	; 74
+     5be:	37 e4       	ldi	r19, 0x47	; 71
+     5c0:	39 bd       	out	0x29, r19	; 41
+     5c2:	28 bd       	out	0x28, r18	; 40
+		OCR1A=18250;
+     5c4:	3b bd       	out	0x2b, r19	; 43
+     5c6:	2a bd       	out	0x2a, r18	; 42
+     5c8:	7f ef       	ldi	r23, 0xFF	; 255
+     5ca:	a0 e7       	ldi	r26, 0x70	; 112
+     5cc:	b2 e0       	ldi	r27, 0x02	; 2
+     5ce:	71 50       	subi	r23, 0x01	; 1
+     5d0:	a0 40       	sbci	r26, 0x00	; 0
+     5d2:	b0 40       	sbci	r27, 0x00	; 0
+     5d4:	e1 f7       	brne	.-8      	; 0x5ce <__stack+0x16f>
+     5d6:	00 c0       	rjmp	.+0      	; 0x5d8 <__stack+0x179>
+     5d8:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     5da:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     5dc:	99 bd       	out	0x29, r25	; 41
+     5de:	88 bd       	out	0x28, r24	; 40
+     5e0:	ef ef       	ldi	r30, 0xFF	; 255
+     5e2:	f0 e7       	ldi	r31, 0x70	; 112
+     5e4:	22 e0       	ldi	r18, 0x02	; 2
+     5e6:	e1 50       	subi	r30, 0x01	; 1
+     5e8:	f0 40       	sbci	r31, 0x00	; 0
+     5ea:	20 40       	sbci	r18, 0x00	; 0
+     5ec:	e1 f7       	brne	.-8      	; 0x5e6 <__stack+0x187>
+     5ee:	00 c0       	rjmp	.+0      	; 0x5f0 <__stack+0x191>
+     5f0:	00 00       	nop
+		_delay_ms(100);
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Front.\n");
+     5f2:	88 eb       	ldi	r24, 0xB8	; 184
+     5f4:	90 e0       	ldi	r25, 0x00	; 0
+     5f6:	50 dd       	rcall	.-1376   	; 0x98 <_Z11uart_stringPKc>
+		}	
+		else goto front;
+		//*******************************************************************************************//down
+		down:
+		i=0;
+		char input2[100]=" ";
+     5f8:	68 94       	set
+     5fa:	77 24       	eor	r7, r7
+     5fc:	75 f8       	bld	r7, 5
+     5fe:	81 2c       	mov	r8, r1
+     600:	91 2c       	mov	r9, r1
+     602:	a1 2c       	mov	r10, r1
+     604:	0f 2e       	mov	r0, r31
+     606:	f0 e6       	ldi	r31, 0x60	; 96
+     608:	bf 2e       	mov	r11, r31
+     60a:	f0 2d       	mov	r31, r0
+     60c:	c3 5a       	subi	r28, 0xA3	; 163
+     60e:	dd 4f       	sbci	r29, 0xFD	; 253
+     610:	c8 80       	ld	r12, Y
+     612:	cd 55       	subi	r28, 0x5D	; 93
+     614:	d2 40       	sbci	r29, 0x02	; 2
+     616:	c2 5a       	subi	r28, 0xA2	; 162
+     618:	dd 4f       	sbci	r29, 0xFD	; 253
+     61a:	d8 80       	ld	r13, Y
+     61c:	ce 55       	subi	r28, 0x5E	; 94
+     61e:	d2 40       	sbci	r29, 0x02	; 2
+     620:	cf 59       	subi	r28, 0x9F	; 159
+     622:	dd 4f       	sbci	r29, 0xFD	; 253
+     624:	f9 82       	std	Y+1, r15	; 0x01
+     626:	e8 82       	st	Y, r14
+     628:	c1 56       	subi	r28, 0x61	; 97
+     62a:	d2 40       	sbci	r29, 0x02	; 2
+     62c:	c9 59       	subi	r28, 0x99	; 153
+     62e:	dd 4f       	sbci	r29, 0xFD	; 253
+     630:	e8 80       	ld	r14, Y
+     632:	f9 80       	ldd	r15, Y+1	; 0x01
+     634:	c7 56       	subi	r28, 0x67	; 103
+     636:	d2 40       	sbci	r29, 0x02	; 2
+     638:	c3 5d       	subi	r28, 0xD3	; 211
+     63a:	de 4f       	sbci	r29, 0xFE	; 254
+     63c:	78 82       	st	Y, r7
+     63e:	cd 52       	subi	r28, 0x2D	; 45
+     640:	d1 40       	sbci	r29, 0x01	; 1
+     642:	c2 5d       	subi	r28, 0xD2	; 210
+     644:	de 4f       	sbci	r29, 0xFE	; 254
+     646:	88 82       	st	Y, r8
+     648:	ce 52       	subi	r28, 0x2E	; 46
+     64a:	d1 40       	sbci	r29, 0x01	; 1
+     64c:	c1 5d       	subi	r28, 0xD1	; 209
+     64e:	de 4f       	sbci	r29, 0xFE	; 254
+     650:	98 82       	st	Y, r9
+     652:	cf 52       	subi	r28, 0x2F	; 47
+     654:	d1 40       	sbci	r29, 0x01	; 1
+     656:	c0 5d       	subi	r28, 0xD0	; 208
+     658:	de 4f       	sbci	r29, 0xFE	; 254
+     65a:	a8 82       	st	Y, r10
+     65c:	c0 53       	subi	r28, 0x30	; 48
+     65e:	d1 40       	sbci	r29, 0x01	; 1
+     660:	d7 01       	movw	r26, r14
+     662:	eb 2d       	mov	r30, r11
+     664:	1d 92       	st	X+, r1
+     666:	ea 95       	dec	r30
+     668:	e9 f7       	brne	.-6      	; 0x664 <__stack+0x205>
+     66a:	0c 2d       	mov	r16, r12
+     66c:	1d 2d       	mov	r17, r13
+		
+		
+		while(1) {
+			input2[i] = uart_read();//read char
+     66e:	50 dd       	rcall	.-1376   	; 0x110 <_Z9uart_readv>
+     670:	d8 01       	movw	r26, r16
+     672:	8d 93       	st	X+, r24
+     674:	8d 01       	movw	r16, r26
+			if (input2[i]=='.')
+     676:	8e 32       	cpi	r24, 0x2E	; 46
+     678:	d1 f7       	brne	.-12     	; 0x66e <__stack+0x20f>
+			break;
+			i++;
+			
+		}
+		
+		if(strcmp(input2,"\nDown.")==0)
+     67a:	60 ec       	ldi	r22, 0xC0	; 192
+     67c:	70 e0       	ldi	r23, 0x00	; 0
+     67e:	8c 2d       	mov	r24, r12
+     680:	9d 2d       	mov	r25, r13
+     682:	c3 da       	rcall	.-2682   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     684:	89 2b       	or	r24, r25
+     686:	c1 f6       	brne	.-80     	; 0x638 <__stack+0x1d9>
+     688:	cf 59       	subi	r28, 0x9F	; 159
+     68a:	dd 4f       	sbci	r29, 0xFD	; 253
+     68c:	e8 80       	ld	r14, Y
+     68e:	f9 80       	ldd	r15, Y+1	; 0x01
+     690:	c1 56       	subi	r28, 0x61	; 97
+     692:	d2 40       	sbci	r29, 0x02	; 2
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring D to the top face
+			
+PORTC=0b00000001;//select linear FB
+     694:	41 e0       	ldi	r20, 0x01	; 1
+     696:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     698:	20 e3       	ldi	r18, 0x30	; 48
+     69a:	33 e4       	ldi	r19, 0x43	; 67
+     69c:	39 bd       	out	0x29, r19	; 41
+     69e:	28 bd       	out	0x28, r18	; 40
+     6a0:	bf ef       	ldi	r27, 0xFF	; 255
+     6a2:	e0 e7       	ldi	r30, 0x70	; 112
+     6a4:	f2 e0       	ldi	r31, 0x02	; 2
+     6a6:	b1 50       	subi	r27, 0x01	; 1
+     6a8:	e0 40       	sbci	r30, 0x00	; 0
+     6aa:	f0 40       	sbci	r31, 0x00	; 0
+     6ac:	e1 f7       	brne	.-8      	; 0x6a6 <__stack+0x247>
+     6ae:	00 c0       	rjmp	.+0      	; 0x6b0 <__stack+0x251>
+     6b0:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     6b2:	54 e2       	ldi	r21, 0x24	; 36
+     6b4:	55 bb       	out	0x15, r21	; 21
+		OCR1A=17200;
+     6b6:	3b bd       	out	0x2b, r19	; 43
+     6b8:	2a bd       	out	0x2a, r18	; 42
+		OCR1B=19150;
+     6ba:	8e ec       	ldi	r24, 0xCE	; 206
+     6bc:	9a e4       	ldi	r25, 0x4A	; 74
+     6be:	99 bd       	out	0x29, r25	; 41
+     6c0:	88 bd       	out	0x28, r24	; 40
+     6c2:	6f ef       	ldi	r22, 0xFF	; 255
+     6c4:	70 e7       	ldi	r23, 0x70	; 112
+     6c6:	a2 e0       	ldi	r26, 0x02	; 2
+     6c8:	61 50       	subi	r22, 0x01	; 1
+     6ca:	70 40       	sbci	r23, 0x00	; 0
+     6cc:	a0 40       	sbci	r26, 0x00	; 0
+     6ce:	e1 f7       	brne	.-8      	; 0x6c8 <__stack+0x269>
+     6d0:	00 c0       	rjmp	.+0      	; 0x6d2 <__stack+0x273>
+     6d2:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     6d4:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     6d6:	99 bd       	out	0x29, r25	; 41
+     6d8:	88 bd       	out	0x28, r24	; 40
+     6da:	bf ef       	ldi	r27, 0xFF	; 255
+     6dc:	e0 e7       	ldi	r30, 0x70	; 112
+     6de:	f2 e0       	ldi	r31, 0x02	; 2
+     6e0:	b1 50       	subi	r27, 0x01	; 1
+     6e2:	e0 40       	sbci	r30, 0x00	; 0
+     6e4:	f0 40       	sbci	r31, 0x00	; 0
+     6e6:	e1 f7       	brne	.-8      	; 0x6e0 <__stack+0x281>
+     6e8:	00 c0       	rjmp	.+0      	; 0x6ea <__stack+0x28b>
+     6ea:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     6ec:	48 e0       	ldi	r20, 0x08	; 8
+     6ee:	45 bb       	out	0x15, r20	; 21
+		OCR1A=17200;
+     6f0:	3b bd       	out	0x2b, r19	; 43
+     6f2:	2a bd       	out	0x2a, r18	; 42
+     6f4:	2f ef       	ldi	r18, 0xFF	; 255
+     6f6:	30 e7       	ldi	r19, 0x70	; 112
+     6f8:	62 e0       	ldi	r22, 0x02	; 2
+     6fa:	21 50       	subi	r18, 0x01	; 1
+     6fc:	30 40       	sbci	r19, 0x00	; 0
+     6fe:	60 40       	sbci	r22, 0x00	; 0
+     700:	e1 f7       	brne	.-8      	; 0x6fa <__stack+0x29b>
+     702:	00 c0       	rjmp	.+0      	; 0x704 <__stack+0x2a5>
+     704:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     706:	55 bb       	out	0x15, r21	; 21
+		OCR1A=18250;
+     708:	2a e4       	ldi	r18, 0x4A	; 74
+     70a:	37 e4       	ldi	r19, 0x47	; 71
+     70c:	3b bd       	out	0x2b, r19	; 43
+     70e:	2a bd       	out	0x2a, r18	; 42
+		OCR1B=18250;
+     710:	39 bd       	out	0x29, r19	; 41
+     712:	28 bd       	out	0x28, r18	; 40
+     714:	7f ef       	ldi	r23, 0xFF	; 255
+     716:	a0 e7       	ldi	r26, 0x70	; 112
+     718:	b2 e0       	ldi	r27, 0x02	; 2
+     71a:	71 50       	subi	r23, 0x01	; 1
+     71c:	a0 40       	sbci	r26, 0x00	; 0
+     71e:	b0 40       	sbci	r27, 0x00	; 0
+     720:	e1 f7       	brne	.-8      	; 0x71a <__stack+0x2bb>
+     722:	00 c0       	rjmp	.+0      	; 0x724 <__stack+0x2c5>
+     724:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     726:	45 bb       	out	0x15, r20	; 21
+		OCR1A=19150;
+     728:	9b bd       	out	0x2b, r25	; 43
+     72a:	8a bd       	out	0x2a, r24	; 42
+     72c:	ef ef       	ldi	r30, 0xFF	; 255
+     72e:	f0 e7       	ldi	r31, 0x70	; 112
+     730:	22 e0       	ldi	r18, 0x02	; 2
+     732:	e1 50       	subi	r30, 0x01	; 1
+     734:	f0 40       	sbci	r31, 0x00	; 0
+     736:	20 40       	sbci	r18, 0x00	; 0
+     738:	e1 f7       	brne	.-8      	; 0x732 <__stack+0x2d3>
+     73a:	00 c0       	rjmp	.+0      	; 0x73c <__stack+0x2dd>
+     73c:	00 00       	nop
+		_delay_ms(100);
+			
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		uart_string("Down.\n");
+     73e:	87 ec       	ldi	r24, 0xC7	; 199
+     740:	90 e0       	ldi	r25, 0x00	; 0
+     742:	aa dc       	rcall	.-1708   	; 0x98 <_Z11uart_stringPKc>
+		}
+		else goto down;
+		//*******************************************************************************************//left
+		left:
+		i=0;
+		char input3[100]=" ";
+     744:	68 94       	set
+     746:	77 24       	eor	r7, r7
+     748:	75 f8       	bld	r7, 5
+     74a:	81 2c       	mov	r8, r1
+     74c:	91 2c       	mov	r9, r1
+     74e:	a1 2c       	mov	r10, r1
+     750:	0f 2e       	mov	r0, r31
+     752:	f0 e6       	ldi	r31, 0x60	; 96
+     754:	bf 2e       	mov	r11, r31
+     756:	f0 2d       	mov	r31, r0
+     758:	c1 5a       	subi	r28, 0xA1	; 161
+     75a:	dd 4f       	sbci	r29, 0xFD	; 253
+     75c:	c8 80       	ld	r12, Y
+     75e:	cf 55       	subi	r28, 0x5F	; 95
+     760:	d2 40       	sbci	r29, 0x02	; 2
+     762:	c0 5a       	subi	r28, 0xA0	; 160
+     764:	dd 4f       	sbci	r29, 0xFD	; 253
+     766:	d8 80       	ld	r13, Y
+     768:	c0 56       	subi	r28, 0x60	; 96
+     76a:	d2 40       	sbci	r29, 0x02	; 2
+     76c:	cf 59       	subi	r28, 0x9F	; 159
+     76e:	dd 4f       	sbci	r29, 0xFD	; 253
+     770:	f9 82       	std	Y+1, r15	; 0x01
+     772:	e8 82       	st	Y, r14
+     774:	c1 56       	subi	r28, 0x61	; 97
+     776:	d2 40       	sbci	r29, 0x02	; 2
+     778:	c7 59       	subi	r28, 0x97	; 151
+     77a:	dd 4f       	sbci	r29, 0xFD	; 253
+     77c:	e8 80       	ld	r14, Y
+     77e:	f9 80       	ldd	r15, Y+1	; 0x01
+     780:	c9 56       	subi	r28, 0x69	; 105
+     782:	d2 40       	sbci	r29, 0x02	; 2
+     784:	c7 53       	subi	r28, 0x37	; 55
+     786:	df 4f       	sbci	r29, 0xFF	; 255
+     788:	78 82       	st	Y, r7
+     78a:	c9 5c       	subi	r28, 0xC9	; 201
+     78c:	d0 40       	sbci	r29, 0x00	; 0
+     78e:	c6 53       	subi	r28, 0x36	; 54
+     790:	df 4f       	sbci	r29, 0xFF	; 255
+     792:	88 82       	st	Y, r8
+     794:	ca 5c       	subi	r28, 0xCA	; 202
+     796:	d0 40       	sbci	r29, 0x00	; 0
+     798:	c5 53       	subi	r28, 0x35	; 53
+     79a:	df 4f       	sbci	r29, 0xFF	; 255
+     79c:	98 82       	st	Y, r9
+     79e:	cb 5c       	subi	r28, 0xCB	; 203
+     7a0:	d0 40       	sbci	r29, 0x00	; 0
+     7a2:	c4 53       	subi	r28, 0x34	; 52
+     7a4:	df 4f       	sbci	r29, 0xFF	; 255
+     7a6:	a8 82       	st	Y, r10
+     7a8:	cc 5c       	subi	r28, 0xCC	; 204
+     7aa:	d0 40       	sbci	r29, 0x00	; 0
+     7ac:	d7 01       	movw	r26, r14
+     7ae:	eb 2d       	mov	r30, r11
+     7b0:	1d 92       	st	X+, r1
+     7b2:	ea 95       	dec	r30
+     7b4:	e9 f7       	brne	.-6      	; 0x7b0 <__stack+0x351>
+     7b6:	0c 2d       	mov	r16, r12
+     7b8:	1d 2d       	mov	r17, r13
+		
+		
+		while(1) {
+			input3[i] = uart_read();//read char
+     7ba:	aa dc       	rcall	.-1708   	; 0x110 <_Z9uart_readv>
+     7bc:	d8 01       	movw	r26, r16
+     7be:	8d 93       	st	X+, r24
+     7c0:	8d 01       	movw	r16, r26
+			if (input3[i]=='.')
+     7c2:	8e 32       	cpi	r24, 0x2E	; 46
+     7c4:	d1 f7       	brne	.-12     	; 0x7ba <__stack+0x35b>
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input3,"\nLeft.")==0)
+     7c6:	6e ec       	ldi	r22, 0xCE	; 206
+     7c8:	70 e0       	ldi	r23, 0x00	; 0
+     7ca:	8c 2d       	mov	r24, r12
+     7cc:	9d 2d       	mov	r25, r13
+     7ce:	1d da       	rcall	.-3014   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     7d0:	89 2b       	or	r24, r25
+     7d2:	c1 f6       	brne	.-80     	; 0x784 <__stack+0x325>
+     7d4:	cf 59       	subi	r28, 0x9F	; 159
+     7d6:	dd 4f       	sbci	r29, 0xFD	; 253
+     7d8:	e8 80       	ld	r14, Y
+     7da:	f9 80       	ldd	r15, Y+1	; 0x01
+     7dc:	c1 56       	subi	r28, 0x61	; 97
+     7de:	d2 40       	sbci	r29, 0x02	; 2
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring L to the top face
+
+
+PORTC=0b00000001;//select linear FB
+     7e0:	41 e0       	ldi	r20, 0x01	; 1
+     7e2:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     7e4:	20 e3       	ldi	r18, 0x30	; 48
+     7e6:	33 e4       	ldi	r19, 0x43	; 67
+     7e8:	39 bd       	out	0x29, r19	; 41
+     7ea:	28 bd       	out	0x28, r18	; 40
+     7ec:	bf ef       	ldi	r27, 0xFF	; 255
+     7ee:	e0 e7       	ldi	r30, 0x70	; 112
+     7f0:	f2 e0       	ldi	r31, 0x02	; 2
+     7f2:	b1 50       	subi	r27, 0x01	; 1
+     7f4:	e0 40       	sbci	r30, 0x00	; 0
+     7f6:	f0 40       	sbci	r31, 0x00	; 0
+     7f8:	e1 f7       	brne	.-8      	; 0x7f2 <__stack+0x393>
+     7fa:	00 c0       	rjmp	.+0      	; 0x7fc <__stack+0x39d>
+     7fc:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     7fe:	54 e2       	ldi	r21, 0x24	; 36
+     800:	55 bb       	out	0x15, r21	; 21
+		OCR1A=19150;
+     802:	8e ec       	ldi	r24, 0xCE	; 206
+     804:	9a e4       	ldi	r25, 0x4A	; 74
+     806:	9b bd       	out	0x2b, r25	; 43
+     808:	8a bd       	out	0x2a, r24	; 42
+		OCR1B=17200;
+     80a:	39 bd       	out	0x29, r19	; 41
+     80c:	28 bd       	out	0x28, r18	; 40
+     80e:	6f ef       	ldi	r22, 0xFF	; 255
+     810:	70 e7       	ldi	r23, 0x70	; 112
+     812:	a2 e0       	ldi	r26, 0x02	; 2
+     814:	61 50       	subi	r22, 0x01	; 1
+     816:	70 40       	sbci	r23, 0x00	; 0
+     818:	a0 40       	sbci	r26, 0x00	; 0
+     81a:	e1 f7       	brne	.-8      	; 0x814 <__stack+0x3b5>
+     81c:	00 c0       	rjmp	.+0      	; 0x81e <__stack+0x3bf>
+     81e:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     820:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     822:	99 bd       	out	0x29, r25	; 41
+     824:	88 bd       	out	0x28, r24	; 40
+     826:	bf ef       	ldi	r27, 0xFF	; 255
+     828:	e0 e7       	ldi	r30, 0x70	; 112
+     82a:	f2 e0       	ldi	r31, 0x02	; 2
+     82c:	b1 50       	subi	r27, 0x01	; 1
+     82e:	e0 40       	sbci	r30, 0x00	; 0
+     830:	f0 40       	sbci	r31, 0x00	; 0
+     832:	e1 f7       	brne	.-8      	; 0x82c <__stack+0x3cd>
+     834:	00 c0       	rjmp	.+0      	; 0x836 <__stack+0x3d7>
+     836:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     838:	e8 e0       	ldi	r30, 0x08	; 8
+     83a:	e5 bb       	out	0x15, r30	; 21
+		OCR1A=17200;
+     83c:	3b bd       	out	0x2b, r19	; 43
+     83e:	2a bd       	out	0x2a, r18	; 42
+     840:	6f ef       	ldi	r22, 0xFF	; 255
+     842:	70 e7       	ldi	r23, 0x70	; 112
+     844:	a2 e0       	ldi	r26, 0x02	; 2
+     846:	61 50       	subi	r22, 0x01	; 1
+     848:	70 40       	sbci	r23, 0x00	; 0
+     84a:	a0 40       	sbci	r26, 0x00	; 0
+     84c:	e1 f7       	brne	.-8      	; 0x846 <__stack+0x3e7>
+     84e:	00 c0       	rjmp	.+0      	; 0x850 <__stack+0x3f1>
+     850:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     852:	55 bb       	out	0x15, r21	; 21
+		OCR1A=18250;
+     854:	6a e4       	ldi	r22, 0x4A	; 74
+     856:	77 e4       	ldi	r23, 0x47	; 71
+     858:	7b bd       	out	0x2b, r23	; 43
+     85a:	6a bd       	out	0x2a, r22	; 42
+		OCR1B=18250;
+     85c:	79 bd       	out	0x29, r23	; 41
+     85e:	68 bd       	out	0x28, r22	; 40
+     860:	bf ef       	ldi	r27, 0xFF	; 255
+     862:	f0 e7       	ldi	r31, 0x70	; 112
+     864:	52 e0       	ldi	r21, 0x02	; 2
+     866:	b1 50       	subi	r27, 0x01	; 1
+     868:	f0 40       	sbci	r31, 0x00	; 0
+     86a:	50 40       	sbci	r21, 0x00	; 0
+     86c:	e1 f7       	brne	.-8      	; 0x866 <__stack+0x407>
+     86e:	00 c0       	rjmp	.+0      	; 0x870 <__stack+0x411>
+     870:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     872:	52 e1       	ldi	r21, 0x12	; 18
+     874:	55 bb       	out	0x15, r21	; 21
+		OCR1A=17200;
+     876:	3b bd       	out	0x2b, r19	; 43
+     878:	2a bd       	out	0x2a, r18	; 42
+		OCR1B=19150;
+     87a:	99 bd       	out	0x29, r25	; 41
+     87c:	88 bd       	out	0x28, r24	; 40
+     87e:	af ef       	ldi	r26, 0xFF	; 255
+     880:	b0 e7       	ldi	r27, 0x70	; 112
+     882:	f2 e0       	ldi	r31, 0x02	; 2
+     884:	a1 50       	subi	r26, 0x01	; 1
+     886:	b0 40       	sbci	r27, 0x00	; 0
+     888:	f0 40       	sbci	r31, 0x00	; 0
+     88a:	e1 f7       	brne	.-8      	; 0x884 <__stack+0x425>
+     88c:	00 c0       	rjmp	.+0      	; 0x88e <__stack+0x42f>
+     88e:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     890:	e5 bb       	out	0x15, r30	; 21
+		OCR1A=19150;
+     892:	9b bd       	out	0x2b, r25	; 43
+     894:	8a bd       	out	0x2a, r24	; 42
+     896:	af ef       	ldi	r26, 0xFF	; 255
+     898:	b0 e7       	ldi	r27, 0x70	; 112
+     89a:	e2 e0       	ldi	r30, 0x02	; 2
+     89c:	a1 50       	subi	r26, 0x01	; 1
+     89e:	b0 40       	sbci	r27, 0x00	; 0
+     8a0:	e0 40       	sbci	r30, 0x00	; 0
+     8a2:	e1 f7       	brne	.-8      	; 0x89c <__stack+0x43d>
+     8a4:	00 c0       	rjmp	.+0      	; 0x8a6 <__stack+0x447>
+     8a6:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     8a8:	45 bb       	out	0x15, r20	; 21
+		OCR1B=17200;
+     8aa:	39 bd       	out	0x29, r19	; 41
+     8ac:	28 bd       	out	0x28, r18	; 40
+     8ae:	ff ef       	ldi	r31, 0xFF	; 255
+     8b0:	20 e7       	ldi	r18, 0x70	; 112
+     8b2:	32 e0       	ldi	r19, 0x02	; 2
+     8b4:	f1 50       	subi	r31, 0x01	; 1
+     8b6:	20 40       	sbci	r18, 0x00	; 0
+     8b8:	30 40       	sbci	r19, 0x00	; 0
+     8ba:	e1 f7       	brne	.-8      	; 0x8b4 <__stack+0x455>
+     8bc:	00 c0       	rjmp	.+0      	; 0x8be <__stack+0x45f>
+     8be:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     8c0:	55 bb       	out	0x15, r21	; 21
+		OCR1B=18250;
+     8c2:	79 bd       	out	0x29, r23	; 41
+     8c4:	68 bd       	out	0x28, r22	; 40
+		OCR1A=18250;
+     8c6:	7b bd       	out	0x2b, r23	; 43
+     8c8:	6a bd       	out	0x2a, r22	; 42
+     8ca:	5f ef       	ldi	r21, 0xFF	; 255
+     8cc:	60 e7       	ldi	r22, 0x70	; 112
+     8ce:	72 e0       	ldi	r23, 0x02	; 2
+     8d0:	51 50       	subi	r21, 0x01	; 1
+     8d2:	60 40       	sbci	r22, 0x00	; 0
+     8d4:	70 40       	sbci	r23, 0x00	; 0
+     8d6:	e1 f7       	brne	.-8      	; 0x8d0 <__stack+0x471>
+     8d8:	00 c0       	rjmp	.+0      	; 0x8da <__stack+0x47b>
+     8da:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     8dc:	45 bb       	out	0x15, r20	; 21
+		OCR1B=19150;
+     8de:	99 bd       	out	0x29, r25	; 41
+     8e0:	88 bd       	out	0x28, r24	; 40
+     8e2:	8f ef       	ldi	r24, 0xFF	; 255
+     8e4:	90 e7       	ldi	r25, 0x70	; 112
+     8e6:	a2 e0       	ldi	r26, 0x02	; 2
+     8e8:	81 50       	subi	r24, 0x01	; 1
+     8ea:	90 40       	sbci	r25, 0x00	; 0
+     8ec:	a0 40       	sbci	r26, 0x00	; 0
+     8ee:	e1 f7       	brne	.-8      	; 0x8e8 <__stack+0x489>
+     8f0:	00 c0       	rjmp	.+0      	; 0x8f2 <__stack+0x493>
+     8f2:	00 00       	nop
+		_delay_ms(100);
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Left.\n");
+     8f4:	85 ed       	ldi	r24, 0xD5	; 213
+     8f6:	90 e0       	ldi	r25, 0x00	; 0
+     8f8:	cf db       	rcall	.-2146   	; 0x98 <_Z11uart_stringPKc>
+		}
+		else goto left;
+		//*******************************************************************************************//back
+		back:
+		i=0;
+		char input4[100]=" ";
+     8fa:	6e 01       	movw	r12, r28
+     8fc:	b5 e6       	ldi	r27, 0x65	; 101
+     8fe:	cb 0e       	add	r12, r27
+     900:	d1 1c       	adc	r13, r1
+     902:	68 94       	set
+     904:	66 24       	eor	r6, r6
+     906:	65 f8       	bld	r6, 5
+     908:	71 2c       	mov	r7, r1
+     90a:	81 2c       	mov	r8, r1
+     90c:	00 e0       	ldi	r16, 0x00	; 0
+     90e:	56 01       	movw	r10, r12
+     910:	e4 e0       	ldi	r30, 0x04	; 4
+     912:	ae 0e       	add	r10, r30
+     914:	b1 1c       	adc	r11, r1
+     916:	cf 59       	subi	r28, 0x9F	; 159
+     918:	dd 4f       	sbci	r29, 0xFD	; 253
+     91a:	f9 82       	std	Y+1, r15	; 0x01
+     91c:	e8 82       	st	Y, r14
+     91e:	c1 56       	subi	r28, 0x61	; 97
+     920:	d2 40       	sbci	r29, 0x02	; 2
+     922:	f8 2c       	mov	r15, r8
+     924:	e0 2e       	mov	r14, r16
+     926:	8d 2c       	mov	r8, r13
+     928:	9c 2c       	mov	r9, r12
+     92a:	d6 01       	movw	r26, r12
+     92c:	6c 92       	st	X, r6
+     92e:	11 96       	adiw	r26, 0x01	; 1
+     930:	7c 92       	st	X, r7
+     932:	11 97       	sbiw	r26, 0x01	; 1
+     934:	12 96       	adiw	r26, 0x02	; 2
+     936:	fc 92       	st	X, r15
+     938:	12 97       	sbiw	r26, 0x02	; 2
+     93a:	13 96       	adiw	r26, 0x03	; 3
+     93c:	ec 92       	st	X, r14
+     93e:	f5 01       	movw	r30, r10
+     940:	20 e6       	ldi	r18, 0x60	; 96
+     942:	11 92       	st	Z+, r1
+     944:	2a 95       	dec	r18
+     946:	e9 f7       	brne	.-6      	; 0x942 <__stack+0x4e3>
+     948:	09 2d       	mov	r16, r9
+     94a:	18 2d       	mov	r17, r8
+		
+		
+		while(1) {
+			input4[i] = uart_read();//read char
+     94c:	e1 db       	rcall	.-2110   	; 0x110 <_Z9uart_readv>
+     94e:	d8 01       	movw	r26, r16
+     950:	8d 93       	st	X+, r24
+     952:	8d 01       	movw	r16, r26
+			if (input4[i]=='.')
+     954:	8e 32       	cpi	r24, 0x2E	; 46
+     956:	d1 f7       	brne	.-12     	; 0x94c <__stack+0x4ed>
+			i++;
+			
+		}
+		
+		
+		if(strcmp(input4,"\nBack.")==0)
+     958:	6c ed       	ldi	r22, 0xDC	; 220
+     95a:	70 e0       	ldi	r23, 0x00	; 0
+     95c:	89 2d       	mov	r24, r9
+     95e:	98 2d       	mov	r25, r8
+     960:	54 d9       	rcall	.-3416   	; 0xfffffc0a <__eeprom_end+0xff7efc0a>
+     962:	89 2b       	or	r24, r25
+     964:	11 f7       	brne	.-60     	; 0x92a <__stack+0x4cb>
+     966:	cf 59       	subi	r28, 0x9F	; 159
+     968:	dd 4f       	sbci	r29, 0xFD	; 253
+     96a:	e8 80       	ld	r14, Y
+     96c:	f9 80       	ldd	r15, Y+1	; 0x01
+     96e:	c1 56       	subi	r28, 0x61	; 97
+     970:	d2 40       	sbci	r29, 0x02	; 2
+		{//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//code to bring B to the top face
+PORTC=0b00001000;//select linear RL
+     972:	68 94       	set
+     974:	99 24       	eor	r9, r9
+     976:	93 f8       	bld	r9, 3
+     978:	95 ba       	out	0x15, r9	; 21
+		OCR1A=17200;
+     97a:	0f 2e       	mov	r0, r31
+     97c:	f0 e3       	ldi	r31, 0x30	; 48
+     97e:	cf 2e       	mov	r12, r31
+     980:	f3 e4       	ldi	r31, 0x43	; 67
+     982:	df 2e       	mov	r13, r31
+     984:	f0 2d       	mov	r31, r0
+     986:	db bc       	out	0x2b, r13	; 43
+     988:	ca bc       	out	0x2a, r12	; 42
+     98a:	bf ef       	ldi	r27, 0xFF	; 255
+     98c:	e0 e7       	ldi	r30, 0x70	; 112
+     98e:	f2 e0       	ldi	r31, 0x02	; 2
+     990:	b1 50       	subi	r27, 0x01	; 1
+     992:	e0 40       	sbci	r30, 0x00	; 0
+     994:	f0 40       	sbci	r31, 0x00	; 0
+     996:	e1 f7       	brne	.-8      	; 0x990 <__stack+0x531>
+     998:	00 c0       	rjmp	.+0      	; 0x99a <__stack+0x53b>
+     99a:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     99c:	0f 2e       	mov	r0, r31
+     99e:	f2 e1       	ldi	r31, 0x12	; 18
+     9a0:	7f 2e       	mov	r7, r31
+     9a2:	f0 2d       	mov	r31, r0
+     9a4:	75 ba       	out	0x15, r7	; 21
+		OCR1A=17200;
+     9a6:	db bc       	out	0x2b, r13	; 43
+     9a8:	ca bc       	out	0x2a, r12	; 42
+		OCR1B=19150;
+     9aa:	0e ec       	ldi	r16, 0xCE	; 206
+     9ac:	1a e4       	ldi	r17, 0x4A	; 74
+     9ae:	19 bd       	out	0x29, r17	; 41
+     9b0:	08 bd       	out	0x28, r16	; 40
+     9b2:	2f ef       	ldi	r18, 0xFF	; 255
+     9b4:	30 e7       	ldi	r19, 0x70	; 112
+     9b6:	42 e0       	ldi	r20, 0x02	; 2
+     9b8:	21 50       	subi	r18, 0x01	; 1
+     9ba:	30 40       	sbci	r19, 0x00	; 0
+     9bc:	40 40       	sbci	r20, 0x00	; 0
+     9be:	e1 f7       	brne	.-8      	; 0x9b8 <__stack+0x559>
+     9c0:	00 c0       	rjmp	.+0      	; 0x9c2 <__stack+0x563>
+     9c2:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     9c4:	95 ba       	out	0x15, r9	; 21
+		OCR1A=19150;
+     9c6:	1b bd       	out	0x2b, r17	; 43
+     9c8:	0a bd       	out	0x2a, r16	; 42
+     9ca:	5f ef       	ldi	r21, 0xFF	; 255
+     9cc:	60 e7       	ldi	r22, 0x70	; 112
+     9ce:	72 e0       	ldi	r23, 0x02	; 2
+     9d0:	51 50       	subi	r21, 0x01	; 1
+     9d2:	60 40       	sbci	r22, 0x00	; 0
+     9d4:	70 40       	sbci	r23, 0x00	; 0
+     9d6:	e1 f7       	brne	.-8      	; 0x9d0 <__stack+0x571>
+     9d8:	00 c0       	rjmp	.+0      	; 0x9da <__stack+0x57b>
+     9da:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     9dc:	88 24       	eor	r8, r8
+     9de:	83 94       	inc	r8
+     9e0:	85 ba       	out	0x15, r8	; 21
+		OCR1B=17200;
+     9e2:	d9 bc       	out	0x29, r13	; 41
+     9e4:	c8 bc       	out	0x28, r12	; 40
+     9e6:	8f ef       	ldi	r24, 0xFF	; 255
+     9e8:	90 e7       	ldi	r25, 0x70	; 112
+     9ea:	a2 e0       	ldi	r26, 0x02	; 2
+     9ec:	81 50       	subi	r24, 0x01	; 1
+     9ee:	90 40       	sbci	r25, 0x00	; 0
+     9f0:	a0 40       	sbci	r26, 0x00	; 0
+     9f2:	e1 f7       	brne	.-8      	; 0x9ec <__stack+0x58d>
+     9f4:	00 c0       	rjmp	.+0      	; 0x9f6 <__stack+0x597>
+     9f6:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     9f8:	75 ba       	out	0x15, r7	; 21
+		OCR1B=18250;
+     9fa:	0f 2e       	mov	r0, r31
+     9fc:	fa e4       	ldi	r31, 0x4A	; 74
+     9fe:	af 2e       	mov	r10, r31
+     a00:	f7 e4       	ldi	r31, 0x47	; 71
+     a02:	bf 2e       	mov	r11, r31
+     a04:	f0 2d       	mov	r31, r0
+     a06:	b9 bc       	out	0x29, r11	; 41
+     a08:	a8 bc       	out	0x28, r10	; 40
+		OCR1A=18250;
+     a0a:	bb bc       	out	0x2b, r11	; 43
+     a0c:	aa bc       	out	0x2a, r10	; 42
+     a0e:	bf ef       	ldi	r27, 0xFF	; 255
+     a10:	e0 e7       	ldi	r30, 0x70	; 112
+     a12:	f2 e0       	ldi	r31, 0x02	; 2
+     a14:	b1 50       	subi	r27, 0x01	; 1
+     a16:	e0 40       	sbci	r30, 0x00	; 0
+     a18:	f0 40       	sbci	r31, 0x00	; 0
+     a1a:	e1 f7       	brne	.-8      	; 0xa14 <__stack+0x5b5>
+     a1c:	00 c0       	rjmp	.+0      	; 0xa1e <__stack+0x5bf>
+     a1e:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     a20:	85 ba       	out	0x15, r8	; 21
+		OCR1B=19150;
+     a22:	19 bd       	out	0x29, r17	; 41
+     a24:	08 bd       	out	0x28, r16	; 40
+     a26:	2f ef       	ldi	r18, 0xFF	; 255
+     a28:	30 e7       	ldi	r19, 0x70	; 112
+     a2a:	42 e0       	ldi	r20, 0x02	; 2
+     a2c:	21 50       	subi	r18, 0x01	; 1
+     a2e:	30 40       	sbci	r19, 0x00	; 0
+     a30:	40 40       	sbci	r20, 0x00	; 0
+     a32:	e1 f7       	brne	.-8      	; 0xa2c <__stack+0x5cd>
+     a34:	00 c0       	rjmp	.+0      	; 0xa36 <__stack+0x5d7>
+     a36:	00 00       	nop
+		_delay_ms(100);
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+		uart_string("Back.\n");
+     a38:	83 ee       	ldi	r24, 0xE3	; 227
+     a3a:	90 e0       	ldi	r25, 0x00	; 0
+     a3c:	2d db       	rcall	.-2470   	; 0x98 <_Z11uart_stringPKc>
+		//*******************************************************************************************//
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//write code to bring U on top again
+
+
+PORTC=0b00000001;//select linear FB
+     a3e:	85 ba       	out	0x15, r8	; 21
+		OCR1B=17200;
+     a40:	d9 bc       	out	0x29, r13	; 41
+     a42:	c8 bc       	out	0x28, r12	; 40
+     a44:	5f ef       	ldi	r21, 0xFF	; 255
+     a46:	60 e7       	ldi	r22, 0x70	; 112
+     a48:	72 e0       	ldi	r23, 0x02	; 2
+     a4a:	51 50       	subi	r21, 0x01	; 1
+     a4c:	60 40       	sbci	r22, 0x00	; 0
+     a4e:	70 40       	sbci	r23, 0x00	; 0
+     a50:	e1 f7       	brne	.-8      	; 0xa4a <__stack+0x5eb>
+     a52:	00 c0       	rjmp	.+0      	; 0xa54 <__stack+0x5f5>
+     a54:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     a56:	75 ba       	out	0x15, r7	; 21
+		OCR1A=17200;
+     a58:	db bc       	out	0x2b, r13	; 43
+     a5a:	ca bc       	out	0x2a, r12	; 42
+		OCR1B=19150;
+     a5c:	19 bd       	out	0x29, r17	; 41
+     a5e:	08 bd       	out	0x28, r16	; 40
+     a60:	8f ef       	ldi	r24, 0xFF	; 255
+     a62:	90 e7       	ldi	r25, 0x70	; 112
+     a64:	a2 e0       	ldi	r26, 0x02	; 2
+     a66:	81 50       	subi	r24, 0x01	; 1
+     a68:	90 40       	sbci	r25, 0x00	; 0
+     a6a:	a0 40       	sbci	r26, 0x00	; 0
+     a6c:	e1 f7       	brne	.-8      	; 0xa66 <__stack+0x607>
+     a6e:	00 c0       	rjmp	.+0      	; 0xa70 <__stack+0x611>
+     a70:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     a72:	85 ba       	out	0x15, r8	; 21
+		OCR1B=19150;
+     a74:	19 bd       	out	0x29, r17	; 41
+     a76:	08 bd       	out	0x28, r16	; 40
+     a78:	bf ef       	ldi	r27, 0xFF	; 255
+     a7a:	e0 e7       	ldi	r30, 0x70	; 112
+     a7c:	f2 e0       	ldi	r31, 0x02	; 2
+     a7e:	b1 50       	subi	r27, 0x01	; 1
+     a80:	e0 40       	sbci	r30, 0x00	; 0
+     a82:	f0 40       	sbci	r31, 0x00	; 0
+     a84:	e1 f7       	brne	.-8      	; 0xa7e <__stack+0x61f>
+     a86:	00 c0       	rjmp	.+0      	; 0xa88 <__stack+0x629>
+     a88:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     a8a:	95 ba       	out	0x15, r9	; 21
+		OCR1A=17200;
+     a8c:	db bc       	out	0x2b, r13	; 43
+     a8e:	ca bc       	out	0x2a, r12	; 42
+     a90:	2f ef       	ldi	r18, 0xFF	; 255
+     a92:	30 e7       	ldi	r19, 0x70	; 112
+     a94:	42 e0       	ldi	r20, 0x02	; 2
+     a96:	21 50       	subi	r18, 0x01	; 1
+     a98:	30 40       	sbci	r19, 0x00	; 0
+     a9a:	40 40       	sbci	r20, 0x00	; 0
+     a9c:	e1 f7       	brne	.-8      	; 0xa96 <__stack+0x637>
+     a9e:	00 c0       	rjmp	.+0      	; 0xaa0 <__stack+0x641>
+     aa0:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     aa2:	75 ba       	out	0x15, r7	; 21
+		OCR1A=19150;
+     aa4:	1b bd       	out	0x2b, r17	; 43
+     aa6:	0a bd       	out	0x2a, r16	; 42
+		OCR1B=17200;
+     aa8:	d9 bc       	out	0x29, r13	; 41
+     aaa:	c8 bc       	out	0x28, r12	; 40
+     aac:	5f ef       	ldi	r21, 0xFF	; 255
+     aae:	60 e7       	ldi	r22, 0x70	; 112
+     ab0:	72 e0       	ldi	r23, 0x02	; 2
+     ab2:	51 50       	subi	r21, 0x01	; 1
+     ab4:	60 40       	sbci	r22, 0x00	; 0
+     ab6:	70 40       	sbci	r23, 0x00	; 0
+     ab8:	e1 f7       	brne	.-8      	; 0xab2 <__stack+0x653>
+     aba:	00 c0       	rjmp	.+0      	; 0xabc <__stack+0x65d>
+     abc:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     abe:	95 ba       	out	0x15, r9	; 21
+		OCR1A=19150;
+     ac0:	1b bd       	out	0x2b, r17	; 43
+     ac2:	0a bd       	out	0x2a, r16	; 42
+     ac4:	8f ef       	ldi	r24, 0xFF	; 255
+     ac6:	90 e7       	ldi	r25, 0x70	; 112
+     ac8:	a2 e0       	ldi	r26, 0x02	; 2
+     aca:	81 50       	subi	r24, 0x01	; 1
+     acc:	90 40       	sbci	r25, 0x00	; 0
+     ace:	a0 40       	sbci	r26, 0x00	; 0
+     ad0:	e1 f7       	brne	.-8      	; 0xaca <__stack+0x66b>
+     ad2:	00 c0       	rjmp	.+0      	; 0xad4 <__stack+0x675>
+     ad4:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     ad6:	85 ba       	out	0x15, r8	; 21
+		OCR1B=17200;
+     ad8:	d9 bc       	out	0x29, r13	; 41
+     ada:	c8 bc       	out	0x28, r12	; 40
+     adc:	bf ef       	ldi	r27, 0xFF	; 255
+     ade:	e0 e7       	ldi	r30, 0x70	; 112
+     ae0:	f2 e0       	ldi	r31, 0x02	; 2
+     ae2:	b1 50       	subi	r27, 0x01	; 1
+     ae4:	e0 40       	sbci	r30, 0x00	; 0
+     ae6:	f0 40       	sbci	r31, 0x00	; 0
+     ae8:	e1 f7       	brne	.-8      	; 0xae2 <__stack+0x683>
+     aea:	00 c0       	rjmp	.+0      	; 0xaec <__stack+0x68d>
+     aec:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00010010;//select B and F
+     aee:	75 ba       	out	0x15, r7	; 21
+		OCR1A=18250;
+     af0:	bb bc       	out	0x2b, r11	; 43
+     af2:	aa bc       	out	0x2a, r10	; 42
+		OCR1B=18250;
+     af4:	b9 bc       	out	0x29, r11	; 41
+     af6:	a8 bc       	out	0x28, r10	; 40
+     af8:	2f ef       	ldi	r18, 0xFF	; 255
+     afa:	30 e7       	ldi	r19, 0x70	; 112
+     afc:	42 e0       	ldi	r20, 0x02	; 2
+     afe:	21 50       	subi	r18, 0x01	; 1
+     b00:	30 40       	sbci	r19, 0x00	; 0
+     b02:	40 40       	sbci	r20, 0x00	; 0
+     b04:	e1 f7       	brne	.-8      	; 0xafe <__stack+0x69f>
+     b06:	00 c0       	rjmp	.+0      	; 0xb08 <__stack+0x6a9>
+     b08:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     b0a:	84 e2       	ldi	r24, 0x24	; 36
+     b0c:	85 bb       	out	0x15, r24	; 21
+		OCR1A=19150;
+     b0e:	1b bd       	out	0x2b, r17	; 43
+     b10:	0a bd       	out	0x2a, r16	; 42
+		OCR1B=17200;
+     b12:	d9 bc       	out	0x29, r13	; 41
+     b14:	c8 bc       	out	0x28, r12	; 40
+     b16:	5f ef       	ldi	r21, 0xFF	; 255
+     b18:	60 e7       	ldi	r22, 0x70	; 112
+     b1a:	72 e0       	ldi	r23, 0x02	; 2
+     b1c:	51 50       	subi	r21, 0x01	; 1
+     b1e:	60 40       	sbci	r22, 0x00	; 0
+     b20:	70 40       	sbci	r23, 0x00	; 0
+     b22:	e1 f7       	brne	.-8      	; 0xb1c <__stack+0x6bd>
+     b24:	00 c0       	rjmp	.+0      	; 0xb26 <__stack+0x6c7>
+     b26:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00000001;//select linear FB
+     b28:	85 ba       	out	0x15, r8	; 21
+		OCR1B=19150;
+     b2a:	19 bd       	out	0x29, r17	; 41
+     b2c:	08 bd       	out	0x28, r16	; 40
+     b2e:	9f ef       	ldi	r25, 0xFF	; 255
+     b30:	a0 e7       	ldi	r26, 0x70	; 112
+     b32:	b2 e0       	ldi	r27, 0x02	; 2
+     b34:	91 50       	subi	r25, 0x01	; 1
+     b36:	a0 40       	sbci	r26, 0x00	; 0
+     b38:	b0 40       	sbci	r27, 0x00	; 0
+     b3a:	e1 f7       	brne	.-8      	; 0xb34 <__stack+0x6d5>
+     b3c:	00 c0       	rjmp	.+0      	; 0xb3e <__stack+0x6df>
+     b3e:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     b40:	95 ba       	out	0x15, r9	; 21
+		OCR1A=17200;
+     b42:	db bc       	out	0x2b, r13	; 43
+     b44:	ca bc       	out	0x2a, r12	; 42
+     b46:	ef ef       	ldi	r30, 0xFF	; 255
+     b48:	f0 e7       	ldi	r31, 0x70	; 112
+     b4a:	22 e0       	ldi	r18, 0x02	; 2
+     b4c:	e1 50       	subi	r30, 0x01	; 1
+     b4e:	f0 40       	sbci	r31, 0x00	; 0
+     b50:	20 40       	sbci	r18, 0x00	; 0
+     b52:	e1 f7       	brne	.-8      	; 0xb4c <__stack+0x6ed>
+     b54:	00 c0       	rjmp	.+0      	; 0xb56 <__stack+0x6f7>
+     b56:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00100100;//select R and L
+     b58:	85 bb       	out	0x15, r24	; 21
+		OCR1A=18250;
+     b5a:	bb bc       	out	0x2b, r11	; 43
+     b5c:	aa bc       	out	0x2a, r10	; 42
+		OCR1B=18250;
+     b5e:	b9 bc       	out	0x29, r11	; 41
+     b60:	a8 bc       	out	0x28, r10	; 40
+     b62:	3f ef       	ldi	r19, 0xFF	; 255
+     b64:	40 e7       	ldi	r20, 0x70	; 112
+     b66:	52 e0       	ldi	r21, 0x02	; 2
+     b68:	31 50       	subi	r19, 0x01	; 1
+     b6a:	40 40       	sbci	r20, 0x00	; 0
+     b6c:	50 40       	sbci	r21, 0x00	; 0
+     b6e:	e1 f7       	brne	.-8      	; 0xb68 <__stack+0x709>
+     b70:	00 c0       	rjmp	.+0      	; 0xb72 <__stack+0x713>
+     b72:	00 00       	nop
+		_delay_ms(100);
+		PORTC=0b00001000;//select linear RL
+     b74:	95 ba       	out	0x15, r9	; 21
+		OCR1A=19150;
+     b76:	1b bd       	out	0x2b, r17	; 43
+     b78:	0a bd       	out	0x2a, r16	; 42
+     b7a:	6f ef       	ldi	r22, 0xFF	; 255
+     b7c:	70 e7       	ldi	r23, 0x70	; 112
+     b7e:	82 e0       	ldi	r24, 0x02	; 2
+     b80:	61 50       	subi	r22, 0x01	; 1
+     b82:	70 40       	sbci	r23, 0x00	; 0
+     b84:	80 40       	sbci	r24, 0x00	; 0
+     b86:	e1 f7       	brne	.-8      	; 0xb80 <__stack+0x721>
+     b88:	00 c0       	rjmp	.+0      	; 0xb8a <__stack+0x72b>
+     b8a:	00 00       	nop
+		_delay_ms(100);
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//*******************************************************************************************//
+		i=0;
+		char input[100]=" ";
+     b8c:	90 e2       	ldi	r25, 0x20	; 32
+     b8e:	99 83       	std	Y+1, r25	; 0x01
+     b90:	1a 82       	std	Y+2, r1	; 0x02
+     b92:	1b 82       	std	Y+3, r1	; 0x03
+     b94:	1c 82       	std	Y+4, r1	; 0x04
+     b96:	fe 01       	movw	r30, r28
+     b98:	35 96       	adiw	r30, 0x05	; 5
+     b9a:	80 e6       	ldi	r24, 0x60	; 96
+     b9c:	df 01       	movw	r26, r30
+     b9e:	1d 92       	st	X+, r1
+     ba0:	8a 95       	dec	r24
+     ba2:	e9 f7       	brne	.-6      	; 0xb9e <__stack+0x73f>
+     ba4:	8e 01       	movw	r16, r28
+     ba6:	0f 5f       	subi	r16, 0xFF	; 255
+     ba8:	1f 4f       	sbci	r17, 0xFF	; 255
+		
+		
+		while(1) {
+			input[i] = uart_read();//read char
+     baa:	b2 da       	rcall	.-2716   	; 0x110 <_Z9uart_readv>
+     bac:	f8 01       	movw	r30, r16
+     bae:	81 93       	st	Z+, r24
+     bb0:	8f 01       	movw	r16, r30
+			if (input[i]=='.')
+     bb2:	8e 32       	cpi	r24, 0x2E	; 46
+     bb4:	d1 f7       	brne	.-12     	; 0xbaa <__stack+0x74b>
+		}
+//*******************************************************************************************//solve cube
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//now code for solving the cube //solution is char input [100]
+		
+while(input[z]!='.')
+     bb6:	fe 01       	movw	r30, r28
+     bb8:	e2 0d       	add	r30, r2
+     bba:	f3 1d       	adc	r31, r3
+     bbc:	d1 80       	ldd	r13, Z+1	; 0x01
+     bbe:	fe e2       	ldi	r31, 0x2E	; 46
+     bc0:	df 12       	cpse	r13, r31
+     bc2:	c1 c7       	rjmp	.+3970   	; 0x1b46 <__stack+0x16e7>
+     bc4:	87 01       	movw	r16, r14
+     bc6:	f5 c7       	rjmp	.+4074   	; 0x1bb2 <__stack+0x1753>
+{
+
+while(input[j]!=' ')
+{
+n=n+1;
+     bc8:	0f 5f       	subi	r16, 0xFF	; 255
+     bca:	1f 4f       	sbci	r17, 0xFF	; 255
+     bcc:	c8 01       	movw	r24, r16
+     bce:	82 0d       	add	r24, r2
+     bd0:	93 1d       	adc	r25, r3
+     bd2:	8e 19       	sub	r24, r14
+     bd4:	9f 09       	sbc	r25, r15
+//now code for solving the cube //solution is char input [100]
+		
+while(input[z]!='.')
+{
+
+while(input[j]!=' ')
+     bd6:	b1 91       	ld	r27, Z+
+     bd8:	b0 32       	cpi	r27, 0x20	; 32
+     bda:	b1 f7       	brne	.-20     	; 0xbc8 <__stack+0x769>
+     bdc:	01 c0       	rjmp	.+2      	; 0xbe0 <__stack+0x781>
+     bde:	87 01       	movw	r16, r14
+{
+n=n+1;
+j++;
+}
+if(n==1)
+     be0:	01 30       	cpi	r16, 0x01	; 1
+     be2:	11 05       	cpc	r17, r1
+     be4:	09 f0       	breq	.+2      	; 0xbe8 <__stack+0x789>
+     be6:	3b c2       	rjmp	.+1142   	; 0x105e <__stack+0xbff>
+{
+if(input[z]=='R')
+     be8:	b2 e5       	ldi	r27, 0x52	; 82
+     bea:	db 12       	cpse	r13, r27
+     bec:	31 c0       	rjmp	.+98     	; 0xc50 <__stack+0x7f1>
+{
+PORTC=0b00001100;//select R
+     bee:	95 ba       	out	0x15, r9	; 21
+OCR1A=17200;//rotR-0
+     bf0:	5b bd       	out	0x2b, r21	; 43
+     bf2:	4a bd       	out	0x2a, r20	; 42
+     bf4:	ef ef       	ldi	r30, 0xFF	; 255
+     bf6:	f0 e7       	ldi	r31, 0x70	; 112
+     bf8:	b2 e0       	ldi	r27, 0x02	; 2
+     bfa:	e1 50       	subi	r30, 0x01	; 1
+     bfc:	f0 40       	sbci	r31, 0x00	; 0
+     bfe:	b0 40       	sbci	r27, 0x00	; 0
+     c00:	e1 f7       	brne	.-8      	; 0xbfa <__stack+0x79b>
+     c02:	00 c0       	rjmp	.+0      	; 0xc04 <__stack+0x7a5>
+     c04:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     c06:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+     c08:	5b bd       	out	0x2b, r21	; 43
+     c0a:	4a bd       	out	0x2a, r20	; 42
+     c0c:	ef ef       	ldi	r30, 0xFF	; 255
+     c0e:	f0 e7       	ldi	r31, 0x70	; 112
+     c10:	b2 e0       	ldi	r27, 0x02	; 2
+     c12:	e1 50       	subi	r30, 0x01	; 1
+     c14:	f0 40       	sbci	r31, 0x00	; 0
+     c16:	b0 40       	sbci	r27, 0x00	; 0
+     c18:	e1 f7       	brne	.-8      	; 0xc12 <__stack+0x7b3>
+     c1a:	00 c0       	rjmp	.+0      	; 0xc1c <__stack+0x7bd>
+     c1c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select R
+     c1e:	95 ba       	out	0x15, r9	; 21
+OCR1A=18250;//rotR-90
+     c20:	7b bd       	out	0x2b, r23	; 43
+     c22:	6a bd       	out	0x2a, r22	; 42
+     c24:	ef ef       	ldi	r30, 0xFF	; 255
+     c26:	f0 e7       	ldi	r31, 0x70	; 112
+     c28:	b2 e0       	ldi	r27, 0x02	; 2
+     c2a:	e1 50       	subi	r30, 0x01	; 1
+     c2c:	f0 40       	sbci	r31, 0x00	; 0
+     c2e:	b0 40       	sbci	r27, 0x00	; 0
+     c30:	e1 f7       	brne	.-8      	; 0xc2a <__stack+0x7cb>
+     c32:	00 c0       	rjmp	.+0      	; 0xc34 <__stack+0x7d5>
+     c34:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     c36:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+     c38:	3b bd       	out	0x2b, r19	; 43
+     c3a:	2a bd       	out	0x2a, r18	; 42
+     c3c:	ef ef       	ldi	r30, 0xFF	; 255
+     c3e:	f0 e7       	ldi	r31, 0x70	; 112
+     c40:	b2 e0       	ldi	r27, 0x02	; 2
+     c42:	e1 50       	subi	r30, 0x01	; 1
+     c44:	f0 40       	sbci	r31, 0x00	; 0
+     c46:	b0 40       	sbci	r27, 0x00	; 0
+     c48:	e1 f7       	brne	.-8      	; 0xc42 <__stack+0x7e3>
+     c4a:	00 c0       	rjmp	.+0      	; 0xc4c <__stack+0x7ed>
+     c4c:	00 00       	nop
+     c4e:	03 c2       	rjmp	.+1030   	; 0x1056 <__stack+0xbf7>
+_delay_ms(100);
+}
+else if(input[z]=='L')
+     c50:	ec e4       	ldi	r30, 0x4C	; 76
+     c52:	de 12       	cpse	r13, r30
+     c54:	31 c0       	rjmp	.+98     	; 0xcb8 <__stack+0x859>
+{
+PORTC=0b00100001;//select L
+     c56:	85 ba       	out	0x15, r8	; 21
+OCR1B=17200;//rotL-0
+     c58:	59 bd       	out	0x29, r21	; 41
+     c5a:	48 bd       	out	0x28, r20	; 40
+     c5c:	ff ef       	ldi	r31, 0xFF	; 255
+     c5e:	b0 e7       	ldi	r27, 0x70	; 112
+     c60:	e2 e0       	ldi	r30, 0x02	; 2
+     c62:	f1 50       	subi	r31, 0x01	; 1
+     c64:	b0 40       	sbci	r27, 0x00	; 0
+     c66:	e0 40       	sbci	r30, 0x00	; 0
+     c68:	e1 f7       	brne	.-8      	; 0xc62 <__stack+0x803>
+     c6a:	00 c0       	rjmp	.+0      	; 0xc6c <__stack+0x80d>
+     c6c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     c6e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+     c70:	5b bd       	out	0x2b, r21	; 43
+     c72:	4a bd       	out	0x2a, r20	; 42
+     c74:	ff ef       	ldi	r31, 0xFF	; 255
+     c76:	b0 e7       	ldi	r27, 0x70	; 112
+     c78:	e2 e0       	ldi	r30, 0x02	; 2
+     c7a:	f1 50       	subi	r31, 0x01	; 1
+     c7c:	b0 40       	sbci	r27, 0x00	; 0
+     c7e:	e0 40       	sbci	r30, 0x00	; 0
+     c80:	e1 f7       	brne	.-8      	; 0xc7a <__stack+0x81b>
+     c82:	00 c0       	rjmp	.+0      	; 0xc84 <__stack+0x825>
+     c84:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100001;//select L
+     c86:	85 ba       	out	0x15, r8	; 21
+OCR1B=18250;//rotL-90
+     c88:	79 bd       	out	0x29, r23	; 41
+     c8a:	68 bd       	out	0x28, r22	; 40
+     c8c:	ff ef       	ldi	r31, 0xFF	; 255
+     c8e:	b0 e7       	ldi	r27, 0x70	; 112
+     c90:	e2 e0       	ldi	r30, 0x02	; 2
+     c92:	f1 50       	subi	r31, 0x01	; 1
+     c94:	b0 40       	sbci	r27, 0x00	; 0
+     c96:	e0 40       	sbci	r30, 0x00	; 0
+     c98:	e1 f7       	brne	.-8      	; 0xc92 <__stack+0x833>
+     c9a:	00 c0       	rjmp	.+0      	; 0xc9c <__stack+0x83d>
+     c9c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     c9e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+     ca0:	3b bd       	out	0x2b, r19	; 43
+     ca2:	2a bd       	out	0x2a, r18	; 42
+     ca4:	ff ef       	ldi	r31, 0xFF	; 255
+     ca6:	b0 e7       	ldi	r27, 0x70	; 112
+     ca8:	e2 e0       	ldi	r30, 0x02	; 2
+     caa:	f1 50       	subi	r31, 0x01	; 1
+     cac:	b0 40       	sbci	r27, 0x00	; 0
+     cae:	e0 40       	sbci	r30, 0x00	; 0
+     cb0:	e1 f7       	brne	.-8      	; 0xcaa <__stack+0x84b>
+     cb2:	00 c0       	rjmp	.+0      	; 0xcb4 <__stack+0x855>
+     cb4:	00 00       	nop
+     cb6:	cf c1       	rjmp	.+926    	; 0x1056 <__stack+0xbf7>
+_delay_ms(100);
+}
+else if(input[z]=='F')
+     cb8:	f6 e4       	ldi	r31, 0x46	; 70
+     cba:	df 12       	cpse	r13, r31
+     cbc:	31 c0       	rjmp	.+98     	; 0xd20 <__stack+0x8c1>
+{
+PORTC=0b00001010;//select F
+     cbe:	a5 ba       	out	0x15, r10	; 21
+OCR1A=17200;//rotF-0
+     cc0:	5b bd       	out	0x2b, r21	; 43
+     cc2:	4a bd       	out	0x2a, r20	; 42
+     cc4:	bf ef       	ldi	r27, 0xFF	; 255
+     cc6:	e0 e7       	ldi	r30, 0x70	; 112
+     cc8:	f2 e0       	ldi	r31, 0x02	; 2
+     cca:	b1 50       	subi	r27, 0x01	; 1
+     ccc:	e0 40       	sbci	r30, 0x00	; 0
+     cce:	f0 40       	sbci	r31, 0x00	; 0
+     cd0:	e1 f7       	brne	.-8      	; 0xcca <__stack+0x86b>
+     cd2:	00 c0       	rjmp	.+0      	; 0xcd4 <__stack+0x875>
+     cd4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     cd6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     cd8:	59 bd       	out	0x29, r21	; 41
+     cda:	48 bd       	out	0x28, r20	; 40
+     cdc:	bf ef       	ldi	r27, 0xFF	; 255
+     cde:	e0 e7       	ldi	r30, 0x70	; 112
+     ce0:	f2 e0       	ldi	r31, 0x02	; 2
+     ce2:	b1 50       	subi	r27, 0x01	; 1
+     ce4:	e0 40       	sbci	r30, 0x00	; 0
+     ce6:	f0 40       	sbci	r31, 0x00	; 0
+     ce8:	e1 f7       	brne	.-8      	; 0xce2 <__stack+0x883>
+     cea:	00 c0       	rjmp	.+0      	; 0xcec <__stack+0x88d>
+     cec:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+     cee:	a5 ba       	out	0x15, r10	; 21
+OCR1B=18250;//rotF-90
+     cf0:	79 bd       	out	0x29, r23	; 41
+     cf2:	68 bd       	out	0x28, r22	; 40
+     cf4:	bf ef       	ldi	r27, 0xFF	; 255
+     cf6:	e0 e7       	ldi	r30, 0x70	; 112
+     cf8:	f2 e0       	ldi	r31, 0x02	; 2
+     cfa:	b1 50       	subi	r27, 0x01	; 1
+     cfc:	e0 40       	sbci	r30, 0x00	; 0
+     cfe:	f0 40       	sbci	r31, 0x00	; 0
+     d00:	e1 f7       	brne	.-8      	; 0xcfa <__stack+0x89b>
+     d02:	00 c0       	rjmp	.+0      	; 0xd04 <__stack+0x8a5>
+     d04:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     d06:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     d08:	39 bd       	out	0x29, r19	; 41
+     d0a:	28 bd       	out	0x28, r18	; 40
+     d0c:	bf ef       	ldi	r27, 0xFF	; 255
+     d0e:	e0 e7       	ldi	r30, 0x70	; 112
+     d10:	f2 e0       	ldi	r31, 0x02	; 2
+     d12:	b1 50       	subi	r27, 0x01	; 1
+     d14:	e0 40       	sbci	r30, 0x00	; 0
+     d16:	f0 40       	sbci	r31, 0x00	; 0
+     d18:	e1 f7       	brne	.-8      	; 0xd12 <__stack+0x8b3>
+     d1a:	00 c0       	rjmp	.+0      	; 0xd1c <__stack+0x8bd>
+     d1c:	00 00       	nop
+     d1e:	9b c1       	rjmp	.+822    	; 0x1056 <__stack+0xbf7>
+_delay_ms(100);
+}
+else if(input[z]=='B')
+     d20:	b2 e4       	ldi	r27, 0x42	; 66
+     d22:	db 12       	cpse	r13, r27
+     d24:	31 c0       	rjmp	.+98     	; 0xd88 <__stack+0x929>
+{
+PORTC=0b00010001;//select B
+     d26:	b5 ba       	out	0x15, r11	; 21
+OCR1B=17200;//rotB-0
+     d28:	59 bd       	out	0x29, r21	; 41
+     d2a:	48 bd       	out	0x28, r20	; 40
+     d2c:	ef ef       	ldi	r30, 0xFF	; 255
+     d2e:	f0 e7       	ldi	r31, 0x70	; 112
+     d30:	b2 e0       	ldi	r27, 0x02	; 2
+     d32:	e1 50       	subi	r30, 0x01	; 1
+     d34:	f0 40       	sbci	r31, 0x00	; 0
+     d36:	b0 40       	sbci	r27, 0x00	; 0
+     d38:	e1 f7       	brne	.-8      	; 0xd32 <__stack+0x8d3>
+     d3a:	00 c0       	rjmp	.+0      	; 0xd3c <__stack+0x8dd>
+     d3c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     d3e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     d40:	59 bd       	out	0x29, r21	; 41
+     d42:	48 bd       	out	0x28, r20	; 40
+     d44:	ef ef       	ldi	r30, 0xFF	; 255
+     d46:	f0 e7       	ldi	r31, 0x70	; 112
+     d48:	b2 e0       	ldi	r27, 0x02	; 2
+     d4a:	e1 50       	subi	r30, 0x01	; 1
+     d4c:	f0 40       	sbci	r31, 0x00	; 0
+     d4e:	b0 40       	sbci	r27, 0x00	; 0
+     d50:	e1 f7       	brne	.-8      	; 0xd4a <__stack+0x8eb>
+     d52:	00 c0       	rjmp	.+0      	; 0xd54 <__stack+0x8f5>
+     d54:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+     d56:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+     d58:	79 bd       	out	0x29, r23	; 41
+     d5a:	68 bd       	out	0x28, r22	; 40
+     d5c:	ef ef       	ldi	r30, 0xFF	; 255
+     d5e:	f0 e7       	ldi	r31, 0x70	; 112
+     d60:	b2 e0       	ldi	r27, 0x02	; 2
+     d62:	e1 50       	subi	r30, 0x01	; 1
+     d64:	f0 40       	sbci	r31, 0x00	; 0
+     d66:	b0 40       	sbci	r27, 0x00	; 0
+     d68:	e1 f7       	brne	.-8      	; 0xd62 <__stack+0x903>
+     d6a:	00 c0       	rjmp	.+0      	; 0xd6c <__stack+0x90d>
+     d6c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     d6e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     d70:	39 bd       	out	0x29, r19	; 41
+     d72:	28 bd       	out	0x28, r18	; 40
+     d74:	ef ef       	ldi	r30, 0xFF	; 255
+     d76:	f0 e7       	ldi	r31, 0x70	; 112
+     d78:	b2 e0       	ldi	r27, 0x02	; 2
+     d7a:	e1 50       	subi	r30, 0x01	; 1
+     d7c:	f0 40       	sbci	r31, 0x00	; 0
+     d7e:	b0 40       	sbci	r27, 0x00	; 0
+     d80:	e1 f7       	brne	.-8      	; 0xd7a <__stack+0x91b>
+     d82:	00 c0       	rjmp	.+0      	; 0xd84 <__stack+0x925>
+     d84:	00 00       	nop
+     d86:	67 c1       	rjmp	.+718    	; 0x1056 <__stack+0xbf7>
+_delay_ms(100);
+}
+else if(input[z]=='U')
+     d88:	e5 e5       	ldi	r30, 0x55	; 85
+     d8a:	de 12       	cpse	r13, r30
+     d8c:	b1 c0       	rjmp	.+354    	; 0xef0 <__stack+0xa91>
+{
+PORTC=0b00000001;//select linear FB
+     d8e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     d90:	59 bd       	out	0x29, r21	; 41
+     d92:	48 bd       	out	0x28, r20	; 40
+     d94:	ff ef       	ldi	r31, 0xFF	; 255
+     d96:	b0 e7       	ldi	r27, 0x70	; 112
+     d98:	e2 e0       	ldi	r30, 0x02	; 2
+     d9a:	f1 50       	subi	r31, 0x01	; 1
+     d9c:	b0 40       	sbci	r27, 0x00	; 0
+     d9e:	e0 40       	sbci	r30, 0x00	; 0
+     da0:	e1 f7       	brne	.-8      	; 0xd9a <__stack+0x93b>
+     da2:	00 c0       	rjmp	.+0      	; 0xda4 <__stack+0x945>
+     da4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     da6:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+     da8:	3b bd       	out	0x2b, r19	; 43
+     daa:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+     dac:	59 bd       	out	0x29, r21	; 41
+     dae:	48 bd       	out	0x28, r20	; 40
+     db0:	ff ef       	ldi	r31, 0xFF	; 255
+     db2:	b0 e7       	ldi	r27, 0x70	; 112
+     db4:	e2 e0       	ldi	r30, 0x02	; 2
+     db6:	f1 50       	subi	r31, 0x01	; 1
+     db8:	b0 40       	sbci	r27, 0x00	; 0
+     dba:	e0 40       	sbci	r30, 0x00	; 0
+     dbc:	e1 f7       	brne	.-8      	; 0xdb6 <__stack+0x957>
+     dbe:	00 c0       	rjmp	.+0      	; 0xdc0 <__stack+0x961>
+     dc0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     dc2:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     dc4:	39 bd       	out	0x29, r19	; 41
+     dc6:	28 bd       	out	0x28, r18	; 40
+     dc8:	ff ef       	ldi	r31, 0xFF	; 255
+     dca:	b0 e7       	ldi	r27, 0x70	; 112
+     dcc:	e2 e0       	ldi	r30, 0x02	; 2
+     dce:	f1 50       	subi	r31, 0x01	; 1
+     dd0:	b0 40       	sbci	r27, 0x00	; 0
+     dd2:	e0 40       	sbci	r30, 0x00	; 0
+     dd4:	e1 f7       	brne	.-8      	; 0xdce <__stack+0x96f>
+     dd6:	00 c0       	rjmp	.+0      	; 0xdd8 <__stack+0x979>
+     dd8:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     dda:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+     ddc:	5b bd       	out	0x2b, r21	; 43
+     dde:	4a bd       	out	0x2a, r20	; 42
+     de0:	ff ef       	ldi	r31, 0xFF	; 255
+     de2:	b0 e7       	ldi	r27, 0x70	; 112
+     de4:	e2 e0       	ldi	r30, 0x02	; 2
+     de6:	f1 50       	subi	r31, 0x01	; 1
+     de8:	b0 40       	sbci	r27, 0x00	; 0
+     dea:	e0 40       	sbci	r30, 0x00	; 0
+     dec:	e1 f7       	brne	.-8      	; 0xde6 <__stack+0x987>
+     dee:	00 c0       	rjmp	.+0      	; 0xdf0 <__stack+0x991>
+     df0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000000;
+     df2:	15 ba       	out	0x15, r1	; 21
+OCR1A=18250;//rotR-90
+     df4:	7b bd       	out	0x2b, r23	; 43
+     df6:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+     df8:	79 bd       	out	0x29, r23	; 41
+     dfa:	68 bd       	out	0x28, r22	; 40
+     dfc:	ff ef       	ldi	r31, 0xFF	; 255
+     dfe:	b0 e7       	ldi	r27, 0x70	; 112
+     e00:	e2 e0       	ldi	r30, 0x02	; 2
+     e02:	f1 50       	subi	r31, 0x01	; 1
+     e04:	b0 40       	sbci	r27, 0x00	; 0
+     e06:	e0 40       	sbci	r30, 0x00	; 0
+     e08:	e1 f7       	brne	.-8      	; 0xe02 <__stack+0x9a3>
+     e0a:	00 c0       	rjmp	.+0      	; 0xe0c <__stack+0x9ad>
+     e0c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     e0e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+     e10:	3b bd       	out	0x2b, r19	; 43
+     e12:	2a bd       	out	0x2a, r18	; 42
+     e14:	ff ef       	ldi	r31, 0xFF	; 255
+     e16:	b0 e7       	ldi	r27, 0x70	; 112
+     e18:	e2 e0       	ldi	r30, 0x02	; 2
+     e1a:	f1 50       	subi	r31, 0x01	; 1
+     e1c:	b0 40       	sbci	r27, 0x00	; 0
+     e1e:	e0 40       	sbci	r30, 0x00	; 0
+     e20:	e1 f7       	brne	.-8      	; 0xe1a <__stack+0x9bb>
+     e22:	00 c0       	rjmp	.+0      	; 0xe24 <__stack+0x9c5>
+     e24:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+     e26:	a5 ba       	out	0x15, r10	; 21
+OCR1A=17200;//rotF-0
+     e28:	5b bd       	out	0x2b, r21	; 43
+     e2a:	4a bd       	out	0x2a, r20	; 42
+     e2c:	ff ef       	ldi	r31, 0xFF	; 255
+     e2e:	b0 e7       	ldi	r27, 0x70	; 112
+     e30:	e2 e0       	ldi	r30, 0x02	; 2
+     e32:	f1 50       	subi	r31, 0x01	; 1
+     e34:	b0 40       	sbci	r27, 0x00	; 0
+     e36:	e0 40       	sbci	r30, 0x00	; 0
+     e38:	e1 f7       	brne	.-8      	; 0xe32 <__stack+0x9d3>
+     e3a:	00 c0       	rjmp	.+0      	; 0xe3c <__stack+0x9dd>
+     e3c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     e3e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     e40:	59 bd       	out	0x29, r21	; 41
+     e42:	48 bd       	out	0x28, r20	; 40
+     e44:	ff ef       	ldi	r31, 0xFF	; 255
+     e46:	b0 e7       	ldi	r27, 0x70	; 112
+     e48:	e2 e0       	ldi	r30, 0x02	; 2
+     e4a:	f1 50       	subi	r31, 0x01	; 1
+     e4c:	b0 40       	sbci	r27, 0x00	; 0
+     e4e:	e0 40       	sbci	r30, 0x00	; 0
+     e50:	e1 f7       	brne	.-8      	; 0xe4a <__stack+0x9eb>
+     e52:	00 c0       	rjmp	.+0      	; 0xe54 <__stack+0x9f5>
+     e54:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+     e56:	a5 ba       	out	0x15, r10	; 21
+OCR1A=18250;//rotF-90
+     e58:	7b bd       	out	0x2b, r23	; 43
+     e5a:	6a bd       	out	0x2a, r22	; 42
+     e5c:	ff ef       	ldi	r31, 0xFF	; 255
+     e5e:	b0 e7       	ldi	r27, 0x70	; 112
+     e60:	e2 e0       	ldi	r30, 0x02	; 2
+     e62:	f1 50       	subi	r31, 0x01	; 1
+     e64:	b0 40       	sbci	r27, 0x00	; 0
+     e66:	e0 40       	sbci	r30, 0x00	; 0
+     e68:	e1 f7       	brne	.-8      	; 0xe62 <__stack+0xa03>
+     e6a:	00 c0       	rjmp	.+0      	; 0xe6c <__stack+0xa0d>
+     e6c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     e6e:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+     e70:	5b bd       	out	0x2b, r21	; 43
+     e72:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+     e74:	39 bd       	out	0x29, r19	; 41
+     e76:	28 bd       	out	0x28, r18	; 40
+     e78:	ff ef       	ldi	r31, 0xFF	; 255
+     e7a:	b0 e7       	ldi	r27, 0x70	; 112
+     e7c:	e2 e0       	ldi	r30, 0x02	; 2
+     e7e:	f1 50       	subi	r31, 0x01	; 1
+     e80:	b0 40       	sbci	r27, 0x00	; 0
+     e82:	e0 40       	sbci	r30, 0x00	; 0
+     e84:	e1 f7       	brne	.-8      	; 0xe7e <__stack+0xa1f>
+     e86:	00 c0       	rjmp	.+0      	; 0xe88 <__stack+0xa29>
+     e88:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     e8a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     e8c:	39 bd       	out	0x29, r19	; 41
+     e8e:	28 bd       	out	0x28, r18	; 40
+     e90:	ff ef       	ldi	r31, 0xFF	; 255
+     e92:	b0 e7       	ldi	r27, 0x70	; 112
+     e94:	e2 e0       	ldi	r30, 0x02	; 2
+     e96:	f1 50       	subi	r31, 0x01	; 1
+     e98:	b0 40       	sbci	r27, 0x00	; 0
+     e9a:	e0 40       	sbci	r30, 0x00	; 0
+     e9c:	e1 f7       	brne	.-8      	; 0xe96 <__stack+0xa37>
+     e9e:	00 c0       	rjmp	.+0      	; 0xea0 <__stack+0xa41>
+     ea0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     ea2:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+     ea4:	5b bd       	out	0x2b, r21	; 43
+     ea6:	4a bd       	out	0x2a, r20	; 42
+     ea8:	ff ef       	ldi	r31, 0xFF	; 255
+     eaa:	b0 e7       	ldi	r27, 0x70	; 112
+     eac:	e2 e0       	ldi	r30, 0x02	; 2
+     eae:	f1 50       	subi	r31, 0x01	; 1
+     eb0:	b0 40       	sbci	r27, 0x00	; 0
+     eb2:	e0 40       	sbci	r30, 0x00	; 0
+     eb4:	e1 f7       	brne	.-8      	; 0xeae <__stack+0xa4f>
+     eb6:	00 c0       	rjmp	.+0      	; 0xeb8 <__stack+0xa59>
+     eb8:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     eba:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+     ebc:	7b bd       	out	0x2b, r23	; 43
+     ebe:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+     ec0:	79 bd       	out	0x29, r23	; 41
+     ec2:	68 bd       	out	0x28, r22	; 40
+     ec4:	ff ef       	ldi	r31, 0xFF	; 255
+     ec6:	b0 e7       	ldi	r27, 0x70	; 112
+     ec8:	e2 e0       	ldi	r30, 0x02	; 2
+     eca:	f1 50       	subi	r31, 0x01	; 1
+     ecc:	b0 40       	sbci	r27, 0x00	; 0
+     ece:	e0 40       	sbci	r30, 0x00	; 0
+     ed0:	e1 f7       	brne	.-8      	; 0xeca <__stack+0xa6b>
+     ed2:	00 c0       	rjmp	.+0      	; 0xed4 <__stack+0xa75>
+     ed4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     ed6:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+     ed8:	3b bd       	out	0x2b, r19	; 43
+     eda:	2a bd       	out	0x2a, r18	; 42
+     edc:	ff ef       	ldi	r31, 0xFF	; 255
+     ede:	b0 e7       	ldi	r27, 0x70	; 112
+     ee0:	e2 e0       	ldi	r30, 0x02	; 2
+     ee2:	f1 50       	subi	r31, 0x01	; 1
+     ee4:	b0 40       	sbci	r27, 0x00	; 0
+     ee6:	e0 40       	sbci	r30, 0x00	; 0
+     ee8:	e1 f7       	brne	.-8      	; 0xee2 <__stack+0xa83>
+     eea:	00 c0       	rjmp	.+0      	; 0xeec <__stack+0xa8d>
+     eec:	00 00       	nop
+     eee:	b3 c0       	rjmp	.+358    	; 0x1056 <__stack+0xbf7>
+_delay_ms(100);
+}
+else if(input[z]=='D')
+     ef0:	f4 e4       	ldi	r31, 0x44	; 68
+     ef2:	df 12       	cpse	r13, r31
+     ef4:	b0 c0       	rjmp	.+352    	; 0x1056 <__stack+0xbf7>
+{
+PORTC=0b00000001;//select linear FB
+     ef6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     ef8:	59 bd       	out	0x29, r21	; 41
+     efa:	48 bd       	out	0x28, r20	; 40
+     efc:	bf ef       	ldi	r27, 0xFF	; 255
+     efe:	e0 e7       	ldi	r30, 0x70	; 112
+     f00:	f2 e0       	ldi	r31, 0x02	; 2
+     f02:	b1 50       	subi	r27, 0x01	; 1
+     f04:	e0 40       	sbci	r30, 0x00	; 0
+     f06:	f0 40       	sbci	r31, 0x00	; 0
+     f08:	e1 f7       	brne	.-8      	; 0xf02 <__stack+0xaa3>
+     f0a:	00 c0       	rjmp	.+0      	; 0xf0c <__stack+0xaad>
+     f0c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     f0e:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+     f10:	3b bd       	out	0x2b, r19	; 43
+     f12:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+     f14:	59 bd       	out	0x29, r21	; 41
+     f16:	48 bd       	out	0x28, r20	; 40
+     f18:	bf ef       	ldi	r27, 0xFF	; 255
+     f1a:	e0 e7       	ldi	r30, 0x70	; 112
+     f1c:	f2 e0       	ldi	r31, 0x02	; 2
+     f1e:	b1 50       	subi	r27, 0x01	; 1
+     f20:	e0 40       	sbci	r30, 0x00	; 0
+     f22:	f0 40       	sbci	r31, 0x00	; 0
+     f24:	e1 f7       	brne	.-8      	; 0xf1e <__stack+0xabf>
+     f26:	00 c0       	rjmp	.+0      	; 0xf28 <__stack+0xac9>
+     f28:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     f2a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     f2c:	39 bd       	out	0x29, r19	; 41
+     f2e:	28 bd       	out	0x28, r18	; 40
+     f30:	bf ef       	ldi	r27, 0xFF	; 255
+     f32:	e0 e7       	ldi	r30, 0x70	; 112
+     f34:	f2 e0       	ldi	r31, 0x02	; 2
+     f36:	b1 50       	subi	r27, 0x01	; 1
+     f38:	e0 40       	sbci	r30, 0x00	; 0
+     f3a:	f0 40       	sbci	r31, 0x00	; 0
+     f3c:	e1 f7       	brne	.-8      	; 0xf36 <__stack+0xad7>
+     f3e:	00 c0       	rjmp	.+0      	; 0xf40 <__stack+0xae1>
+     f40:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     f42:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+     f44:	5b bd       	out	0x2b, r21	; 43
+     f46:	4a bd       	out	0x2a, r20	; 42
+     f48:	bf ef       	ldi	r27, 0xFF	; 255
+     f4a:	e0 e7       	ldi	r30, 0x70	; 112
+     f4c:	f2 e0       	ldi	r31, 0x02	; 2
+     f4e:	b1 50       	subi	r27, 0x01	; 1
+     f50:	e0 40       	sbci	r30, 0x00	; 0
+     f52:	f0 40       	sbci	r31, 0x00	; 0
+     f54:	e1 f7       	brne	.-8      	; 0xf4e <__stack+0xaef>
+     f56:	00 c0       	rjmp	.+0      	; 0xf58 <__stack+0xaf9>
+     f58:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     f5a:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+     f5c:	7b bd       	out	0x2b, r23	; 43
+     f5e:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+     f60:	79 bd       	out	0x29, r23	; 41
+     f62:	68 bd       	out	0x28, r22	; 40
+     f64:	bf ef       	ldi	r27, 0xFF	; 255
+     f66:	e0 e7       	ldi	r30, 0x70	; 112
+     f68:	f2 e0       	ldi	r31, 0x02	; 2
+     f6a:	b1 50       	subi	r27, 0x01	; 1
+     f6c:	e0 40       	sbci	r30, 0x00	; 0
+     f6e:	f0 40       	sbci	r31, 0x00	; 0
+     f70:	e1 f7       	brne	.-8      	; 0xf6a <__stack+0xb0b>
+     f72:	00 c0       	rjmp	.+0      	; 0xf74 <__stack+0xb15>
+     f74:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+     f76:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+     f78:	3b bd       	out	0x2b, r19	; 43
+     f7a:	2a bd       	out	0x2a, r18	; 42
+     f7c:	bf ef       	ldi	r27, 0xFF	; 255
+     f7e:	e0 e7       	ldi	r30, 0x70	; 112
+     f80:	f2 e0       	ldi	r31, 0x02	; 2
+     f82:	b1 50       	subi	r27, 0x01	; 1
+     f84:	e0 40       	sbci	r30, 0x00	; 0
+     f86:	f0 40       	sbci	r31, 0x00	; 0
+     f88:	e1 f7       	brne	.-8      	; 0xf82 <__stack+0xb23>
+     f8a:	00 c0       	rjmp	.+0      	; 0xf8c <__stack+0xb2d>
+     f8c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+     f8e:	b5 ba       	out	0x15, r11	; 21
+OCR1B=17200;//rotB-0
+     f90:	59 bd       	out	0x29, r21	; 41
+     f92:	48 bd       	out	0x28, r20	; 40
+     f94:	bf ef       	ldi	r27, 0xFF	; 255
+     f96:	e0 e7       	ldi	r30, 0x70	; 112
+     f98:	f2 e0       	ldi	r31, 0x02	; 2
+     f9a:	b1 50       	subi	r27, 0x01	; 1
+     f9c:	e0 40       	sbci	r30, 0x00	; 0
+     f9e:	f0 40       	sbci	r31, 0x00	; 0
+     fa0:	e1 f7       	brne	.-8      	; 0xf9a <__stack+0xb3b>
+     fa2:	00 c0       	rjmp	.+0      	; 0xfa4 <__stack+0xb45>
+     fa4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     fa6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+     fa8:	59 bd       	out	0x29, r21	; 41
+     faa:	48 bd       	out	0x28, r20	; 40
+     fac:	bf ef       	ldi	r27, 0xFF	; 255
+     fae:	e0 e7       	ldi	r30, 0x70	; 112
+     fb0:	f2 e0       	ldi	r31, 0x02	; 2
+     fb2:	b1 50       	subi	r27, 0x01	; 1
+     fb4:	e0 40       	sbci	r30, 0x00	; 0
+     fb6:	f0 40       	sbci	r31, 0x00	; 0
+     fb8:	e1 f7       	brne	.-8      	; 0xfb2 <__stack+0xb53>
+     fba:	00 c0       	rjmp	.+0      	; 0xfbc <__stack+0xb5d>
+     fbc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+     fbe:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+     fc0:	79 bd       	out	0x29, r23	; 41
+     fc2:	68 bd       	out	0x28, r22	; 40
+     fc4:	bf ef       	ldi	r27, 0xFF	; 255
+     fc6:	e0 e7       	ldi	r30, 0x70	; 112
+     fc8:	f2 e0       	ldi	r31, 0x02	; 2
+     fca:	b1 50       	subi	r27, 0x01	; 1
+     fcc:	e0 40       	sbci	r30, 0x00	; 0
+     fce:	f0 40       	sbci	r31, 0x00	; 0
+     fd0:	e1 f7       	brne	.-8      	; 0xfca <__stack+0xb6b>
+     fd2:	00 c0       	rjmp	.+0      	; 0xfd4 <__stack+0xb75>
+     fd4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+     fd6:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+     fd8:	5b bd       	out	0x2b, r21	; 43
+     fda:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+     fdc:	39 bd       	out	0x29, r19	; 41
+     fde:	28 bd       	out	0x28, r18	; 40
+     fe0:	bf ef       	ldi	r27, 0xFF	; 255
+     fe2:	e0 e7       	ldi	r30, 0x70	; 112
+     fe4:	f2 e0       	ldi	r31, 0x02	; 2
+     fe6:	b1 50       	subi	r27, 0x01	; 1
+     fe8:	e0 40       	sbci	r30, 0x00	; 0
+     fea:	f0 40       	sbci	r31, 0x00	; 0
+     fec:	e1 f7       	brne	.-8      	; 0xfe6 <__stack+0xb87>
+     fee:	00 c0       	rjmp	.+0      	; 0xff0 <__stack+0xb91>
+     ff0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+     ff2:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+     ff4:	39 bd       	out	0x29, r19	; 41
+     ff6:	28 bd       	out	0x28, r18	; 40
+     ff8:	bf ef       	ldi	r27, 0xFF	; 255
+     ffa:	e0 e7       	ldi	r30, 0x70	; 112
+     ffc:	f2 e0       	ldi	r31, 0x02	; 2
+     ffe:	b1 50       	subi	r27, 0x01	; 1
+    1000:	e0 40       	sbci	r30, 0x00	; 0
+    1002:	f0 40       	sbci	r31, 0x00	; 0
+    1004:	e1 f7       	brne	.-8      	; 0xffe <__stack+0xb9f>
+    1006:	00 c0       	rjmp	.+0      	; 0x1008 <__stack+0xba9>
+    1008:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    100a:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    100c:	5b bd       	out	0x2b, r21	; 43
+    100e:	4a bd       	out	0x2a, r20	; 42
+    1010:	bf ef       	ldi	r27, 0xFF	; 255
+    1012:	e0 e7       	ldi	r30, 0x70	; 112
+    1014:	f2 e0       	ldi	r31, 0x02	; 2
+    1016:	b1 50       	subi	r27, 0x01	; 1
+    1018:	e0 40       	sbci	r30, 0x00	; 0
+    101a:	f0 40       	sbci	r31, 0x00	; 0
+    101c:	e1 f7       	brne	.-8      	; 0x1016 <__stack+0xbb7>
+    101e:	00 c0       	rjmp	.+0      	; 0x1020 <__stack+0xbc1>
+    1020:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1022:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1024:	7b bd       	out	0x2b, r23	; 43
+    1026:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    1028:	79 bd       	out	0x29, r23	; 41
+    102a:	68 bd       	out	0x28, r22	; 40
+    102c:	bf ef       	ldi	r27, 0xFF	; 255
+    102e:	e0 e7       	ldi	r30, 0x70	; 112
+    1030:	f2 e0       	ldi	r31, 0x02	; 2
+    1032:	b1 50       	subi	r27, 0x01	; 1
+    1034:	e0 40       	sbci	r30, 0x00	; 0
+    1036:	f0 40       	sbci	r31, 0x00	; 0
+    1038:	e1 f7       	brne	.-8      	; 0x1032 <__stack+0xbd3>
+    103a:	00 c0       	rjmp	.+0      	; 0x103c <__stack+0xbdd>
+    103c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    103e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1040:	3b bd       	out	0x2b, r19	; 43
+    1042:	2a bd       	out	0x2a, r18	; 42
+    1044:	bf ef       	ldi	r27, 0xFF	; 255
+    1046:	e0 e7       	ldi	r30, 0x70	; 112
+    1048:	f2 e0       	ldi	r31, 0x02	; 2
+    104a:	b1 50       	subi	r27, 0x01	; 1
+    104c:	e0 40       	sbci	r30, 0x00	; 0
+    104e:	f0 40       	sbci	r31, 0x00	; 0
+    1050:	e1 f7       	brne	.-8      	; 0x104a <__stack+0xbeb>
+    1052:	00 c0       	rjmp	.+0      	; 0x1054 <__stack+0xbf5>
+    1054:	00 00       	nop
+_delay_ms(100);
+}
+z++;
+    1056:	bf ef       	ldi	r27, 0xFF	; 255
+    1058:	4b 1a       	sub	r4, r27
+    105a:	5b 0a       	sbc	r5, r27
+    105c:	65 c5       	rjmp	.+2762   	; 0x1b28 <__stack+0x16c9>
+}
+if(n==2)
+    105e:	02 30       	cpi	r16, 0x02	; 2
+    1060:	11 05       	cpc	r17, r1
+    1062:	09 f0       	breq	.+2      	; 0x1066 <__stack+0xc07>
+    1064:	61 c5       	rjmp	.+2754   	; 0x1b28 <__stack+0x16c9>
+{
+if(input[z+1]=='2')
+    1066:	e2 e0       	ldi	r30, 0x02	; 2
+    1068:	f0 e0       	ldi	r31, 0x00	; 0
+    106a:	ec 0f       	add	r30, r28
+    106c:	fd 1f       	adc	r31, r29
+    106e:	e4 0d       	add	r30, r4
+    1070:	f5 1d       	adc	r31, r5
+    1072:	e0 81       	ld	r30, Z
+    1074:	e2 33       	cpi	r30, 0x32	; 50
+    1076:	09 f0       	breq	.+2      	; 0x107a <__stack+0xc1b>
+    1078:	1a c3       	rjmp	.+1588   	; 0x16ae <__stack+0x124f>
+{
+if(input[z]=='R')
+    107a:	e1 e0       	ldi	r30, 0x01	; 1
+    107c:	f0 e0       	ldi	r31, 0x00	; 0
+    107e:	ec 0f       	add	r30, r28
+    1080:	fd 1f       	adc	r31, r29
+    1082:	e4 0d       	add	r30, r4
+    1084:	f5 1d       	adc	r31, r5
+    1086:	e0 81       	ld	r30, Z
+    1088:	e2 35       	cpi	r30, 0x52	; 82
+    108a:	09 f0       	breq	.+2      	; 0x108e <__stack+0xc2f>
+    108c:	55 c0       	rjmp	.+170    	; 0x1138 <__stack+0xcd9>
+{
+PORTC=0b00001000;//select linear RL
+    108e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    1090:	5b bd       	out	0x2b, r21	; 43
+    1092:	4a bd       	out	0x2a, r20	; 42
+    1094:	ef ef       	ldi	r30, 0xFF	; 255
+    1096:	f0 e7       	ldi	r31, 0x70	; 112
+    1098:	b2 e0       	ldi	r27, 0x02	; 2
+    109a:	e1 50       	subi	r30, 0x01	; 1
+    109c:	f0 40       	sbci	r31, 0x00	; 0
+    109e:	b0 40       	sbci	r27, 0x00	; 0
+    10a0:	e1 f7       	brne	.-8      	; 0x109a <__stack+0xc3b>
+    10a2:	00 c0       	rjmp	.+0      	; 0x10a4 <__stack+0xc45>
+    10a4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select R
+    10a6:	95 ba       	out	0x15, r9	; 21
+OCR1A=19150;//rotR-180
+    10a8:	3b bd       	out	0x2b, r19	; 43
+    10aa:	2a bd       	out	0x2a, r18	; 42
+    10ac:	ef ef       	ldi	r30, 0xFF	; 255
+    10ae:	f0 e7       	ldi	r31, 0x70	; 112
+    10b0:	b2 e0       	ldi	r27, 0x02	; 2
+    10b2:	e1 50       	subi	r30, 0x01	; 1
+    10b4:	f0 40       	sbci	r31, 0x00	; 0
+    10b6:	b0 40       	sbci	r27, 0x00	; 0
+    10b8:	e1 f7       	brne	.-8      	; 0x10b2 <__stack+0xc53>
+    10ba:	00 c0       	rjmp	.+0      	; 0x10bc <__stack+0xc5d>
+    10bc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    10be:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    10c0:	3b bd       	out	0x2b, r19	; 43
+    10c2:	2a bd       	out	0x2a, r18	; 42
+    10c4:	ef ef       	ldi	r30, 0xFF	; 255
+    10c6:	f0 e7       	ldi	r31, 0x70	; 112
+    10c8:	b2 e0       	ldi	r27, 0x02	; 2
+    10ca:	e1 50       	subi	r30, 0x01	; 1
+    10cc:	f0 40       	sbci	r31, 0x00	; 0
+    10ce:	b0 40       	sbci	r27, 0x00	; 0
+    10d0:	e1 f7       	brne	.-8      	; 0x10ca <__stack+0xc6b>
+    10d2:	00 c0       	rjmp	.+0      	; 0x10d4 <__stack+0xc75>
+    10d4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select R
+    10d6:	95 ba       	out	0x15, r9	; 21
+OCR1A=17200;//rotR-0
+    10d8:	5b bd       	out	0x2b, r21	; 43
+    10da:	4a bd       	out	0x2a, r20	; 42
+    10dc:	ef ef       	ldi	r30, 0xFF	; 255
+    10de:	f0 e7       	ldi	r31, 0x70	; 112
+    10e0:	b2 e0       	ldi	r27, 0x02	; 2
+    10e2:	e1 50       	subi	r30, 0x01	; 1
+    10e4:	f0 40       	sbci	r31, 0x00	; 0
+    10e6:	b0 40       	sbci	r27, 0x00	; 0
+    10e8:	e1 f7       	brne	.-8      	; 0x10e2 <__stack+0xc83>
+    10ea:	00 c0       	rjmp	.+0      	; 0x10ec <__stack+0xc8d>
+    10ec:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    10ee:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    10f0:	5b bd       	out	0x2b, r21	; 43
+    10f2:	4a bd       	out	0x2a, r20	; 42
+    10f4:	ef ef       	ldi	r30, 0xFF	; 255
+    10f6:	f0 e7       	ldi	r31, 0x70	; 112
+    10f8:	b2 e0       	ldi	r27, 0x02	; 2
+    10fa:	e1 50       	subi	r30, 0x01	; 1
+    10fc:	f0 40       	sbci	r31, 0x00	; 0
+    10fe:	b0 40       	sbci	r27, 0x00	; 0
+    1100:	e1 f7       	brne	.-8      	; 0x10fa <__stack+0xc9b>
+    1102:	00 c0       	rjmp	.+0      	; 0x1104 <__stack+0xca5>
+    1104:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select R
+    1106:	95 ba       	out	0x15, r9	; 21
+OCR1A=18250;//rotR-90
+    1108:	7b bd       	out	0x2b, r23	; 43
+    110a:	6a bd       	out	0x2a, r22	; 42
+    110c:	ef ef       	ldi	r30, 0xFF	; 255
+    110e:	f0 e7       	ldi	r31, 0x70	; 112
+    1110:	b2 e0       	ldi	r27, 0x02	; 2
+    1112:	e1 50       	subi	r30, 0x01	; 1
+    1114:	f0 40       	sbci	r31, 0x00	; 0
+    1116:	b0 40       	sbci	r27, 0x00	; 0
+    1118:	e1 f7       	brne	.-8      	; 0x1112 <__stack+0xcb3>
+    111a:	00 c0       	rjmp	.+0      	; 0x111c <__stack+0xcbd>
+    111c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    111e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1120:	3b bd       	out	0x2b, r19	; 43
+    1122:	2a bd       	out	0x2a, r18	; 42
+    1124:	ef ef       	ldi	r30, 0xFF	; 255
+    1126:	f0 e7       	ldi	r31, 0x70	; 112
+    1128:	b2 e0       	ldi	r27, 0x02	; 2
+    112a:	e1 50       	subi	r30, 0x01	; 1
+    112c:	f0 40       	sbci	r31, 0x00	; 0
+    112e:	b0 40       	sbci	r27, 0x00	; 0
+    1130:	e1 f7       	brne	.-8      	; 0x112a <__stack+0xccb>
+    1132:	00 c0       	rjmp	.+0      	; 0x1134 <__stack+0xcd5>
+    1134:	00 00       	nop
+    1136:	b7 c2       	rjmp	.+1390   	; 0x16a6 <__stack+0x1247>
+_delay_ms(100);
+}
+else if(input[z]=='L')
+    1138:	ec 34       	cpi	r30, 0x4C	; 76
+    113a:	09 f0       	breq	.+2      	; 0x113e <__stack+0xcdf>
+    113c:	55 c0       	rjmp	.+170    	; 0x11e8 <__stack+0xd89>
+{
+PORTC=0b00001000;//select linear RL
+    113e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    1140:	5b bd       	out	0x2b, r21	; 43
+    1142:	4a bd       	out	0x2a, r20	; 42
+    1144:	ef ef       	ldi	r30, 0xFF	; 255
+    1146:	f0 e7       	ldi	r31, 0x70	; 112
+    1148:	b2 e0       	ldi	r27, 0x02	; 2
+    114a:	e1 50       	subi	r30, 0x01	; 1
+    114c:	f0 40       	sbci	r31, 0x00	; 0
+    114e:	b0 40       	sbci	r27, 0x00	; 0
+    1150:	e1 f7       	brne	.-8      	; 0x114a <__stack+0xceb>
+    1152:	00 c0       	rjmp	.+0      	; 0x1154 <__stack+0xcf5>
+    1154:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100001;//select L
+    1156:	85 ba       	out	0x15, r8	; 21
+OCR1B=19150;//rotL-180
+    1158:	39 bd       	out	0x29, r19	; 41
+    115a:	28 bd       	out	0x28, r18	; 40
+    115c:	ef ef       	ldi	r30, 0xFF	; 255
+    115e:	f0 e7       	ldi	r31, 0x70	; 112
+    1160:	b2 e0       	ldi	r27, 0x02	; 2
+    1162:	e1 50       	subi	r30, 0x01	; 1
+    1164:	f0 40       	sbci	r31, 0x00	; 0
+    1166:	b0 40       	sbci	r27, 0x00	; 0
+    1168:	e1 f7       	brne	.-8      	; 0x1162 <__stack+0xd03>
+    116a:	00 c0       	rjmp	.+0      	; 0x116c <__stack+0xd0d>
+    116c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    116e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1170:	3b bd       	out	0x2b, r19	; 43
+    1172:	2a bd       	out	0x2a, r18	; 42
+    1174:	ef ef       	ldi	r30, 0xFF	; 255
+    1176:	f0 e7       	ldi	r31, 0x70	; 112
+    1178:	b2 e0       	ldi	r27, 0x02	; 2
+    117a:	e1 50       	subi	r30, 0x01	; 1
+    117c:	f0 40       	sbci	r31, 0x00	; 0
+    117e:	b0 40       	sbci	r27, 0x00	; 0
+    1180:	e1 f7       	brne	.-8      	; 0x117a <__stack+0xd1b>
+    1182:	00 c0       	rjmp	.+0      	; 0x1184 <__stack+0xd25>
+    1184:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100001;//select L
+    1186:	85 ba       	out	0x15, r8	; 21
+OCR1B=17200;//rotL-0
+    1188:	59 bd       	out	0x29, r21	; 41
+    118a:	48 bd       	out	0x28, r20	; 40
+    118c:	ef ef       	ldi	r30, 0xFF	; 255
+    118e:	f0 e7       	ldi	r31, 0x70	; 112
+    1190:	b2 e0       	ldi	r27, 0x02	; 2
+    1192:	e1 50       	subi	r30, 0x01	; 1
+    1194:	f0 40       	sbci	r31, 0x00	; 0
+    1196:	b0 40       	sbci	r27, 0x00	; 0
+    1198:	e1 f7       	brne	.-8      	; 0x1192 <__stack+0xd33>
+    119a:	00 c0       	rjmp	.+0      	; 0x119c <__stack+0xd3d>
+    119c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    119e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    11a0:	5b bd       	out	0x2b, r21	; 43
+    11a2:	4a bd       	out	0x2a, r20	; 42
+    11a4:	ef ef       	ldi	r30, 0xFF	; 255
+    11a6:	f0 e7       	ldi	r31, 0x70	; 112
+    11a8:	b2 e0       	ldi	r27, 0x02	; 2
+    11aa:	e1 50       	subi	r30, 0x01	; 1
+    11ac:	f0 40       	sbci	r31, 0x00	; 0
+    11ae:	b0 40       	sbci	r27, 0x00	; 0
+    11b0:	e1 f7       	brne	.-8      	; 0x11aa <__stack+0xd4b>
+    11b2:	00 c0       	rjmp	.+0      	; 0x11b4 <__stack+0xd55>
+    11b4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100001;//select L
+    11b6:	85 ba       	out	0x15, r8	; 21
+OCR1B=18250;//rotL-90
+    11b8:	79 bd       	out	0x29, r23	; 41
+    11ba:	68 bd       	out	0x28, r22	; 40
+    11bc:	ef ef       	ldi	r30, 0xFF	; 255
+    11be:	f0 e7       	ldi	r31, 0x70	; 112
+    11c0:	b2 e0       	ldi	r27, 0x02	; 2
+    11c2:	e1 50       	subi	r30, 0x01	; 1
+    11c4:	f0 40       	sbci	r31, 0x00	; 0
+    11c6:	b0 40       	sbci	r27, 0x00	; 0
+    11c8:	e1 f7       	brne	.-8      	; 0x11c2 <__stack+0xd63>
+    11ca:	00 c0       	rjmp	.+0      	; 0x11cc <__stack+0xd6d>
+    11cc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    11ce:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    11d0:	3b bd       	out	0x2b, r19	; 43
+    11d2:	2a bd       	out	0x2a, r18	; 42
+    11d4:	ef ef       	ldi	r30, 0xFF	; 255
+    11d6:	f0 e7       	ldi	r31, 0x70	; 112
+    11d8:	b2 e0       	ldi	r27, 0x02	; 2
+    11da:	e1 50       	subi	r30, 0x01	; 1
+    11dc:	f0 40       	sbci	r31, 0x00	; 0
+    11de:	b0 40       	sbci	r27, 0x00	; 0
+    11e0:	e1 f7       	brne	.-8      	; 0x11da <__stack+0xd7b>
+    11e2:	00 c0       	rjmp	.+0      	; 0x11e4 <__stack+0xd85>
+    11e4:	00 00       	nop
+    11e6:	5f c2       	rjmp	.+1214   	; 0x16a6 <__stack+0x1247>
+_delay_ms(100);
+}
+else if(input[z]=='F')
+    11e8:	e6 34       	cpi	r30, 0x46	; 70
+    11ea:	09 f0       	breq	.+2      	; 0x11ee <__stack+0xd8f>
+    11ec:	55 c0       	rjmp	.+170    	; 0x1298 <__stack+0xe39>
+{
+PORTC=0b00000001;//select linear FB
+    11ee:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    11f0:	59 bd       	out	0x29, r21	; 41
+    11f2:	48 bd       	out	0x28, r20	; 40
+    11f4:	ef ef       	ldi	r30, 0xFF	; 255
+    11f6:	f0 e7       	ldi	r31, 0x70	; 112
+    11f8:	b2 e0       	ldi	r27, 0x02	; 2
+    11fa:	e1 50       	subi	r30, 0x01	; 1
+    11fc:	f0 40       	sbci	r31, 0x00	; 0
+    11fe:	b0 40       	sbci	r27, 0x00	; 0
+    1200:	e1 f7       	brne	.-8      	; 0x11fa <__stack+0xd9b>
+    1202:	00 c0       	rjmp	.+0      	; 0x1204 <__stack+0xda5>
+    1204:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    1206:	a5 ba       	out	0x15, r10	; 21
+OCR1A=19150;//rotF-180
+    1208:	3b bd       	out	0x2b, r19	; 43
+    120a:	2a bd       	out	0x2a, r18	; 42
+    120c:	ef ef       	ldi	r30, 0xFF	; 255
+    120e:	f0 e7       	ldi	r31, 0x70	; 112
+    1210:	b2 e0       	ldi	r27, 0x02	; 2
+    1212:	e1 50       	subi	r30, 0x01	; 1
+    1214:	f0 40       	sbci	r31, 0x00	; 0
+    1216:	b0 40       	sbci	r27, 0x00	; 0
+    1218:	e1 f7       	brne	.-8      	; 0x1212 <__stack+0xdb3>
+    121a:	00 c0       	rjmp	.+0      	; 0x121c <__stack+0xdbd>
+    121c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    121e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1220:	39 bd       	out	0x29, r19	; 41
+    1222:	28 bd       	out	0x28, r18	; 40
+    1224:	ef ef       	ldi	r30, 0xFF	; 255
+    1226:	f0 e7       	ldi	r31, 0x70	; 112
+    1228:	b2 e0       	ldi	r27, 0x02	; 2
+    122a:	e1 50       	subi	r30, 0x01	; 1
+    122c:	f0 40       	sbci	r31, 0x00	; 0
+    122e:	b0 40       	sbci	r27, 0x00	; 0
+    1230:	e1 f7       	brne	.-8      	; 0x122a <__stack+0xdcb>
+    1232:	00 c0       	rjmp	.+0      	; 0x1234 <__stack+0xdd5>
+    1234:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    1236:	a5 ba       	out	0x15, r10	; 21
+OCR1A=17200;//rotF-0
+    1238:	5b bd       	out	0x2b, r21	; 43
+    123a:	4a bd       	out	0x2a, r20	; 42
+    123c:	ef ef       	ldi	r30, 0xFF	; 255
+    123e:	f0 e7       	ldi	r31, 0x70	; 112
+    1240:	b2 e0       	ldi	r27, 0x02	; 2
+    1242:	e1 50       	subi	r30, 0x01	; 1
+    1244:	f0 40       	sbci	r31, 0x00	; 0
+    1246:	b0 40       	sbci	r27, 0x00	; 0
+    1248:	e1 f7       	brne	.-8      	; 0x1242 <__stack+0xde3>
+    124a:	00 c0       	rjmp	.+0      	; 0x124c <__stack+0xded>
+    124c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    124e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1250:	59 bd       	out	0x29, r21	; 41
+    1252:	48 bd       	out	0x28, r20	; 40
+    1254:	ef ef       	ldi	r30, 0xFF	; 255
+    1256:	f0 e7       	ldi	r31, 0x70	; 112
+    1258:	b2 e0       	ldi	r27, 0x02	; 2
+    125a:	e1 50       	subi	r30, 0x01	; 1
+    125c:	f0 40       	sbci	r31, 0x00	; 0
+    125e:	b0 40       	sbci	r27, 0x00	; 0
+    1260:	e1 f7       	brne	.-8      	; 0x125a <__stack+0xdfb>
+    1262:	00 c0       	rjmp	.+0      	; 0x1264 <__stack+0xe05>
+    1264:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    1266:	a5 ba       	out	0x15, r10	; 21
+OCR1A=18250;//rotF-90
+    1268:	7b bd       	out	0x2b, r23	; 43
+    126a:	6a bd       	out	0x2a, r22	; 42
+    126c:	ef ef       	ldi	r30, 0xFF	; 255
+    126e:	f0 e7       	ldi	r31, 0x70	; 112
+    1270:	b2 e0       	ldi	r27, 0x02	; 2
+    1272:	e1 50       	subi	r30, 0x01	; 1
+    1274:	f0 40       	sbci	r31, 0x00	; 0
+    1276:	b0 40       	sbci	r27, 0x00	; 0
+    1278:	e1 f7       	brne	.-8      	; 0x1272 <__stack+0xe13>
+    127a:	00 c0       	rjmp	.+0      	; 0x127c <__stack+0xe1d>
+    127c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    127e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1280:	39 bd       	out	0x29, r19	; 41
+    1282:	28 bd       	out	0x28, r18	; 40
+    1284:	ef ef       	ldi	r30, 0xFF	; 255
+    1286:	f0 e7       	ldi	r31, 0x70	; 112
+    1288:	b2 e0       	ldi	r27, 0x02	; 2
+    128a:	e1 50       	subi	r30, 0x01	; 1
+    128c:	f0 40       	sbci	r31, 0x00	; 0
+    128e:	b0 40       	sbci	r27, 0x00	; 0
+    1290:	e1 f7       	brne	.-8      	; 0x128a <__stack+0xe2b>
+    1292:	00 c0       	rjmp	.+0      	; 0x1294 <__stack+0xe35>
+    1294:	00 00       	nop
+    1296:	07 c2       	rjmp	.+1038   	; 0x16a6 <__stack+0x1247>
+_delay_ms(100);
+}
+else if(input[z]=='B')
+    1298:	e2 34       	cpi	r30, 0x42	; 66
+    129a:	09 f0       	breq	.+2      	; 0x129e <__stack+0xe3f>
+    129c:	55 c0       	rjmp	.+170    	; 0x1348 <__stack+0xee9>
+{
+PORTC=0b00000001;//select linear FB
+    129e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    12a0:	59 bd       	out	0x29, r21	; 41
+    12a2:	48 bd       	out	0x28, r20	; 40
+    12a4:	ef ef       	ldi	r30, 0xFF	; 255
+    12a6:	f0 e7       	ldi	r31, 0x70	; 112
+    12a8:	b2 e0       	ldi	r27, 0x02	; 2
+    12aa:	e1 50       	subi	r30, 0x01	; 1
+    12ac:	f0 40       	sbci	r31, 0x00	; 0
+    12ae:	b0 40       	sbci	r27, 0x00	; 0
+    12b0:	e1 f7       	brne	.-8      	; 0x12aa <__stack+0xe4b>
+    12b2:	00 c0       	rjmp	.+0      	; 0x12b4 <__stack+0xe55>
+    12b4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    12b6:	b5 ba       	out	0x15, r11	; 21
+OCR1B=19150;//rotB-180
+    12b8:	39 bd       	out	0x29, r19	; 41
+    12ba:	28 bd       	out	0x28, r18	; 40
+    12bc:	ef ef       	ldi	r30, 0xFF	; 255
+    12be:	f0 e7       	ldi	r31, 0x70	; 112
+    12c0:	b2 e0       	ldi	r27, 0x02	; 2
+    12c2:	e1 50       	subi	r30, 0x01	; 1
+    12c4:	f0 40       	sbci	r31, 0x00	; 0
+    12c6:	b0 40       	sbci	r27, 0x00	; 0
+    12c8:	e1 f7       	brne	.-8      	; 0x12c2 <__stack+0xe63>
+    12ca:	00 c0       	rjmp	.+0      	; 0x12cc <__stack+0xe6d>
+    12cc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    12ce:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    12d0:	39 bd       	out	0x29, r19	; 41
+    12d2:	28 bd       	out	0x28, r18	; 40
+    12d4:	ef ef       	ldi	r30, 0xFF	; 255
+    12d6:	f0 e7       	ldi	r31, 0x70	; 112
+    12d8:	b2 e0       	ldi	r27, 0x02	; 2
+    12da:	e1 50       	subi	r30, 0x01	; 1
+    12dc:	f0 40       	sbci	r31, 0x00	; 0
+    12de:	b0 40       	sbci	r27, 0x00	; 0
+    12e0:	e1 f7       	brne	.-8      	; 0x12da <__stack+0xe7b>
+    12e2:	00 c0       	rjmp	.+0      	; 0x12e4 <__stack+0xe85>
+    12e4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    12e6:	b5 ba       	out	0x15, r11	; 21
+OCR1B=17200;//rotB-0
+    12e8:	59 bd       	out	0x29, r21	; 41
+    12ea:	48 bd       	out	0x28, r20	; 40
+    12ec:	ef ef       	ldi	r30, 0xFF	; 255
+    12ee:	f0 e7       	ldi	r31, 0x70	; 112
+    12f0:	b2 e0       	ldi	r27, 0x02	; 2
+    12f2:	e1 50       	subi	r30, 0x01	; 1
+    12f4:	f0 40       	sbci	r31, 0x00	; 0
+    12f6:	b0 40       	sbci	r27, 0x00	; 0
+    12f8:	e1 f7       	brne	.-8      	; 0x12f2 <__stack+0xe93>
+    12fa:	00 c0       	rjmp	.+0      	; 0x12fc <__stack+0xe9d>
+    12fc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    12fe:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1300:	59 bd       	out	0x29, r21	; 41
+    1302:	48 bd       	out	0x28, r20	; 40
+    1304:	ef ef       	ldi	r30, 0xFF	; 255
+    1306:	f0 e7       	ldi	r31, 0x70	; 112
+    1308:	b2 e0       	ldi	r27, 0x02	; 2
+    130a:	e1 50       	subi	r30, 0x01	; 1
+    130c:	f0 40       	sbci	r31, 0x00	; 0
+    130e:	b0 40       	sbci	r27, 0x00	; 0
+    1310:	e1 f7       	brne	.-8      	; 0x130a <__stack+0xeab>
+    1312:	00 c0       	rjmp	.+0      	; 0x1314 <__stack+0xeb5>
+    1314:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    1316:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+    1318:	79 bd       	out	0x29, r23	; 41
+    131a:	68 bd       	out	0x28, r22	; 40
+    131c:	ef ef       	ldi	r30, 0xFF	; 255
+    131e:	f0 e7       	ldi	r31, 0x70	; 112
+    1320:	b2 e0       	ldi	r27, 0x02	; 2
+    1322:	e1 50       	subi	r30, 0x01	; 1
+    1324:	f0 40       	sbci	r31, 0x00	; 0
+    1326:	b0 40       	sbci	r27, 0x00	; 0
+    1328:	e1 f7       	brne	.-8      	; 0x1322 <__stack+0xec3>
+    132a:	00 c0       	rjmp	.+0      	; 0x132c <__stack+0xecd>
+    132c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    132e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1330:	39 bd       	out	0x29, r19	; 41
+    1332:	28 bd       	out	0x28, r18	; 40
+    1334:	ef ef       	ldi	r30, 0xFF	; 255
+    1336:	f0 e7       	ldi	r31, 0x70	; 112
+    1338:	b2 e0       	ldi	r27, 0x02	; 2
+    133a:	e1 50       	subi	r30, 0x01	; 1
+    133c:	f0 40       	sbci	r31, 0x00	; 0
+    133e:	b0 40       	sbci	r27, 0x00	; 0
+    1340:	e1 f7       	brne	.-8      	; 0x133a <__stack+0xedb>
+    1342:	00 c0       	rjmp	.+0      	; 0x1344 <__stack+0xee5>
+    1344:	00 00       	nop
+    1346:	af c1       	rjmp	.+862    	; 0x16a6 <__stack+0x1247>
+_delay_ms(100);
+}
+else if(input[z]=='U')
+    1348:	e5 35       	cpi	r30, 0x55	; 85
+    134a:	09 f0       	breq	.+2      	; 0x134e <__stack+0xeef>
+    134c:	d5 c0       	rjmp	.+426    	; 0x14f8 <__stack+0x1099>
+{
+PORTC=0b00000001;//select linear FB
+    134e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1350:	59 bd       	out	0x29, r21	; 41
+    1352:	48 bd       	out	0x28, r20	; 40
+    1354:	ef ef       	ldi	r30, 0xFF	; 255
+    1356:	f0 e7       	ldi	r31, 0x70	; 112
+    1358:	b2 e0       	ldi	r27, 0x02	; 2
+    135a:	e1 50       	subi	r30, 0x01	; 1
+    135c:	f0 40       	sbci	r31, 0x00	; 0
+    135e:	b0 40       	sbci	r27, 0x00	; 0
+    1360:	e1 f7       	brne	.-8      	; 0x135a <__stack+0xefb>
+    1362:	00 c0       	rjmp	.+0      	; 0x1364 <__stack+0xf05>
+    1364:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1366:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+    1368:	3b bd       	out	0x2b, r19	; 43
+    136a:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+    136c:	59 bd       	out	0x29, r21	; 41
+    136e:	48 bd       	out	0x28, r20	; 40
+    1370:	ef ef       	ldi	r30, 0xFF	; 255
+    1372:	f0 e7       	ldi	r31, 0x70	; 112
+    1374:	b2 e0       	ldi	r27, 0x02	; 2
+    1376:	e1 50       	subi	r30, 0x01	; 1
+    1378:	f0 40       	sbci	r31, 0x00	; 0
+    137a:	b0 40       	sbci	r27, 0x00	; 0
+    137c:	e1 f7       	brne	.-8      	; 0x1376 <__stack+0xf17>
+    137e:	00 c0       	rjmp	.+0      	; 0x1380 <__stack+0xf21>
+    1380:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1382:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1384:	39 bd       	out	0x29, r19	; 41
+    1386:	28 bd       	out	0x28, r18	; 40
+    1388:	ef ef       	ldi	r30, 0xFF	; 255
+    138a:	f0 e7       	ldi	r31, 0x70	; 112
+    138c:	b2 e0       	ldi	r27, 0x02	; 2
+    138e:	e1 50       	subi	r30, 0x01	; 1
+    1390:	f0 40       	sbci	r31, 0x00	; 0
+    1392:	b0 40       	sbci	r27, 0x00	; 0
+    1394:	e1 f7       	brne	.-8      	; 0x138e <__stack+0xf2f>
+    1396:	00 c0       	rjmp	.+0      	; 0x1398 <__stack+0xf39>
+    1398:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    139a:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    139c:	5b bd       	out	0x2b, r21	; 43
+    139e:	4a bd       	out	0x2a, r20	; 42
+    13a0:	ef ef       	ldi	r30, 0xFF	; 255
+    13a2:	f0 e7       	ldi	r31, 0x70	; 112
+    13a4:	b2 e0       	ldi	r27, 0x02	; 2
+    13a6:	e1 50       	subi	r30, 0x01	; 1
+    13a8:	f0 40       	sbci	r31, 0x00	; 0
+    13aa:	b0 40       	sbci	r27, 0x00	; 0
+    13ac:	e1 f7       	brne	.-8      	; 0x13a6 <__stack+0xf47>
+    13ae:	00 c0       	rjmp	.+0      	; 0x13b0 <__stack+0xf51>
+    13b0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    13b2:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    13b4:	7b bd       	out	0x2b, r23	; 43
+    13b6:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    13b8:	79 bd       	out	0x29, r23	; 41
+    13ba:	68 bd       	out	0x28, r22	; 40
+    13bc:	ef ef       	ldi	r30, 0xFF	; 255
+    13be:	f0 e7       	ldi	r31, 0x70	; 112
+    13c0:	b2 e0       	ldi	r27, 0x02	; 2
+    13c2:	e1 50       	subi	r30, 0x01	; 1
+    13c4:	f0 40       	sbci	r31, 0x00	; 0
+    13c6:	b0 40       	sbci	r27, 0x00	; 0
+    13c8:	e1 f7       	brne	.-8      	; 0x13c2 <__stack+0xf63>
+    13ca:	00 c0       	rjmp	.+0      	; 0x13cc <__stack+0xf6d>
+    13cc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    13ce:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    13d0:	3b bd       	out	0x2b, r19	; 43
+    13d2:	2a bd       	out	0x2a, r18	; 42
+    13d4:	ef ef       	ldi	r30, 0xFF	; 255
+    13d6:	f0 e7       	ldi	r31, 0x70	; 112
+    13d8:	b2 e0       	ldi	r27, 0x02	; 2
+    13da:	e1 50       	subi	r30, 0x01	; 1
+    13dc:	f0 40       	sbci	r31, 0x00	; 0
+    13de:	b0 40       	sbci	r27, 0x00	; 0
+    13e0:	e1 f7       	brne	.-8      	; 0x13da <__stack+0xf7b>
+    13e2:	00 c0       	rjmp	.+0      	; 0x13e4 <__stack+0xf85>
+    13e4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    13e6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    13e8:	59 bd       	out	0x29, r21	; 41
+    13ea:	48 bd       	out	0x28, r20	; 40
+    13ec:	ef ef       	ldi	r30, 0xFF	; 255
+    13ee:	f0 e7       	ldi	r31, 0x70	; 112
+    13f0:	b2 e0       	ldi	r27, 0x02	; 2
+    13f2:	e1 50       	subi	r30, 0x01	; 1
+    13f4:	f0 40       	sbci	r31, 0x00	; 0
+    13f6:	b0 40       	sbci	r27, 0x00	; 0
+    13f8:	e1 f7       	brne	.-8      	; 0x13f2 <__stack+0xf93>
+    13fa:	00 c0       	rjmp	.+0      	; 0x13fc <__stack+0xf9d>
+    13fc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    13fe:	a5 ba       	out	0x15, r10	; 21
+OCR1A=19150;//rotF-180
+    1400:	3b bd       	out	0x2b, r19	; 43
+    1402:	2a bd       	out	0x2a, r18	; 42
+    1404:	ef ef       	ldi	r30, 0xFF	; 255
+    1406:	f0 e7       	ldi	r31, 0x70	; 112
+    1408:	b2 e0       	ldi	r27, 0x02	; 2
+    140a:	e1 50       	subi	r30, 0x01	; 1
+    140c:	f0 40       	sbci	r31, 0x00	; 0
+    140e:	b0 40       	sbci	r27, 0x00	; 0
+    1410:	e1 f7       	brne	.-8      	; 0x140a <__stack+0xfab>
+    1412:	00 c0       	rjmp	.+0      	; 0x1414 <__stack+0xfb5>
+    1414:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1416:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1418:	39 bd       	out	0x29, r19	; 41
+    141a:	28 bd       	out	0x28, r18	; 40
+    141c:	ef ef       	ldi	r30, 0xFF	; 255
+    141e:	f0 e7       	ldi	r31, 0x70	; 112
+    1420:	b2 e0       	ldi	r27, 0x02	; 2
+    1422:	e1 50       	subi	r30, 0x01	; 1
+    1424:	f0 40       	sbci	r31, 0x00	; 0
+    1426:	b0 40       	sbci	r27, 0x00	; 0
+    1428:	e1 f7       	brne	.-8      	; 0x1422 <__stack+0xfc3>
+    142a:	00 c0       	rjmp	.+0      	; 0x142c <__stack+0xfcd>
+    142c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    142e:	a5 ba       	out	0x15, r10	; 21
+OCR1A=17200;//rotF-0
+    1430:	5b bd       	out	0x2b, r21	; 43
+    1432:	4a bd       	out	0x2a, r20	; 42
+    1434:	ef ef       	ldi	r30, 0xFF	; 255
+    1436:	f0 e7       	ldi	r31, 0x70	; 112
+    1438:	b2 e0       	ldi	r27, 0x02	; 2
+    143a:	e1 50       	subi	r30, 0x01	; 1
+    143c:	f0 40       	sbci	r31, 0x00	; 0
+    143e:	b0 40       	sbci	r27, 0x00	; 0
+    1440:	e1 f7       	brne	.-8      	; 0x143a <__stack+0xfdb>
+    1442:	00 c0       	rjmp	.+0      	; 0x1444 <__stack+0xfe5>
+    1444:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1446:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1448:	59 bd       	out	0x29, r21	; 41
+    144a:	48 bd       	out	0x28, r20	; 40
+    144c:	ef ef       	ldi	r30, 0xFF	; 255
+    144e:	f0 e7       	ldi	r31, 0x70	; 112
+    1450:	b2 e0       	ldi	r27, 0x02	; 2
+    1452:	e1 50       	subi	r30, 0x01	; 1
+    1454:	f0 40       	sbci	r31, 0x00	; 0
+    1456:	b0 40       	sbci	r27, 0x00	; 0
+    1458:	e1 f7       	brne	.-8      	; 0x1452 <__stack+0xff3>
+    145a:	00 c0       	rjmp	.+0      	; 0x145c <__stack+0xffd>
+    145c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    145e:	a5 ba       	out	0x15, r10	; 21
+OCR1A=18250;//rotF-90
+    1460:	7b bd       	out	0x2b, r23	; 43
+    1462:	6a bd       	out	0x2a, r22	; 42
+    1464:	ef ef       	ldi	r30, 0xFF	; 255
+    1466:	f0 e7       	ldi	r31, 0x70	; 112
+    1468:	b2 e0       	ldi	r27, 0x02	; 2
+    146a:	e1 50       	subi	r30, 0x01	; 1
+    146c:	f0 40       	sbci	r31, 0x00	; 0
+    146e:	b0 40       	sbci	r27, 0x00	; 0
+    1470:	e1 f7       	brne	.-8      	; 0x146a <__stack+0x100b>
+    1472:	00 c0       	rjmp	.+0      	; 0x1474 <__stack+0x1015>
+    1474:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1476:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+    1478:	5b bd       	out	0x2b, r21	; 43
+    147a:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+    147c:	39 bd       	out	0x29, r19	; 41
+    147e:	28 bd       	out	0x28, r18	; 40
+    1480:	ef ef       	ldi	r30, 0xFF	; 255
+    1482:	f0 e7       	ldi	r31, 0x70	; 112
+    1484:	b2 e0       	ldi	r27, 0x02	; 2
+    1486:	e1 50       	subi	r30, 0x01	; 1
+    1488:	f0 40       	sbci	r31, 0x00	; 0
+    148a:	b0 40       	sbci	r27, 0x00	; 0
+    148c:	e1 f7       	brne	.-8      	; 0x1486 <__stack+0x1027>
+    148e:	00 c0       	rjmp	.+0      	; 0x1490 <__stack+0x1031>
+    1490:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1492:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1494:	39 bd       	out	0x29, r19	; 41
+    1496:	28 bd       	out	0x28, r18	; 40
+    1498:	ef ef       	ldi	r30, 0xFF	; 255
+    149a:	f0 e7       	ldi	r31, 0x70	; 112
+    149c:	b2 e0       	ldi	r27, 0x02	; 2
+    149e:	e1 50       	subi	r30, 0x01	; 1
+    14a0:	f0 40       	sbci	r31, 0x00	; 0
+    14a2:	b0 40       	sbci	r27, 0x00	; 0
+    14a4:	e1 f7       	brne	.-8      	; 0x149e <__stack+0x103f>
+    14a6:	00 c0       	rjmp	.+0      	; 0x14a8 <__stack+0x1049>
+    14a8:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    14aa:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    14ac:	5b bd       	out	0x2b, r21	; 43
+    14ae:	4a bd       	out	0x2a, r20	; 42
+    14b0:	ef ef       	ldi	r30, 0xFF	; 255
+    14b2:	f0 e7       	ldi	r31, 0x70	; 112
+    14b4:	b2 e0       	ldi	r27, 0x02	; 2
+    14b6:	e1 50       	subi	r30, 0x01	; 1
+    14b8:	f0 40       	sbci	r31, 0x00	; 0
+    14ba:	b0 40       	sbci	r27, 0x00	; 0
+    14bc:	e1 f7       	brne	.-8      	; 0x14b6 <__stack+0x1057>
+    14be:	00 c0       	rjmp	.+0      	; 0x14c0 <__stack+0x1061>
+    14c0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    14c2:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    14c4:	7b bd       	out	0x2b, r23	; 43
+    14c6:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    14c8:	79 bd       	out	0x29, r23	; 41
+    14ca:	68 bd       	out	0x28, r22	; 40
+    14cc:	ef ef       	ldi	r30, 0xFF	; 255
+    14ce:	f0 e7       	ldi	r31, 0x70	; 112
+    14d0:	b2 e0       	ldi	r27, 0x02	; 2
+    14d2:	e1 50       	subi	r30, 0x01	; 1
+    14d4:	f0 40       	sbci	r31, 0x00	; 0
+    14d6:	b0 40       	sbci	r27, 0x00	; 0
+    14d8:	e1 f7       	brne	.-8      	; 0x14d2 <__stack+0x1073>
+    14da:	00 c0       	rjmp	.+0      	; 0x14dc <__stack+0x107d>
+    14dc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    14de:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    14e0:	3b bd       	out	0x2b, r19	; 43
+    14e2:	2a bd       	out	0x2a, r18	; 42
+    14e4:	ef ef       	ldi	r30, 0xFF	; 255
+    14e6:	f0 e7       	ldi	r31, 0x70	; 112
+    14e8:	b2 e0       	ldi	r27, 0x02	; 2
+    14ea:	e1 50       	subi	r30, 0x01	; 1
+    14ec:	f0 40       	sbci	r31, 0x00	; 0
+    14ee:	b0 40       	sbci	r27, 0x00	; 0
+    14f0:	e1 f7       	brne	.-8      	; 0x14ea <__stack+0x108b>
+    14f2:	00 c0       	rjmp	.+0      	; 0x14f4 <__stack+0x1095>
+    14f4:	00 00       	nop
+    14f6:	d7 c0       	rjmp	.+430    	; 0x16a6 <__stack+0x1247>
+_delay_ms(100);
+}
+else if(input[z]=='D')
+    14f8:	e4 34       	cpi	r30, 0x44	; 68
+    14fa:	09 f0       	breq	.+2      	; 0x14fe <__stack+0x109f>
+    14fc:	d4 c0       	rjmp	.+424    	; 0x16a6 <__stack+0x1247>
+{
+PORTC=0b00000001;//select linear FB
+    14fe:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1500:	59 bd       	out	0x29, r21	; 41
+    1502:	48 bd       	out	0x28, r20	; 40
+    1504:	ef ef       	ldi	r30, 0xFF	; 255
+    1506:	f0 e7       	ldi	r31, 0x70	; 112
+    1508:	b2 e0       	ldi	r27, 0x02	; 2
+    150a:	e1 50       	subi	r30, 0x01	; 1
+    150c:	f0 40       	sbci	r31, 0x00	; 0
+    150e:	b0 40       	sbci	r27, 0x00	; 0
+    1510:	e1 f7       	brne	.-8      	; 0x150a <__stack+0x10ab>
+    1512:	00 c0       	rjmp	.+0      	; 0x1514 <__stack+0x10b5>
+    1514:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1516:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+    1518:	3b bd       	out	0x2b, r19	; 43
+    151a:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+    151c:	59 bd       	out	0x29, r21	; 41
+    151e:	48 bd       	out	0x28, r20	; 40
+    1520:	ef ef       	ldi	r30, 0xFF	; 255
+    1522:	f0 e7       	ldi	r31, 0x70	; 112
+    1524:	b2 e0       	ldi	r27, 0x02	; 2
+    1526:	e1 50       	subi	r30, 0x01	; 1
+    1528:	f0 40       	sbci	r31, 0x00	; 0
+    152a:	b0 40       	sbci	r27, 0x00	; 0
+    152c:	e1 f7       	brne	.-8      	; 0x1526 <__stack+0x10c7>
+    152e:	00 c0       	rjmp	.+0      	; 0x1530 <__stack+0x10d1>
+    1530:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1532:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1534:	39 bd       	out	0x29, r19	; 41
+    1536:	28 bd       	out	0x28, r18	; 40
+    1538:	ef ef       	ldi	r30, 0xFF	; 255
+    153a:	f0 e7       	ldi	r31, 0x70	; 112
+    153c:	b2 e0       	ldi	r27, 0x02	; 2
+    153e:	e1 50       	subi	r30, 0x01	; 1
+    1540:	f0 40       	sbci	r31, 0x00	; 0
+    1542:	b0 40       	sbci	r27, 0x00	; 0
+    1544:	e1 f7       	brne	.-8      	; 0x153e <__stack+0x10df>
+    1546:	00 c0       	rjmp	.+0      	; 0x1548 <__stack+0x10e9>
+    1548:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    154a:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    154c:	5b bd       	out	0x2b, r21	; 43
+    154e:	4a bd       	out	0x2a, r20	; 42
+    1550:	ef ef       	ldi	r30, 0xFF	; 255
+    1552:	f0 e7       	ldi	r31, 0x70	; 112
+    1554:	b2 e0       	ldi	r27, 0x02	; 2
+    1556:	e1 50       	subi	r30, 0x01	; 1
+    1558:	f0 40       	sbci	r31, 0x00	; 0
+    155a:	b0 40       	sbci	r27, 0x00	; 0
+    155c:	e1 f7       	brne	.-8      	; 0x1556 <__stack+0x10f7>
+    155e:	00 c0       	rjmp	.+0      	; 0x1560 <__stack+0x1101>
+    1560:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1562:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1564:	7b bd       	out	0x2b, r23	; 43
+    1566:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    1568:	79 bd       	out	0x29, r23	; 41
+    156a:	68 bd       	out	0x28, r22	; 40
+    156c:	ef ef       	ldi	r30, 0xFF	; 255
+    156e:	f0 e7       	ldi	r31, 0x70	; 112
+    1570:	b2 e0       	ldi	r27, 0x02	; 2
+    1572:	e1 50       	subi	r30, 0x01	; 1
+    1574:	f0 40       	sbci	r31, 0x00	; 0
+    1576:	b0 40       	sbci	r27, 0x00	; 0
+    1578:	e1 f7       	brne	.-8      	; 0x1572 <__stack+0x1113>
+    157a:	00 c0       	rjmp	.+0      	; 0x157c <__stack+0x111d>
+    157c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    157e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1580:	3b bd       	out	0x2b, r19	; 43
+    1582:	2a bd       	out	0x2a, r18	; 42
+    1584:	ef ef       	ldi	r30, 0xFF	; 255
+    1586:	f0 e7       	ldi	r31, 0x70	; 112
+    1588:	b2 e0       	ldi	r27, 0x02	; 2
+    158a:	e1 50       	subi	r30, 0x01	; 1
+    158c:	f0 40       	sbci	r31, 0x00	; 0
+    158e:	b0 40       	sbci	r27, 0x00	; 0
+    1590:	e1 f7       	brne	.-8      	; 0x158a <__stack+0x112b>
+    1592:	00 c0       	rjmp	.+0      	; 0x1594 <__stack+0x1135>
+    1594:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1596:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1598:	59 bd       	out	0x29, r21	; 41
+    159a:	48 bd       	out	0x28, r20	; 40
+    159c:	ef ef       	ldi	r30, 0xFF	; 255
+    159e:	f0 e7       	ldi	r31, 0x70	; 112
+    15a0:	b2 e0       	ldi	r27, 0x02	; 2
+    15a2:	e1 50       	subi	r30, 0x01	; 1
+    15a4:	f0 40       	sbci	r31, 0x00	; 0
+    15a6:	b0 40       	sbci	r27, 0x00	; 0
+    15a8:	e1 f7       	brne	.-8      	; 0x15a2 <__stack+0x1143>
+    15aa:	00 c0       	rjmp	.+0      	; 0x15ac <__stack+0x114d>
+    15ac:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    15ae:	b5 ba       	out	0x15, r11	; 21
+OCR1B=19150;//rotB-180
+    15b0:	39 bd       	out	0x29, r19	; 41
+    15b2:	28 bd       	out	0x28, r18	; 40
+    15b4:	ef ef       	ldi	r30, 0xFF	; 255
+    15b6:	f0 e7       	ldi	r31, 0x70	; 112
+    15b8:	b2 e0       	ldi	r27, 0x02	; 2
+    15ba:	e1 50       	subi	r30, 0x01	; 1
+    15bc:	f0 40       	sbci	r31, 0x00	; 0
+    15be:	b0 40       	sbci	r27, 0x00	; 0
+    15c0:	e1 f7       	brne	.-8      	; 0x15ba <__stack+0x115b>
+    15c2:	00 c0       	rjmp	.+0      	; 0x15c4 <__stack+0x1165>
+    15c4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    15c6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    15c8:	39 bd       	out	0x29, r19	; 41
+    15ca:	28 bd       	out	0x28, r18	; 40
+    15cc:	ef ef       	ldi	r30, 0xFF	; 255
+    15ce:	f0 e7       	ldi	r31, 0x70	; 112
+    15d0:	b2 e0       	ldi	r27, 0x02	; 2
+    15d2:	e1 50       	subi	r30, 0x01	; 1
+    15d4:	f0 40       	sbci	r31, 0x00	; 0
+    15d6:	b0 40       	sbci	r27, 0x00	; 0
+    15d8:	e1 f7       	brne	.-8      	; 0x15d2 <__stack+0x1173>
+    15da:	00 c0       	rjmp	.+0      	; 0x15dc <__stack+0x117d>
+    15dc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    15de:	b5 ba       	out	0x15, r11	; 21
+OCR1B=17200;//rotB-0
+    15e0:	59 bd       	out	0x29, r21	; 41
+    15e2:	48 bd       	out	0x28, r20	; 40
+    15e4:	ef ef       	ldi	r30, 0xFF	; 255
+    15e6:	f0 e7       	ldi	r31, 0x70	; 112
+    15e8:	b2 e0       	ldi	r27, 0x02	; 2
+    15ea:	e1 50       	subi	r30, 0x01	; 1
+    15ec:	f0 40       	sbci	r31, 0x00	; 0
+    15ee:	b0 40       	sbci	r27, 0x00	; 0
+    15f0:	e1 f7       	brne	.-8      	; 0x15ea <__stack+0x118b>
+    15f2:	00 c0       	rjmp	.+0      	; 0x15f4 <__stack+0x1195>
+    15f4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    15f6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    15f8:	59 bd       	out	0x29, r21	; 41
+    15fa:	48 bd       	out	0x28, r20	; 40
+    15fc:	ef ef       	ldi	r30, 0xFF	; 255
+    15fe:	f0 e7       	ldi	r31, 0x70	; 112
+    1600:	b2 e0       	ldi	r27, 0x02	; 2
+    1602:	e1 50       	subi	r30, 0x01	; 1
+    1604:	f0 40       	sbci	r31, 0x00	; 0
+    1606:	b0 40       	sbci	r27, 0x00	; 0
+    1608:	e1 f7       	brne	.-8      	; 0x1602 <__stack+0x11a3>
+    160a:	00 c0       	rjmp	.+0      	; 0x160c <__stack+0x11ad>
+    160c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    160e:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+    1610:	79 bd       	out	0x29, r23	; 41
+    1612:	68 bd       	out	0x28, r22	; 40
+    1614:	ef ef       	ldi	r30, 0xFF	; 255
+    1616:	f0 e7       	ldi	r31, 0x70	; 112
+    1618:	b2 e0       	ldi	r27, 0x02	; 2
+    161a:	e1 50       	subi	r30, 0x01	; 1
+    161c:	f0 40       	sbci	r31, 0x00	; 0
+    161e:	b0 40       	sbci	r27, 0x00	; 0
+    1620:	e1 f7       	brne	.-8      	; 0x161a <__stack+0x11bb>
+    1622:	00 c0       	rjmp	.+0      	; 0x1624 <__stack+0x11c5>
+    1624:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1626:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+    1628:	5b bd       	out	0x2b, r21	; 43
+    162a:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+    162c:	39 bd       	out	0x29, r19	; 41
+    162e:	28 bd       	out	0x28, r18	; 40
+    1630:	ef ef       	ldi	r30, 0xFF	; 255
+    1632:	f0 e7       	ldi	r31, 0x70	; 112
+    1634:	b2 e0       	ldi	r27, 0x02	; 2
+    1636:	e1 50       	subi	r30, 0x01	; 1
+    1638:	f0 40       	sbci	r31, 0x00	; 0
+    163a:	b0 40       	sbci	r27, 0x00	; 0
+    163c:	e1 f7       	brne	.-8      	; 0x1636 <__stack+0x11d7>
+    163e:	00 c0       	rjmp	.+0      	; 0x1640 <__stack+0x11e1>
+    1640:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1642:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1644:	39 bd       	out	0x29, r19	; 41
+    1646:	28 bd       	out	0x28, r18	; 40
+    1648:	ef ef       	ldi	r30, 0xFF	; 255
+    164a:	f0 e7       	ldi	r31, 0x70	; 112
+    164c:	b2 e0       	ldi	r27, 0x02	; 2
+    164e:	e1 50       	subi	r30, 0x01	; 1
+    1650:	f0 40       	sbci	r31, 0x00	; 0
+    1652:	b0 40       	sbci	r27, 0x00	; 0
+    1654:	e1 f7       	brne	.-8      	; 0x164e <__stack+0x11ef>
+    1656:	00 c0       	rjmp	.+0      	; 0x1658 <__stack+0x11f9>
+    1658:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    165a:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    165c:	5b bd       	out	0x2b, r21	; 43
+    165e:	4a bd       	out	0x2a, r20	; 42
+    1660:	ef ef       	ldi	r30, 0xFF	; 255
+    1662:	f0 e7       	ldi	r31, 0x70	; 112
+    1664:	b2 e0       	ldi	r27, 0x02	; 2
+    1666:	e1 50       	subi	r30, 0x01	; 1
+    1668:	f0 40       	sbci	r31, 0x00	; 0
+    166a:	b0 40       	sbci	r27, 0x00	; 0
+    166c:	e1 f7       	brne	.-8      	; 0x1666 <__stack+0x1207>
+    166e:	00 c0       	rjmp	.+0      	; 0x1670 <__stack+0x1211>
+    1670:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1672:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1674:	7b bd       	out	0x2b, r23	; 43
+    1676:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    1678:	79 bd       	out	0x29, r23	; 41
+    167a:	68 bd       	out	0x28, r22	; 40
+    167c:	ef ef       	ldi	r30, 0xFF	; 255
+    167e:	f0 e7       	ldi	r31, 0x70	; 112
+    1680:	b2 e0       	ldi	r27, 0x02	; 2
+    1682:	e1 50       	subi	r30, 0x01	; 1
+    1684:	f0 40       	sbci	r31, 0x00	; 0
+    1686:	b0 40       	sbci	r27, 0x00	; 0
+    1688:	e1 f7       	brne	.-8      	; 0x1682 <__stack+0x1223>
+    168a:	00 c0       	rjmp	.+0      	; 0x168c <__stack+0x122d>
+    168c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    168e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1690:	3b bd       	out	0x2b, r19	; 43
+    1692:	2a bd       	out	0x2a, r18	; 42
+    1694:	ef ef       	ldi	r30, 0xFF	; 255
+    1696:	f0 e7       	ldi	r31, 0x70	; 112
+    1698:	b2 e0       	ldi	r27, 0x02	; 2
+    169a:	e1 50       	subi	r30, 0x01	; 1
+    169c:	f0 40       	sbci	r31, 0x00	; 0
+    169e:	b0 40       	sbci	r27, 0x00	; 0
+    16a0:	e1 f7       	brne	.-8      	; 0x169a <__stack+0x123b>
+    16a2:	00 c0       	rjmp	.+0      	; 0x16a4 <__stack+0x1245>
+    16a4:	00 00       	nop
+_delay_ms(100);
+}
+z+=2;}
+    16a6:	e2 e0       	ldi	r30, 0x02	; 2
+    16a8:	4e 0e       	add	r4, r30
+    16aa:	51 1c       	adc	r5, r1
+    16ac:	3a c2       	rjmp	.+1140   	; 0x1b22 <__stack+0x16c3>
+else 
+if(input[z]=='R')
+    16ae:	e1 e0       	ldi	r30, 0x01	; 1
+    16b0:	f0 e0       	ldi	r31, 0x00	; 0
+    16b2:	ec 0f       	add	r30, r28
+    16b4:	fd 1f       	adc	r31, r29
+    16b6:	e4 0d       	add	r30, r4
+    16b8:	f5 1d       	adc	r31, r5
+    16ba:	e0 81       	ld	r30, Z
+    16bc:	e2 35       	cpi	r30, 0x52	; 82
+    16be:	89 f5       	brne	.+98     	; 0x1722 <__stack+0x12c3>
+{
+PORTC=0b00001100;//select R
+    16c0:	95 ba       	out	0x15, r9	; 21
+OCR1A=19150;//rotR-180
+    16c2:	3b bd       	out	0x2b, r19	; 43
+    16c4:	2a bd       	out	0x2a, r18	; 42
+    16c6:	ff ef       	ldi	r31, 0xFF	; 255
+    16c8:	b0 e7       	ldi	r27, 0x70	; 112
+    16ca:	e2 e0       	ldi	r30, 0x02	; 2
+    16cc:	f1 50       	subi	r31, 0x01	; 1
+    16ce:	b0 40       	sbci	r27, 0x00	; 0
+    16d0:	e0 40       	sbci	r30, 0x00	; 0
+    16d2:	e1 f7       	brne	.-8      	; 0x16cc <__stack+0x126d>
+    16d4:	00 c0       	rjmp	.+0      	; 0x16d6 <__stack+0x1277>
+    16d6:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    16d8:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    16da:	5b bd       	out	0x2b, r21	; 43
+    16dc:	4a bd       	out	0x2a, r20	; 42
+    16de:	ff ef       	ldi	r31, 0xFF	; 255
+    16e0:	b0 e7       	ldi	r27, 0x70	; 112
+    16e2:	e2 e0       	ldi	r30, 0x02	; 2
+    16e4:	f1 50       	subi	r31, 0x01	; 1
+    16e6:	b0 40       	sbci	r27, 0x00	; 0
+    16e8:	e0 40       	sbci	r30, 0x00	; 0
+    16ea:	e1 f7       	brne	.-8      	; 0x16e4 <__stack+0x1285>
+    16ec:	00 c0       	rjmp	.+0      	; 0x16ee <__stack+0x128f>
+    16ee:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select R
+    16f0:	95 ba       	out	0x15, r9	; 21
+OCR1A=18250;//rotR-90
+    16f2:	7b bd       	out	0x2b, r23	; 43
+    16f4:	6a bd       	out	0x2a, r22	; 42
+    16f6:	ff ef       	ldi	r31, 0xFF	; 255
+    16f8:	b0 e7       	ldi	r27, 0x70	; 112
+    16fa:	e2 e0       	ldi	r30, 0x02	; 2
+    16fc:	f1 50       	subi	r31, 0x01	; 1
+    16fe:	b0 40       	sbci	r27, 0x00	; 0
+    1700:	e0 40       	sbci	r30, 0x00	; 0
+    1702:	e1 f7       	brne	.-8      	; 0x16fc <__stack+0x129d>
+    1704:	00 c0       	rjmp	.+0      	; 0x1706 <__stack+0x12a7>
+    1706:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    1708:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    170a:	3b bd       	out	0x2b, r19	; 43
+    170c:	2a bd       	out	0x2a, r18	; 42
+    170e:	ff ef       	ldi	r31, 0xFF	; 255
+    1710:	b0 e7       	ldi	r27, 0x70	; 112
+    1712:	e2 e0       	ldi	r30, 0x02	; 2
+    1714:	f1 50       	subi	r31, 0x01	; 1
+    1716:	b0 40       	sbci	r27, 0x00	; 0
+    1718:	e0 40       	sbci	r30, 0x00	; 0
+    171a:	e1 f7       	brne	.-8      	; 0x1714 <__stack+0x12b5>
+    171c:	00 c0       	rjmp	.+0      	; 0x171e <__stack+0x12bf>
+    171e:	00 00       	nop
+    1720:	00 c2       	rjmp	.+1024   	; 0x1b22 <__stack+0x16c3>
+_delay_ms(100);
+}
+else if(input[z]=='L')
+    1722:	ec 34       	cpi	r30, 0x4C	; 76
+    1724:	89 f5       	brne	.+98     	; 0x1788 <__stack+0x1329>
+{
+PORTC=0b00100001;//select L
+    1726:	85 ba       	out	0x15, r8	; 21
+OCR1B=19150;//rotL-180
+    1728:	39 bd       	out	0x29, r19	; 41
+    172a:	28 bd       	out	0x28, r18	; 40
+    172c:	ff ef       	ldi	r31, 0xFF	; 255
+    172e:	b0 e7       	ldi	r27, 0x70	; 112
+    1730:	e2 e0       	ldi	r30, 0x02	; 2
+    1732:	f1 50       	subi	r31, 0x01	; 1
+    1734:	b0 40       	sbci	r27, 0x00	; 0
+    1736:	e0 40       	sbci	r30, 0x00	; 0
+    1738:	e1 f7       	brne	.-8      	; 0x1732 <__stack+0x12d3>
+    173a:	00 c0       	rjmp	.+0      	; 0x173c <__stack+0x12dd>
+    173c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    173e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    1740:	5b bd       	out	0x2b, r21	; 43
+    1742:	4a bd       	out	0x2a, r20	; 42
+    1744:	ff ef       	ldi	r31, 0xFF	; 255
+    1746:	b0 e7       	ldi	r27, 0x70	; 112
+    1748:	e2 e0       	ldi	r30, 0x02	; 2
+    174a:	f1 50       	subi	r31, 0x01	; 1
+    174c:	b0 40       	sbci	r27, 0x00	; 0
+    174e:	e0 40       	sbci	r30, 0x00	; 0
+    1750:	e1 f7       	brne	.-8      	; 0x174a <__stack+0x12eb>
+    1752:	00 c0       	rjmp	.+0      	; 0x1754 <__stack+0x12f5>
+    1754:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100001;//select L
+    1756:	85 ba       	out	0x15, r8	; 21
+OCR1B=18250;//rotL-90
+    1758:	79 bd       	out	0x29, r23	; 41
+    175a:	68 bd       	out	0x28, r22	; 40
+    175c:	ff ef       	ldi	r31, 0xFF	; 255
+    175e:	b0 e7       	ldi	r27, 0x70	; 112
+    1760:	e2 e0       	ldi	r30, 0x02	; 2
+    1762:	f1 50       	subi	r31, 0x01	; 1
+    1764:	b0 40       	sbci	r27, 0x00	; 0
+    1766:	e0 40       	sbci	r30, 0x00	; 0
+    1768:	e1 f7       	brne	.-8      	; 0x1762 <__stack+0x1303>
+    176a:	00 c0       	rjmp	.+0      	; 0x176c <__stack+0x130d>
+    176c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    176e:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1770:	3b bd       	out	0x2b, r19	; 43
+    1772:	2a bd       	out	0x2a, r18	; 42
+    1774:	ff ef       	ldi	r31, 0xFF	; 255
+    1776:	b0 e7       	ldi	r27, 0x70	; 112
+    1778:	e2 e0       	ldi	r30, 0x02	; 2
+    177a:	f1 50       	subi	r31, 0x01	; 1
+    177c:	b0 40       	sbci	r27, 0x00	; 0
+    177e:	e0 40       	sbci	r30, 0x00	; 0
+    1780:	e1 f7       	brne	.-8      	; 0x177a <__stack+0x131b>
+    1782:	00 c0       	rjmp	.+0      	; 0x1784 <__stack+0x1325>
+    1784:	00 00       	nop
+    1786:	cd c1       	rjmp	.+922    	; 0x1b22 <__stack+0x16c3>
+_delay_ms(100);
+}
+else if(input[z]=='F')
+    1788:	e6 34       	cpi	r30, 0x46	; 70
+    178a:	89 f5       	brne	.+98     	; 0x17ee <__stack+0x138f>
+{
+PORTC=0b00001010;//select F
+    178c:	a5 ba       	out	0x15, r10	; 21
+OCR1A=19150;//rotF-180
+    178e:	3b bd       	out	0x2b, r19	; 43
+    1790:	2a bd       	out	0x2a, r18	; 42
+    1792:	ff ef       	ldi	r31, 0xFF	; 255
+    1794:	b0 e7       	ldi	r27, 0x70	; 112
+    1796:	e2 e0       	ldi	r30, 0x02	; 2
+    1798:	f1 50       	subi	r31, 0x01	; 1
+    179a:	b0 40       	sbci	r27, 0x00	; 0
+    179c:	e0 40       	sbci	r30, 0x00	; 0
+    179e:	e1 f7       	brne	.-8      	; 0x1798 <__stack+0x1339>
+    17a0:	00 c0       	rjmp	.+0      	; 0x17a2 <__stack+0x1343>
+    17a2:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    17a4:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    17a6:	59 bd       	out	0x29, r21	; 41
+    17a8:	48 bd       	out	0x28, r20	; 40
+    17aa:	ff ef       	ldi	r31, 0xFF	; 255
+    17ac:	b0 e7       	ldi	r27, 0x70	; 112
+    17ae:	e2 e0       	ldi	r30, 0x02	; 2
+    17b0:	f1 50       	subi	r31, 0x01	; 1
+    17b2:	b0 40       	sbci	r27, 0x00	; 0
+    17b4:	e0 40       	sbci	r30, 0x00	; 0
+    17b6:	e1 f7       	brne	.-8      	; 0x17b0 <__stack+0x1351>
+    17b8:	00 c0       	rjmp	.+0      	; 0x17ba <__stack+0x135b>
+    17ba:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    17bc:	a5 ba       	out	0x15, r10	; 21
+OCR1A=18250;//rotF-90
+    17be:	7b bd       	out	0x2b, r23	; 43
+    17c0:	6a bd       	out	0x2a, r22	; 42
+    17c2:	ff ef       	ldi	r31, 0xFF	; 255
+    17c4:	b0 e7       	ldi	r27, 0x70	; 112
+    17c6:	e2 e0       	ldi	r30, 0x02	; 2
+    17c8:	f1 50       	subi	r31, 0x01	; 1
+    17ca:	b0 40       	sbci	r27, 0x00	; 0
+    17cc:	e0 40       	sbci	r30, 0x00	; 0
+    17ce:	e1 f7       	brne	.-8      	; 0x17c8 <__stack+0x1369>
+    17d0:	00 c0       	rjmp	.+0      	; 0x17d2 <__stack+0x1373>
+    17d2:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    17d4:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    17d6:	39 bd       	out	0x29, r19	; 41
+    17d8:	28 bd       	out	0x28, r18	; 40
+    17da:	ff ef       	ldi	r31, 0xFF	; 255
+    17dc:	b0 e7       	ldi	r27, 0x70	; 112
+    17de:	e2 e0       	ldi	r30, 0x02	; 2
+    17e0:	f1 50       	subi	r31, 0x01	; 1
+    17e2:	b0 40       	sbci	r27, 0x00	; 0
+    17e4:	e0 40       	sbci	r30, 0x00	; 0
+    17e6:	e1 f7       	brne	.-8      	; 0x17e0 <__stack+0x1381>
+    17e8:	00 c0       	rjmp	.+0      	; 0x17ea <__stack+0x138b>
+    17ea:	00 00       	nop
+    17ec:	9a c1       	rjmp	.+820    	; 0x1b22 <__stack+0x16c3>
+_delay_ms(100);
+}
+else if(input[z]=='B')
+    17ee:	e2 34       	cpi	r30, 0x42	; 66
+    17f0:	89 f5       	brne	.+98     	; 0x1854 <__stack+0x13f5>
+{
+PORTC=0b00010001;//select B
+    17f2:	b5 ba       	out	0x15, r11	; 21
+OCR1B=19150;//rotB-180
+    17f4:	39 bd       	out	0x29, r19	; 41
+    17f6:	28 bd       	out	0x28, r18	; 40
+    17f8:	ff ef       	ldi	r31, 0xFF	; 255
+    17fa:	b0 e7       	ldi	r27, 0x70	; 112
+    17fc:	e2 e0       	ldi	r30, 0x02	; 2
+    17fe:	f1 50       	subi	r31, 0x01	; 1
+    1800:	b0 40       	sbci	r27, 0x00	; 0
+    1802:	e0 40       	sbci	r30, 0x00	; 0
+    1804:	e1 f7       	brne	.-8      	; 0x17fe <__stack+0x139f>
+    1806:	00 c0       	rjmp	.+0      	; 0x1808 <__stack+0x13a9>
+    1808:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    180a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    180c:	59 bd       	out	0x29, r21	; 41
+    180e:	48 bd       	out	0x28, r20	; 40
+    1810:	ff ef       	ldi	r31, 0xFF	; 255
+    1812:	b0 e7       	ldi	r27, 0x70	; 112
+    1814:	e2 e0       	ldi	r30, 0x02	; 2
+    1816:	f1 50       	subi	r31, 0x01	; 1
+    1818:	b0 40       	sbci	r27, 0x00	; 0
+    181a:	e0 40       	sbci	r30, 0x00	; 0
+    181c:	e1 f7       	brne	.-8      	; 0x1816 <__stack+0x13b7>
+    181e:	00 c0       	rjmp	.+0      	; 0x1820 <__stack+0x13c1>
+    1820:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    1822:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+    1824:	79 bd       	out	0x29, r23	; 41
+    1826:	68 bd       	out	0x28, r22	; 40
+    1828:	ff ef       	ldi	r31, 0xFF	; 255
+    182a:	b0 e7       	ldi	r27, 0x70	; 112
+    182c:	e2 e0       	ldi	r30, 0x02	; 2
+    182e:	f1 50       	subi	r31, 0x01	; 1
+    1830:	b0 40       	sbci	r27, 0x00	; 0
+    1832:	e0 40       	sbci	r30, 0x00	; 0
+    1834:	e1 f7       	brne	.-8      	; 0x182e <__stack+0x13cf>
+    1836:	00 c0       	rjmp	.+0      	; 0x1838 <__stack+0x13d9>
+    1838:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    183a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    183c:	39 bd       	out	0x29, r19	; 41
+    183e:	28 bd       	out	0x28, r18	; 40
+    1840:	ff ef       	ldi	r31, 0xFF	; 255
+    1842:	b0 e7       	ldi	r27, 0x70	; 112
+    1844:	e2 e0       	ldi	r30, 0x02	; 2
+    1846:	f1 50       	subi	r31, 0x01	; 1
+    1848:	b0 40       	sbci	r27, 0x00	; 0
+    184a:	e0 40       	sbci	r30, 0x00	; 0
+    184c:	e1 f7       	brne	.-8      	; 0x1846 <__stack+0x13e7>
+    184e:	00 c0       	rjmp	.+0      	; 0x1850 <__stack+0x13f1>
+    1850:	00 00       	nop
+    1852:	67 c1       	rjmp	.+718    	; 0x1b22 <__stack+0x16c3>
+_delay_ms(100);
+}
+else if(input[z]=='U')
+    1854:	e5 35       	cpi	r30, 0x55	; 85
+    1856:	09 f0       	breq	.+2      	; 0x185a <__stack+0x13fb>
+    1858:	b1 c0       	rjmp	.+354    	; 0x19bc <__stack+0x155d>
+{
+PORTC=0b00000001;//select linear FB
+    185a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    185c:	59 bd       	out	0x29, r21	; 41
+    185e:	48 bd       	out	0x28, r20	; 40
+    1860:	ff ef       	ldi	r31, 0xFF	; 255
+    1862:	b0 e7       	ldi	r27, 0x70	; 112
+    1864:	e2 e0       	ldi	r30, 0x02	; 2
+    1866:	f1 50       	subi	r31, 0x01	; 1
+    1868:	b0 40       	sbci	r27, 0x00	; 0
+    186a:	e0 40       	sbci	r30, 0x00	; 0
+    186c:	e1 f7       	brne	.-8      	; 0x1866 <__stack+0x1407>
+    186e:	00 c0       	rjmp	.+0      	; 0x1870 <__stack+0x1411>
+    1870:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1872:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+    1874:	3b bd       	out	0x2b, r19	; 43
+    1876:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+    1878:	59 bd       	out	0x29, r21	; 41
+    187a:	48 bd       	out	0x28, r20	; 40
+    187c:	ff ef       	ldi	r31, 0xFF	; 255
+    187e:	b0 e7       	ldi	r27, 0x70	; 112
+    1880:	e2 e0       	ldi	r30, 0x02	; 2
+    1882:	f1 50       	subi	r31, 0x01	; 1
+    1884:	b0 40       	sbci	r27, 0x00	; 0
+    1886:	e0 40       	sbci	r30, 0x00	; 0
+    1888:	e1 f7       	brne	.-8      	; 0x1882 <__stack+0x1423>
+    188a:	00 c0       	rjmp	.+0      	; 0x188c <__stack+0x142d>
+    188c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    188e:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1890:	39 bd       	out	0x29, r19	; 41
+    1892:	28 bd       	out	0x28, r18	; 40
+    1894:	ff ef       	ldi	r31, 0xFF	; 255
+    1896:	b0 e7       	ldi	r27, 0x70	; 112
+    1898:	e2 e0       	ldi	r30, 0x02	; 2
+    189a:	f1 50       	subi	r31, 0x01	; 1
+    189c:	b0 40       	sbci	r27, 0x00	; 0
+    189e:	e0 40       	sbci	r30, 0x00	; 0
+    18a0:	e1 f7       	brne	.-8      	; 0x189a <__stack+0x143b>
+    18a2:	00 c0       	rjmp	.+0      	; 0x18a4 <__stack+0x1445>
+    18a4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    18a6:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    18a8:	5b bd       	out	0x2b, r21	; 43
+    18aa:	4a bd       	out	0x2a, r20	; 42
+    18ac:	ff ef       	ldi	r31, 0xFF	; 255
+    18ae:	b0 e7       	ldi	r27, 0x70	; 112
+    18b0:	e2 e0       	ldi	r30, 0x02	; 2
+    18b2:	f1 50       	subi	r31, 0x01	; 1
+    18b4:	b0 40       	sbci	r27, 0x00	; 0
+    18b6:	e0 40       	sbci	r30, 0x00	; 0
+    18b8:	e1 f7       	brne	.-8      	; 0x18b2 <__stack+0x1453>
+    18ba:	00 c0       	rjmp	.+0      	; 0x18bc <__stack+0x145d>
+    18bc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    18be:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    18c0:	7b bd       	out	0x2b, r23	; 43
+    18c2:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    18c4:	79 bd       	out	0x29, r23	; 41
+    18c6:	68 bd       	out	0x28, r22	; 40
+    18c8:	ff ef       	ldi	r31, 0xFF	; 255
+    18ca:	b0 e7       	ldi	r27, 0x70	; 112
+    18cc:	e2 e0       	ldi	r30, 0x02	; 2
+    18ce:	f1 50       	subi	r31, 0x01	; 1
+    18d0:	b0 40       	sbci	r27, 0x00	; 0
+    18d2:	e0 40       	sbci	r30, 0x00	; 0
+    18d4:	e1 f7       	brne	.-8      	; 0x18ce <__stack+0x146f>
+    18d6:	00 c0       	rjmp	.+0      	; 0x18d8 <__stack+0x1479>
+    18d8:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    18da:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    18dc:	3b bd       	out	0x2b, r19	; 43
+    18de:	2a bd       	out	0x2a, r18	; 42
+    18e0:	ff ef       	ldi	r31, 0xFF	; 255
+    18e2:	b0 e7       	ldi	r27, 0x70	; 112
+    18e4:	e2 e0       	ldi	r30, 0x02	; 2
+    18e6:	f1 50       	subi	r31, 0x01	; 1
+    18e8:	b0 40       	sbci	r27, 0x00	; 0
+    18ea:	e0 40       	sbci	r30, 0x00	; 0
+    18ec:	e1 f7       	brne	.-8      	; 0x18e6 <__stack+0x1487>
+    18ee:	00 c0       	rjmp	.+0      	; 0x18f0 <__stack+0x1491>
+    18f0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    18f2:	a5 ba       	out	0x15, r10	; 21
+OCR1A=19150;//rotF-180
+    18f4:	3b bd       	out	0x2b, r19	; 43
+    18f6:	2a bd       	out	0x2a, r18	; 42
+    18f8:	ff ef       	ldi	r31, 0xFF	; 255
+    18fa:	b0 e7       	ldi	r27, 0x70	; 112
+    18fc:	e2 e0       	ldi	r30, 0x02	; 2
+    18fe:	f1 50       	subi	r31, 0x01	; 1
+    1900:	b0 40       	sbci	r27, 0x00	; 0
+    1902:	e0 40       	sbci	r30, 0x00	; 0
+    1904:	e1 f7       	brne	.-8      	; 0x18fe <__stack+0x149f>
+    1906:	00 c0       	rjmp	.+0      	; 0x1908 <__stack+0x14a9>
+    1908:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    190a:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    190c:	59 bd       	out	0x29, r21	; 41
+    190e:	48 bd       	out	0x28, r20	; 40
+    1910:	ff ef       	ldi	r31, 0xFF	; 255
+    1912:	b0 e7       	ldi	r27, 0x70	; 112
+    1914:	e2 e0       	ldi	r30, 0x02	; 2
+    1916:	f1 50       	subi	r31, 0x01	; 1
+    1918:	b0 40       	sbci	r27, 0x00	; 0
+    191a:	e0 40       	sbci	r30, 0x00	; 0
+    191c:	e1 f7       	brne	.-8      	; 0x1916 <__stack+0x14b7>
+    191e:	00 c0       	rjmp	.+0      	; 0x1920 <__stack+0x14c1>
+    1920:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    1922:	a5 ba       	out	0x15, r10	; 21
+OCR1A=18250;//rotF-90
+    1924:	7b bd       	out	0x2b, r23	; 43
+    1926:	6a bd       	out	0x2a, r22	; 42
+    1928:	ff ef       	ldi	r31, 0xFF	; 255
+    192a:	b0 e7       	ldi	r27, 0x70	; 112
+    192c:	e2 e0       	ldi	r30, 0x02	; 2
+    192e:	f1 50       	subi	r31, 0x01	; 1
+    1930:	b0 40       	sbci	r27, 0x00	; 0
+    1932:	e0 40       	sbci	r30, 0x00	; 0
+    1934:	e1 f7       	brne	.-8      	; 0x192e <__stack+0x14cf>
+    1936:	00 c0       	rjmp	.+0      	; 0x1938 <__stack+0x14d9>
+    1938:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    193a:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+    193c:	5b bd       	out	0x2b, r21	; 43
+    193e:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+    1940:	39 bd       	out	0x29, r19	; 41
+    1942:	28 bd       	out	0x28, r18	; 40
+    1944:	ff ef       	ldi	r31, 0xFF	; 255
+    1946:	b0 e7       	ldi	r27, 0x70	; 112
+    1948:	e2 e0       	ldi	r30, 0x02	; 2
+    194a:	f1 50       	subi	r31, 0x01	; 1
+    194c:	b0 40       	sbci	r27, 0x00	; 0
+    194e:	e0 40       	sbci	r30, 0x00	; 0
+    1950:	e1 f7       	brne	.-8      	; 0x194a <__stack+0x14eb>
+    1952:	00 c0       	rjmp	.+0      	; 0x1954 <__stack+0x14f5>
+    1954:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1956:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1958:	39 bd       	out	0x29, r19	; 41
+    195a:	28 bd       	out	0x28, r18	; 40
+    195c:	ff ef       	ldi	r31, 0xFF	; 255
+    195e:	b0 e7       	ldi	r27, 0x70	; 112
+    1960:	e2 e0       	ldi	r30, 0x02	; 2
+    1962:	f1 50       	subi	r31, 0x01	; 1
+    1964:	b0 40       	sbci	r27, 0x00	; 0
+    1966:	e0 40       	sbci	r30, 0x00	; 0
+    1968:	e1 f7       	brne	.-8      	; 0x1962 <__stack+0x1503>
+    196a:	00 c0       	rjmp	.+0      	; 0x196c <__stack+0x150d>
+    196c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    196e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    1970:	5b bd       	out	0x2b, r21	; 43
+    1972:	4a bd       	out	0x2a, r20	; 42
+    1974:	ff ef       	ldi	r31, 0xFF	; 255
+    1976:	b0 e7       	ldi	r27, 0x70	; 112
+    1978:	e2 e0       	ldi	r30, 0x02	; 2
+    197a:	f1 50       	subi	r31, 0x01	; 1
+    197c:	b0 40       	sbci	r27, 0x00	; 0
+    197e:	e0 40       	sbci	r30, 0x00	; 0
+    1980:	e1 f7       	brne	.-8      	; 0x197a <__stack+0x151b>
+    1982:	00 c0       	rjmp	.+0      	; 0x1984 <__stack+0x1525>
+    1984:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1986:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1988:	7b bd       	out	0x2b, r23	; 43
+    198a:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    198c:	79 bd       	out	0x29, r23	; 41
+    198e:	68 bd       	out	0x28, r22	; 40
+    1990:	ff ef       	ldi	r31, 0xFF	; 255
+    1992:	b0 e7       	ldi	r27, 0x70	; 112
+    1994:	e2 e0       	ldi	r30, 0x02	; 2
+    1996:	f1 50       	subi	r31, 0x01	; 1
+    1998:	b0 40       	sbci	r27, 0x00	; 0
+    199a:	e0 40       	sbci	r30, 0x00	; 0
+    199c:	e1 f7       	brne	.-8      	; 0x1996 <__stack+0x1537>
+    199e:	00 c0       	rjmp	.+0      	; 0x19a0 <__stack+0x1541>
+    19a0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    19a2:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    19a4:	3b bd       	out	0x2b, r19	; 43
+    19a6:	2a bd       	out	0x2a, r18	; 42
+    19a8:	ff ef       	ldi	r31, 0xFF	; 255
+    19aa:	b0 e7       	ldi	r27, 0x70	; 112
+    19ac:	e2 e0       	ldi	r30, 0x02	; 2
+    19ae:	f1 50       	subi	r31, 0x01	; 1
+    19b0:	b0 40       	sbci	r27, 0x00	; 0
+    19b2:	e0 40       	sbci	r30, 0x00	; 0
+    19b4:	e1 f7       	brne	.-8      	; 0x19ae <__stack+0x154f>
+    19b6:	00 c0       	rjmp	.+0      	; 0x19b8 <__stack+0x1559>
+    19b8:	00 00       	nop
+    19ba:	b3 c0       	rjmp	.+358    	; 0x1b22 <__stack+0x16c3>
+_delay_ms(100);
+}
+else if(input[z]=='D')
+    19bc:	e4 34       	cpi	r30, 0x44	; 68
+    19be:	09 f0       	breq	.+2      	; 0x19c2 <__stack+0x1563>
+    19c0:	b0 c0       	rjmp	.+352    	; 0x1b22 <__stack+0x16c3>
+{
+PORTC=0b00000001;//select linear FB
+    19c2:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    19c4:	59 bd       	out	0x29, r21	; 41
+    19c6:	48 bd       	out	0x28, r20	; 40
+    19c8:	ff ef       	ldi	r31, 0xFF	; 255
+    19ca:	b0 e7       	ldi	r27, 0x70	; 112
+    19cc:	e2 e0       	ldi	r30, 0x02	; 2
+    19ce:	f1 50       	subi	r31, 0x01	; 1
+    19d0:	b0 40       	sbci	r27, 0x00	; 0
+    19d2:	e0 40       	sbci	r30, 0x00	; 0
+    19d4:	e1 f7       	brne	.-8      	; 0x19ce <__stack+0x156f>
+    19d6:	00 c0       	rjmp	.+0      	; 0x19d8 <__stack+0x1579>
+    19d8:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    19da:	c5 ba       	out	0x15, r12	; 21
+OCR1A=19150;//rotR-180
+    19dc:	3b bd       	out	0x2b, r19	; 43
+    19de:	2a bd       	out	0x2a, r18	; 42
+OCR1B=17200;//rotL-0
+    19e0:	59 bd       	out	0x29, r21	; 41
+    19e2:	48 bd       	out	0x28, r20	; 40
+    19e4:	ff ef       	ldi	r31, 0xFF	; 255
+    19e6:	b0 e7       	ldi	r27, 0x70	; 112
+    19e8:	e2 e0       	ldi	r30, 0x02	; 2
+    19ea:	f1 50       	subi	r31, 0x01	; 1
+    19ec:	b0 40       	sbci	r27, 0x00	; 0
+    19ee:	e0 40       	sbci	r30, 0x00	; 0
+    19f0:	e1 f7       	brne	.-8      	; 0x19ea <__stack+0x158b>
+    19f2:	00 c0       	rjmp	.+0      	; 0x19f4 <__stack+0x1595>
+    19f4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    19f6:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    19f8:	39 bd       	out	0x29, r19	; 41
+    19fa:	28 bd       	out	0x28, r18	; 40
+    19fc:	ff ef       	ldi	r31, 0xFF	; 255
+    19fe:	b0 e7       	ldi	r27, 0x70	; 112
+    1a00:	e2 e0       	ldi	r30, 0x02	; 2
+    1a02:	f1 50       	subi	r31, 0x01	; 1
+    1a04:	b0 40       	sbci	r27, 0x00	; 0
+    1a06:	e0 40       	sbci	r30, 0x00	; 0
+    1a08:	e1 f7       	brne	.-8      	; 0x1a02 <__stack+0x15a3>
+    1a0a:	00 c0       	rjmp	.+0      	; 0x1a0c <__stack+0x15ad>
+    1a0c:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    1a0e:	75 ba       	out	0x15, r7	; 21
+OCR1A=17200;//linRL-0
+    1a10:	5b bd       	out	0x2b, r21	; 43
+    1a12:	4a bd       	out	0x2a, r20	; 42
+    1a14:	ff ef       	ldi	r31, 0xFF	; 255
+    1a16:	b0 e7       	ldi	r27, 0x70	; 112
+    1a18:	e2 e0       	ldi	r30, 0x02	; 2
+    1a1a:	f1 50       	subi	r31, 0x01	; 1
+    1a1c:	b0 40       	sbci	r27, 0x00	; 0
+    1a1e:	e0 40       	sbci	r30, 0x00	; 0
+    1a20:	e1 f7       	brne	.-8      	; 0x1a1a <__stack+0x15bb>
+    1a22:	00 c0       	rjmp	.+0      	; 0x1a24 <__stack+0x15c5>
+    1a24:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1a26:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1a28:	7b bd       	out	0x2b, r23	; 43
+    1a2a:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    1a2c:	79 bd       	out	0x29, r23	; 41
+    1a2e:	68 bd       	out	0x28, r22	; 40
+    1a30:	ff ef       	ldi	r31, 0xFF	; 255
+    1a32:	b0 e7       	ldi	r27, 0x70	; 112
+    1a34:	e2 e0       	ldi	r30, 0x02	; 2
+    1a36:	f1 50       	subi	r31, 0x01	; 1
+    1a38:	b0 40       	sbci	r27, 0x00	; 0
+    1a3a:	e0 40       	sbci	r30, 0x00	; 0
+    1a3c:	e1 f7       	brne	.-8      	; 0x1a36 <__stack+0x15d7>
+    1a3e:	00 c0       	rjmp	.+0      	; 0x1a40 <__stack+0x15e1>
+    1a40:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    1a42:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1a44:	3b bd       	out	0x2b, r19	; 43
+    1a46:	2a bd       	out	0x2a, r18	; 42
+    1a48:	ff ef       	ldi	r31, 0xFF	; 255
+    1a4a:	b0 e7       	ldi	r27, 0x70	; 112
+    1a4c:	e2 e0       	ldi	r30, 0x02	; 2
+    1a4e:	f1 50       	subi	r31, 0x01	; 1
+    1a50:	b0 40       	sbci	r27, 0x00	; 0
+    1a52:	e0 40       	sbci	r30, 0x00	; 0
+    1a54:	e1 f7       	brne	.-8      	; 0x1a4e <__stack+0x15ef>
+    1a56:	00 c0       	rjmp	.+0      	; 0x1a58 <__stack+0x15f9>
+    1a58:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    1a5a:	b5 ba       	out	0x15, r11	; 21
+OCR1B=19150;//rotB-180
+    1a5c:	39 bd       	out	0x29, r19	; 41
+    1a5e:	28 bd       	out	0x28, r18	; 40
+    1a60:	ff ef       	ldi	r31, 0xFF	; 255
+    1a62:	b0 e7       	ldi	r27, 0x70	; 112
+    1a64:	e2 e0       	ldi	r30, 0x02	; 2
+    1a66:	f1 50       	subi	r31, 0x01	; 1
+    1a68:	b0 40       	sbci	r27, 0x00	; 0
+    1a6a:	e0 40       	sbci	r30, 0x00	; 0
+    1a6c:	e1 f7       	brne	.-8      	; 0x1a66 <__stack+0x1607>
+    1a6e:	00 c0       	rjmp	.+0      	; 0x1a70 <__stack+0x1611>
+    1a70:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1a72:	a5 bb       	out	0x15, r26	; 21
+OCR1B=17200;//linFB-0
+    1a74:	59 bd       	out	0x29, r21	; 41
+    1a76:	48 bd       	out	0x28, r20	; 40
+    1a78:	ff ef       	ldi	r31, 0xFF	; 255
+    1a7a:	b0 e7       	ldi	r27, 0x70	; 112
+    1a7c:	e2 e0       	ldi	r30, 0x02	; 2
+    1a7e:	f1 50       	subi	r31, 0x01	; 1
+    1a80:	b0 40       	sbci	r27, 0x00	; 0
+    1a82:	e0 40       	sbci	r30, 0x00	; 0
+    1a84:	e1 f7       	brne	.-8      	; 0x1a7e <__stack+0x161f>
+    1a86:	00 c0       	rjmp	.+0      	; 0x1a88 <__stack+0x1629>
+    1a88:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    1a8a:	b5 ba       	out	0x15, r11	; 21
+OCR1B=18250;//rotB-90
+    1a8c:	79 bd       	out	0x29, r23	; 41
+    1a8e:	68 bd       	out	0x28, r22	; 40
+    1a90:	ff ef       	ldi	r31, 0xFF	; 255
+    1a92:	b0 e7       	ldi	r27, 0x70	; 112
+    1a94:	e2 e0       	ldi	r30, 0x02	; 2
+    1a96:	f1 50       	subi	r31, 0x01	; 1
+    1a98:	b0 40       	sbci	r27, 0x00	; 0
+    1a9a:	e0 40       	sbci	r30, 0x00	; 0
+    1a9c:	e1 f7       	brne	.-8      	; 0x1a96 <__stack+0x1637>
+    1a9e:	00 c0       	rjmp	.+0      	; 0x1aa0 <__stack+0x1641>
+    1aa0:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1aa2:	c5 ba       	out	0x15, r12	; 21
+OCR1A=17200;//rotR-0
+    1aa4:	5b bd       	out	0x2b, r21	; 43
+    1aa6:	4a bd       	out	0x2a, r20	; 42
+OCR1B=19150;//rotL-180
+    1aa8:	39 bd       	out	0x29, r19	; 41
+    1aaa:	28 bd       	out	0x28, r18	; 40
+    1aac:	ff ef       	ldi	r31, 0xFF	; 255
+    1aae:	b0 e7       	ldi	r27, 0x70	; 112
+    1ab0:	e2 e0       	ldi	r30, 0x02	; 2
+    1ab2:	f1 50       	subi	r31, 0x01	; 1
+    1ab4:	b0 40       	sbci	r27, 0x00	; 0
+    1ab6:	e0 40       	sbci	r30, 0x00	; 0
+    1ab8:	e1 f7       	brne	.-8      	; 0x1ab2 <__stack+0x1653>
+    1aba:	00 c0       	rjmp	.+0      	; 0x1abc <__stack+0x165d>
+    1abc:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+    1abe:	a5 bb       	out	0x15, r26	; 21
+OCR1B=19150;//linFB-180
+    1ac0:	39 bd       	out	0x29, r19	; 41
+    1ac2:	28 bd       	out	0x28, r18	; 40
+    1ac4:	ff ef       	ldi	r31, 0xFF	; 255
+    1ac6:	b0 e7       	ldi	r27, 0x70	; 112
+    1ac8:	e2 e0       	ldi	r30, 0x02	; 2
+    1aca:	f1 50       	subi	r31, 0x01	; 1
+    1acc:	b0 40       	sbci	r27, 0x00	; 0
+    1ace:	e0 40       	sbci	r30, 0x00	; 0
+    1ad0:	e1 f7       	brne	.-8      	; 0x1aca <__stack+0x166b>
+    1ad2:	00 c0       	rjmp	.+0      	; 0x1ad4 <__stack+0x1675>
+    1ad4:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001100;//select linear RL
+    1ad6:	95 ba       	out	0x15, r9	; 21
+OCR1A=17200;//linRL-0
+    1ad8:	5b bd       	out	0x2b, r21	; 43
+    1ada:	4a bd       	out	0x2a, r20	; 42
+    1adc:	ff ef       	ldi	r31, 0xFF	; 255
+    1ade:	b0 e7       	ldi	r27, 0x70	; 112
+    1ae0:	e2 e0       	ldi	r30, 0x02	; 2
+    1ae2:	f1 50       	subi	r31, 0x01	; 1
+    1ae4:	b0 40       	sbci	r27, 0x00	; 0
+    1ae6:	e0 40       	sbci	r30, 0x00	; 0
+    1ae8:	e1 f7       	brne	.-8      	; 0x1ae2 <__stack+0x1683>
+    1aea:	00 c0       	rjmp	.+0      	; 0x1aec <__stack+0x168d>
+    1aec:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1aee:	c5 ba       	out	0x15, r12	; 21
+OCR1A=18250;//rotR-90
+    1af0:	7b bd       	out	0x2b, r23	; 43
+    1af2:	6a bd       	out	0x2a, r22	; 42
+OCR1B=18250;//rotL-90
+    1af4:	79 bd       	out	0x29, r23	; 41
+    1af6:	68 bd       	out	0x28, r22	; 40
+    1af8:	ff ef       	ldi	r31, 0xFF	; 255
+    1afa:	b0 e7       	ldi	r27, 0x70	; 112
+    1afc:	e2 e0       	ldi	r30, 0x02	; 2
+    1afe:	f1 50       	subi	r31, 0x01	; 1
+    1b00:	b0 40       	sbci	r27, 0x00	; 0
+    1b02:	e0 40       	sbci	r30, 0x00	; 0
+    1b04:	e1 f7       	brne	.-8      	; 0x1afe <__stack+0x169f>
+    1b06:	00 c0       	rjmp	.+0      	; 0x1b08 <__stack+0x16a9>
+    1b08:	00 00       	nop
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    1b0a:	75 ba       	out	0x15, r7	; 21
+OCR1A=19150;//linRL-180
+    1b0c:	3b bd       	out	0x2b, r19	; 43
+    1b0e:	2a bd       	out	0x2a, r18	; 42
+    1b10:	ff ef       	ldi	r31, 0xFF	; 255
+    1b12:	b0 e7       	ldi	r27, 0x70	; 112
+    1b14:	e2 e0       	ldi	r30, 0x02	; 2
+    1b16:	f1 50       	subi	r31, 0x01	; 1
+    1b18:	b0 40       	sbci	r27, 0x00	; 0
+    1b1a:	e0 40       	sbci	r30, 0x00	; 0
+    1b1c:	e1 f7       	brne	.-8      	; 0x1b16 <__stack+0x16b7>
+    1b1e:	00 c0       	rjmp	.+0      	; 0x1b20 <__stack+0x16c1>
+    1b20:	00 00       	nop
+_delay_ms(100);
+}
+
+z+=2;
+    1b22:	f2 e0       	ldi	r31, 0x02	; 2
+    1b24:	4f 0e       	add	r4, r31
+    1b26:	51 1c       	adc	r5, r1
+}
+z++;
+    1b28:	bf ef       	ldi	r27, 0xFF	; 255
+    1b2a:	4b 1a       	sub	r4, r27
+    1b2c:	5b 0a       	sbc	r5, r27
+		}
+//*******************************************************************************************//solve cube
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//now code for solving the cube //solution is char input [100]
+		
+while(input[z]!='.')
+    1b2e:	e1 e0       	ldi	r30, 0x01	; 1
+    1b30:	f0 e0       	ldi	r31, 0x00	; 0
+    1b32:	ec 0f       	add	r30, r28
+    1b34:	fd 1f       	adc	r31, r29
+    1b36:	e4 0d       	add	r30, r4
+    1b38:	f5 1d       	adc	r31, r5
+    1b3a:	d0 80       	ld	r13, Z
+    1b3c:	ee e2       	ldi	r30, 0x2E	; 46
+    1b3e:	de 16       	cp	r13, r30
+    1b40:	b1 f1       	breq	.+108    	; 0x1bae <__stack+0x174f>
+    1b42:	78 01       	movw	r14, r16
+    1b44:	20 c0       	rjmp	.+64     	; 0x1b86 <__stack+0x1727>
+OCR1A=19150;//linRL-180
+_delay_ms(100);
+}
+else if(input[z]=='D')
+{
+PORTC=0b00000001;//select linear FB
+    1b46:	a1 e0       	ldi	r26, 0x01	; 1
+OCR1B=17200;//linFB-0
+    1b48:	40 e3       	ldi	r20, 0x30	; 48
+    1b4a:	53 e4       	ldi	r21, 0x43	; 67
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+    1b4c:	0f 2e       	mov	r0, r31
+    1b4e:	f4 e2       	ldi	r31, 0x24	; 36
+    1b50:	cf 2e       	mov	r12, r31
+    1b52:	f0 2d       	mov	r31, r0
+OCR1A=19150;//rotR-180
+    1b54:	2e ec       	ldi	r18, 0xCE	; 206
+    1b56:	3a e4       	ldi	r19, 0x4A	; 74
+OCR1B=17200;//rotL-0
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+OCR1B=19150;//linFB-180
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+    1b58:	68 94       	set
+    1b5a:	77 24       	eor	r7, r7
+    1b5c:	73 f8       	bld	r7, 3
+OCR1A=17200;//linRL-0
+_delay_ms(100);
+PORTC=0b00100100;//select R and L
+OCR1A=18250;//rotR-90
+    1b5e:	6a e4       	ldi	r22, 0x4A	; 74
+    1b60:	77 e4       	ldi	r23, 0x47	; 71
+OCR1B=18250;//rotL-90
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+OCR1A=19150;//linRL-180
+_delay_ms(100);
+PORTC=0b00010001;//select B
+    1b62:	0f 2e       	mov	r0, r31
+    1b64:	f1 e1       	ldi	r31, 0x11	; 17
+    1b66:	bf 2e       	mov	r11, r31
+    1b68:	f0 2d       	mov	r31, r0
+OCR1B=19150;//rotL-180
+_delay_ms(100);
+PORTC=0b00000001;//select linear FB
+OCR1B=19150;//linFB-180
+_delay_ms(100);
+PORTC=0b00001100;//select linear RL
+    1b6a:	0f 2e       	mov	r0, r31
+    1b6c:	fc e0       	ldi	r31, 0x0C	; 12
+    1b6e:	9f 2e       	mov	r9, r31
+    1b70:	f0 2d       	mov	r31, r0
+OCR1B=18250;//rotL-90
+_delay_ms(100);
+PORTC=0b00001000;//select linear RL
+OCR1A=19150;//linRL-180
+_delay_ms(100);
+PORTC=0b00001010;//select F
+    1b72:	0f 2e       	mov	r0, r31
+    1b74:	fa e0       	ldi	r31, 0x0A	; 10
+    1b76:	af 2e       	mov	r10, r31
+    1b78:	f0 2d       	mov	r31, r0
+OCR1A=19150;//linRL-180
+_delay_ms(100);
+}
+else if(input[z]=='L')
+{
+PORTC=0b00100001;//select L
+    1b7a:	0f 2e       	mov	r0, r31
+    1b7c:	f1 e2       	ldi	r31, 0x21	; 33
+    1b7e:	8f 2e       	mov	r8, r31
+    1b80:	f0 2d       	mov	r31, r0
+    1b82:	c2 01       	movw	r24, r4
+    1b84:	21 01       	movw	r4, r2
+//now code for solving the cube //solution is char input [100]
+		
+while(input[z]!='.')
+{
+
+while(input[j]!=' ')
+    1b86:	e1 e0       	ldi	r30, 0x01	; 1
+    1b88:	f0 e0       	ldi	r31, 0x00	; 0
+    1b8a:	ec 0f       	add	r30, r28
+    1b8c:	fd 1f       	adc	r31, r29
+    1b8e:	e8 0f       	add	r30, r24
+    1b90:	f9 1f       	adc	r31, r25
+    1b92:	e0 81       	ld	r30, Z
+    1b94:	e0 32       	cpi	r30, 0x20	; 32
+    1b96:	09 f4       	brne	.+2      	; 0x1b9a <__stack+0x173b>
+    1b98:	22 c8       	rjmp	.-4028   	; 0xbde <__stack+0x77f>
+    1b9a:	1c 01       	movw	r2, r24
+    1b9c:	01 96       	adiw	r24, 0x01	; 1
+    1b9e:	e1 e0       	ldi	r30, 0x01	; 1
+    1ba0:	f0 e0       	ldi	r31, 0x00	; 0
+    1ba2:	ec 0f       	add	r30, r28
+    1ba4:	fd 1f       	adc	r31, r29
+    1ba6:	e8 0f       	add	r30, r24
+    1ba8:	f9 1f       	adc	r31, r25
+    1baa:	87 01       	movw	r16, r14
+    1bac:	0d c8       	rjmp	.-4070   	; 0xbc8 <__stack+0x769>
+    1bae:	12 01       	movw	r2, r4
+    1bb0:	2c 01       	movw	r4, r24
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		
+//*******************************************************************************************//done
+	uart_string("Done\n");
+    1bb2:	8a ee       	ldi	r24, 0xEA	; 234
+    1bb4:	90 e0       	ldi	r25, 0x00	; 0
+    1bb6:	70 d2       	rcall	.+1248   	; 0x2098 <__data_load_end+0x3e8>
+	}
+    1bb8:	78 01       	movw	r14, r16
+    1bba:	15 c3       	rjmp	.+1578   	; 0x21e6 <__data_load_end+0x536>
+
+00001bbc <__divmodhi4>:
+    1bbc:	97 fb       	bst	r25, 7
+    1bbe:	07 2e       	mov	r0, r23
+    1bc0:	16 f4       	brtc	.+4      	; 0x1bc6 <__divmodhi4+0xa>
+    1bc2:	00 94       	com	r0
+    1bc4:	06 d0       	rcall	.+12     	; 0x1bd2 <__divmodhi4_neg1>
+    1bc6:	77 fd       	sbrc	r23, 7
+    1bc8:	08 d0       	rcall	.+16     	; 0x1bda <__divmodhi4_neg2>
+    1bca:	0b d0       	rcall	.+22     	; 0x1be2 <__udivmodhi4>
+    1bcc:	07 fc       	sbrc	r0, 7
+    1bce:	05 d0       	rcall	.+10     	; 0x1bda <__divmodhi4_neg2>
+    1bd0:	3e f4       	brtc	.+14     	; 0x1be0 <__divmodhi4_exit>
+
+00001bd2 <__divmodhi4_neg1>:
+    1bd2:	90 95       	com	r25
+    1bd4:	81 95       	neg	r24
+    1bd6:	9f 4f       	sbci	r25, 0xFF	; 255
+    1bd8:	08 95       	ret
+
+00001bda <__divmodhi4_neg2>:
+    1bda:	70 95       	com	r23
+    1bdc:	61 95       	neg	r22
+    1bde:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00001be0 <__divmodhi4_exit>:
+    1be0:	08 95       	ret
+
+00001be2 <__udivmodhi4>:
+    1be2:	aa 1b       	sub	r26, r26
+    1be4:	bb 1b       	sub	r27, r27
+    1be6:	51 e1       	ldi	r21, 0x11	; 17
+    1be8:	07 c0       	rjmp	.+14     	; 0x1bf8 <__udivmodhi4_ep>
+
+00001bea <__udivmodhi4_loop>:
+    1bea:	aa 1f       	adc	r26, r26
+    1bec:	bb 1f       	adc	r27, r27
+    1bee:	a6 17       	cp	r26, r22
+    1bf0:	b7 07       	cpc	r27, r23
+    1bf2:	10 f0       	brcs	.+4      	; 0x1bf8 <__udivmodhi4_ep>
+    1bf4:	a6 1b       	sub	r26, r22
+    1bf6:	b7 0b       	sbc	r27, r23
+
+00001bf8 <__udivmodhi4_ep>:
+    1bf8:	88 1f       	adc	r24, r24
+    1bfa:	99 1f       	adc	r25, r25
+    1bfc:	5a 95       	dec	r21
+    1bfe:	a9 f7       	brne	.-22     	; 0x1bea <__udivmodhi4_loop>
+    1c00:	80 95       	com	r24
+    1c02:	90 95       	com	r25
+    1c04:	bc 01       	movw	r22, r24
+    1c06:	cd 01       	movw	r24, r26
+    1c08:	08 95       	ret
+
+00001c0a <strcmp>:
+    1c0a:	fb 01       	movw	r30, r22
+    1c0c:	dc 01       	movw	r26, r24
+    1c0e:	8d 91       	ld	r24, X+
+    1c10:	01 90       	ld	r0, Z+
+    1c12:	80 19       	sub	r24, r0
+    1c14:	01 10       	cpse	r0, r1
+    1c16:	d9 f3       	breq	.-10     	; 0x1c0e <strcmp+0x4>
+    1c18:	99 0b       	sbc	r25, r25
+    1c1a:	08 95       	ret
+
+00001c1c <_exit>:
+    1c1c:	f8 94       	cli
+
+00001c1e <__stop_program>:
+    1c1e:	ff cf       	rjmp	.-2      	; 0x1c1e <__stop_program>

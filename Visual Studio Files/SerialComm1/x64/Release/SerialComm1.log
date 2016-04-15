@@ -1,0 +1,33 @@
+﻿Build started 3/24/2016 12:40:41 PM.
+     1>Project "C:\Users\DELL\Documents\Visual Studio 2013\Projects\SerialComm1\SerialComm1\SerialComm1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\x86\vc12\..\..\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /O2 /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(990): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(991): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>MyForm.cpp(10): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+     1>c:\opencv\build\include\opencv2\core\cvstd.hpp(592): warning C4793: 'cv::String::String' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\mat.inl.hpp(381): warning C4793: 'cv::Mat::Mat' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\mat.inl.hpp(666): warning C4793: 'cv::Mat::release' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\mat.inl.hpp(1703): warning C4793: 'cv::SparseMat::addref' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\mat.inl.hpp(3304): warning C4793: 'cv::UMat::addref' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\ptr.inl.hpp(67): warning C4793: 'cv::detail::PtrOwner::incRef' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+     1>c:\opencv\build\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef' : function compiled as native :
+         	Found an intrinsic not supported in managed code
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\x86\vc12\..\..\include /Zi /clr /nologo /W3 /WX- /O2 /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /TP /errorReport:prompt "C:\Users\DELL\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DELL\Documents\Visual Studio 2013\Projects\SerialComm1\x64\Release\SerialComm1.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x86\vc12\lib opencv_ts300.lib opencv_world300.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:x64\Release\SerialComm1.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\DELL\Documents\Visual Studio 2013\Projects\SerialComm1\x64\Release\SerialComm1.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X64 x64\Release\MyForm.obj
+         "x64\Release\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+     1>opencv_ts300.lib(opencv_ts_pch.obj) : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+     1>Done Building Project "C:\Users\DELL\Documents\Visual Studio 2013\Projects\SerialComm1\SerialComm1\SerialComm1.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:15.15

@@ -1,12 +1,13 @@
-﻿Build started 3/20/2016 1:33:47 AM.
+﻿Build started 4/15/2016 7:16:10 PM.
      1>Project "C:\Users\DELL\Documents\Visual Studio 2013\Projects\SerialComm1\SerialComm1\SerialComm1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\opencv\build\x86\vc12\..\..\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
          MyForm.cpp
-     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(869): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(991): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(1020): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(1128): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(860): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(979): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(1005): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(1093): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dell\documents\visual studio 2013\projects\serialcomm1\serialcomm1\MyForm.h(1536): warning C4102: 'labelA' : unreferenced label
      1>MyForm.cpp(10): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
      1>c:\opencv\build\include\opencv2\core\cvstd.hpp(592): warning C4793: 'cv::String::String' : function compiled as native :
          	Found an intrinsic not supported in managed code
@@ -34,4 +35,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:09.53
+Time Elapsed 00:00:06.05

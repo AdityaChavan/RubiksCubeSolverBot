@@ -115,27 +115,35 @@ namespace SerialComm1 {
 	private: System::Windows::Forms::Button^  button7;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
 	private: System::Windows::Forms::Button^  button8;
-	private: System::Windows::Forms::TrackBar^  trackBar1;
+
 	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::TrackBar^  trackBar2;
-	private: System::Windows::Forms::TrackBar^  trackBar3;
-	private: System::Windows::Forms::Label^  label6;
-	private: System::Windows::Forms::Label^  label7;
+
+
+
+
+
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label9;
 
 	private: System::Windows::Forms::Button^  button9;
-	public: System::Windows::Forms::Timer^  timer1;
+
 	private:
 
-	private: System::Windows::Forms::Label^  timerlabel;
+
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Button^  button10;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker2;
 	private: System::Windows::Forms::Button^  button11;
 	private: System::Windows::Forms::Button^  button12;
+	private: System::Windows::Forms::Button^  button13;
+	private: System::Windows::Forms::Button^  button14;
+	private: System::Windows::Forms::Button^  button15;
+	private: System::Windows::Forms::Button^  button16;
+	private: System::Windows::Forms::Button^  button17;
+	private: System::Windows::Forms::Button^  button18;
+	private: System::Windows::Forms::Button^  button19;
+
 
 
 
@@ -174,33 +182,29 @@ namespace SerialComm1 {
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->button9 = (gcnew System::Windows::Forms::Button());
-			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timerlabel = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->backgroundWorker2 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->button12 = (gcnew System::Windows::Forms::Button());
+			this->button13 = (gcnew System::Windows::Forms::Button());
+			this->button14 = (gcnew System::Windows::Forms::Button());
+			this->button15 = (gcnew System::Windows::Forms::Button());
+			this->button16 = (gcnew System::Windows::Forms::Button());
+			this->button17 = (gcnew System::Windows::Forms::Button());
+			this->button18 = (gcnew System::Windows::Forms::Button());
+			this->button19 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// serialPort1
 			// 
-			this->serialPort1->ReadTimeout = 10000;
+			this->serialPort1->ReadTimeout = 3000;
 			// 
 			// comboBox1
 			// 
@@ -244,9 +248,9 @@ namespace SerialComm1 {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(26, 231);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(78, 13);
+			this->label2->Size = System::Drawing::Size(81, 13);
 			this->label2->TabIndex = 5;
-			this->label2->Text = L"Manual Conrol:";
+			this->label2->Text = L"Manual Control:";
 			// 
 			// button3
 			// 
@@ -330,21 +334,9 @@ namespace SerialComm1 {
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(83, 63);
 			this->button8->TabIndex = 14;
-			this->button8->Text = L"Send";
+			this->button8->Text = L"Solve";
 			this->button8->UseVisualStyleBackColor = true;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
-			// 
-			// trackBar1
-			// 
-			this->trackBar1->Location = System::Drawing::Point(848, 16);
-			this->trackBar1->Maximum = 40;
-			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar1->Size = System::Drawing::Size(45, 219);
-			this->trackBar1->SmallChange = 10;
-			this->trackBar1->TabIndex = 1;
-			this->trackBar1->Value = 5;
-			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			// 
 			// label4
 			// 
@@ -354,60 +346,6 @@ namespace SerialComm1 {
 			this->label4->Size = System::Drawing::Size(10, 13);
 			this->label4->TabIndex = 15;
 			this->label4->Text = L" ";
-			this->label4->Click += gcnew System::EventHandler(this, &MyForm::label4_Click);
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(841, 244);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(41, 13);
-			this->label5->TabIndex = 16;
-			this->label5->Text = L"Red-Or";
-			this->label5->Click += gcnew System::EventHandler(this, &MyForm::label5_Click);
-			// 
-			// trackBar2
-			// 
-			this->trackBar2->Location = System::Drawing::Point(895, 16);
-			this->trackBar2->Maximum = 300;
-			this->trackBar2->Name = L"trackBar2";
-			this->trackBar2->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar2->Size = System::Drawing::Size(45, 219);
-			this->trackBar2->SmallChange = 10;
-			this->trackBar2->TabIndex = 17;
-			this->trackBar2->Value = 115;
-			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar2_Scroll);
-			// 
-			// trackBar3
-			// 
-			this->trackBar3->Location = System::Drawing::Point(940, 16);
-			this->trackBar3->Maximum = 300;
-			this->trackBar3->Name = L"trackBar3";
-			this->trackBar3->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar3->Size = System::Drawing::Size(45, 219);
-			this->trackBar3->SmallChange = 10;
-			this->trackBar3->TabIndex = 18;
-			this->trackBar3->Value = 100;
-			this->trackBar3->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar3_Scroll);
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(888, 244);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(52, 13);
-			this->label6->TabIndex = 19;
-			this->label6->Text = L"Yellow-Gr";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(944, 244);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(48, 13);
-			this->label7->TabIndex = 20;
-			this->label7->Text = L"Blue-Wh";
-			this->label7->Click += gcnew System::EventHandler(this, &MyForm::label7_Click);
 			// 
 			// label8
 			// 
@@ -437,22 +375,6 @@ namespace SerialComm1 {
 			this->button9->Text = L"Clear";
 			this->button9->UseVisualStyleBackColor = true;
 			this->button9->Click += gcnew System::EventHandler(this, &MyForm::button9_Click);
-			// 
-			// timer1
-			// 
-			this->timer1->Interval = 1;
-			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
-			// 
-			// timerlabel
-			// 
-			this->timerlabel->AutoSize = true;
-			this->timerlabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->timerlabel->Location = System::Drawing::Point(838, 270);
-			this->timerlabel->Name = L"timerlabel";
-			this->timerlabel->Size = System::Drawing::Size(150, 55);
-			this->timerlabel->TabIndex = 24;
-			this->timerlabel->Text = L"00.00";
 			// 
 			// label1
 			// 
@@ -490,6 +412,7 @@ namespace SerialComm1 {
 			this->backgroundWorker2->WorkerReportsProgress = true;
 			this->backgroundWorker2->WorkerSupportsCancellation = true;
 			this->backgroundWorker2->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &MyForm::backgroundWorker2_DoWork);
+			this->backgroundWorker2->ProgressChanged += gcnew System::ComponentModel::ProgressChangedEventHandler(this, &MyForm::backgroundWorker2_ProgressChanged);
 			// 
 			// button11
 			// 
@@ -511,27 +434,97 @@ namespace SerialComm1 {
 			this->button12->UseVisualStyleBackColor = true;
 			this->button12->Click += gcnew System::EventHandler(this, &MyForm::button12_Click);
 			// 
+			// button13
+			// 
+			this->button13->Location = System::Drawing::Point(848, 50);
+			this->button13->Name = L"button13";
+			this->button13->Size = System::Drawing::Size(137, 23);
+			this->button13->TabIndex = 30;
+			this->button13->Text = L"Start";
+			this->button13->UseVisualStyleBackColor = true;
+			this->button13->Click += gcnew System::EventHandler(this, &MyForm::button13_Click);
+			// 
+			// button14
+			// 
+			this->button14->Location = System::Drawing::Point(848, 90);
+			this->button14->Name = L"button14";
+			this->button14->Size = System::Drawing::Size(137, 23);
+			this->button14->TabIndex = 31;
+			this->button14->Text = L"Right";
+			this->button14->UseVisualStyleBackColor = true;
+			this->button14->Click += gcnew System::EventHandler(this, &MyForm::button14_Click);
+			// 
+			// button15
+			// 
+			this->button15->Location = System::Drawing::Point(848, 130);
+			this->button15->Name = L"button15";
+			this->button15->Size = System::Drawing::Size(137, 23);
+			this->button15->TabIndex = 32;
+			this->button15->Text = L"Front";
+			this->button15->UseVisualStyleBackColor = true;
+			this->button15->Click += gcnew System::EventHandler(this, &MyForm::button15_Click);
+			// 
+			// button16
+			// 
+			this->button16->Location = System::Drawing::Point(848, 170);
+			this->button16->Name = L"button16";
+			this->button16->Size = System::Drawing::Size(137, 23);
+			this->button16->TabIndex = 33;
+			this->button16->Text = L"Down";
+			this->button16->UseVisualStyleBackColor = true;
+			this->button16->Click += gcnew System::EventHandler(this, &MyForm::button16_Click);
+			// 
+			// button17
+			// 
+			this->button17->Location = System::Drawing::Point(848, 210);
+			this->button17->Name = L"button17";
+			this->button17->Size = System::Drawing::Size(137, 23);
+			this->button17->TabIndex = 34;
+			this->button17->Text = L"Left";
+			this->button17->UseVisualStyleBackColor = true;
+			this->button17->Click += gcnew System::EventHandler(this, &MyForm::button17_Click);
+			// 
+			// button18
+			// 
+			this->button18->Location = System::Drawing::Point(848, 250);
+			this->button18->Name = L"button18";
+			this->button18->Size = System::Drawing::Size(137, 23);
+			this->button18->TabIndex = 35;
+			this->button18->Text = L"Back";
+			this->button18->UseVisualStyleBackColor = true;
+			this->button18->Click += gcnew System::EventHandler(this, &MyForm::button18_Click);
+			// 
+			// button19
+			// 
+			this->button19->Location = System::Drawing::Point(848, 290);
+			this->button19->Name = L"button19";
+			this->button19->Size = System::Drawing::Size(137, 23);
+			this->button19->TabIndex = 36;
+			this->button19->Text = L"Send";
+			this->button19->UseVisualStyleBackColor = true;
+			this->button19->Click += gcnew System::EventHandler(this, &MyForm::button19_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1004, 434);
+			this->ClientSize = System::Drawing::Size(1004, 433);
+			this->Controls->Add(this->button19);
+			this->Controls->Add(this->button18);
+			this->Controls->Add(this->button17);
+			this->Controls->Add(this->button16);
+			this->Controls->Add(this->button15);
+			this->Controls->Add(this->button14);
+			this->Controls->Add(this->button13);
 			this->Controls->Add(this->button12);
 			this->Controls->Add(this->button11);
 			this->Controls->Add(this->button10);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->timerlabel);
 			this->Controls->Add(this->button9);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->label7);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->trackBar3);
-			this->Controls->Add(this->trackBar2);
-			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->button8);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button5);
@@ -550,9 +543,6 @@ namespace SerialComm1 {
 			this->Text = L"Cube Solver";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -575,7 +565,7 @@ namespace SerialComm1 {
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 
-		 //Initialize Button
+	   //Initialize Button
 	public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		this->label3_STATUS->Text = "Initialising";
@@ -608,10 +598,11 @@ namespace SerialComm1 {
 
 
 	}
+
 private: System::Void button10_Click(System::Object^  sender, System::EventArgs^  e) {
 	findPorts();
 }
-		//Close Button
+	  //Close Button
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		//close serialPort
 		this->button2->Enabled = false;
@@ -661,13 +652,13 @@ private: System::Void button10_Click(System::Object^  sender, System::EventArgs^
  string colourrec(int H, int S, int V)							//guess colour
 	 {
 	 char TestStr[10];
-	 if(((H >= 0 && H <= red_value) ||(H >= 160 && H <= 180)) &&(S >= 0 && S <= 300)		   && (V >= 0 && V <= 254)){ sprintf_s(TestStr, "Red"); }			//hue based		
-																																										//					
-else if((H >= red_value && H <= 24 || (H >= 160 && H <= 180)) &&(S >= 0 && S <= 300)		   && (V >= 0 && V <= 255)){ sprintf_s(TestStr, "Orange"); }		// RY hue based	\\YW
-																																														//			
-else if(H >= 25 && H <= 84									  &&(S >= 40 && S <= yellow_value) && (V >= 0 && V <= 255)){ sprintf_s(TestStr, "Yellow"); }		//sat based		\\
+	 if(((H >= 0 && H <= 24) ||(H >= 160 && H <= 180)) &&(S >= 0 && S <= 300)		   && (V >= 0 && V <= 175)){ sprintf_s(TestStr, "Red"); }			//hue based		
+					//	  ^red_value here																																				//					
+else if((H >= 0 && H <= 24 || (H >= 160 && H <= 180)) &&(S >= 0 && S <= 300)		   && (V >= 175 && V <= 255)){ sprintf_s(TestStr, "Orange"); }		// RY hue based	\\YW
+		//    ^red_value here																																										//			
+else if(H >= 25 && H <= 55									  &&(S >= 40 && S <= 220) && (V >= 0 && V <= 255)){ sprintf_s(TestStr, "Yellow"); }		//sat based		\\
 																																										//		
-else if(H >= 25 && H <= 84								      &&(S >= yellow_value && S <= 255)&& (V >= 0 && V <= 255)){ sprintf_s(TestStr, "Green"); }		//sat based		//
+else if(H >= 56 && H <= 84								      &&(S >= 80 && S <= 255)&& (V >= 0 && V <= 255)){ sprintf_s(TestStr, "Green"); }		//sat based		//
 																																														//		
 else if((H >= 25 && H <= 159|| (H == 0 && S == 0))			  &&(S >= 0 && S <= blue_value)	   && (V >= 0 && V <= 255)){ sprintf_s(TestStr, "White"); }		//sat based		//
 																																										//
@@ -700,7 +691,7 @@ return TestStr;
 	 sprintf_s(TestStr3, "%d", V);
 	 string TestStr = colourrec(H, S, V);//recognizes colour
 
-	 putText(frame, TestStr, cv::Point(a + 15, b), CV_FONT_NORMAL, 1, Scalar(255, 255, 255), 1, 1); //Colour is Shown  
+	 putText(frame, TestStr, cv::Point(a + 15, b), CV_FONT_NORMAL, 0.5, Scalar(255, 255, 255), 1, 1); //Colour is Shown  
 	 putText(frame, TestStr1, cv::Point(a - 40, b + 40), CV_FONT_NORMAL, 0.5, Scalar(255, 255, 255), 1, 1); //Hue is shown 
 	 putText(frame, TestStr2, cv::Point(a + 00, b + 40), CV_FONT_NORMAL, 0.5, Scalar(255, 255, 255), 1, 1); //Sat is shown 
 	 putText(frame, TestStr3, cv::Point(a + 40, b + 40), CV_FONT_NORMAL, 0.5, Scalar(255, 255, 255), 1, 1); //Value is shown 
@@ -857,7 +848,7 @@ return TestStr;
 		 {
 			 cout << "opened" << endl;
 			 output = line;
-			 cout << line << endl; 
+			 cout <<"Solution: "<< line << endl; 
 		 }
 		 myfile.close();
 	 }
@@ -883,11 +874,8 @@ return TestStr;
  //oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 
- //start button
+ //start CAM button
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->trackBar1->Enabled = "True";
-		this->trackBar2->Enabled = "True";
-		this->trackBar3->Enabled = "True";
 		this->button5->Enabled = "True"; 
 		this->button7->Enabled = "True";
 		this->button8->Enabled = "True";
@@ -945,17 +933,17 @@ private: System::Void backgroundWorker1_DoWork(System::Object^  sender, System::
 
 			//////////////////////////////////////////////////////
 			//UP
-			putStrings(200, 100, 0, frame); //recognizes colour at x,y and puts strings in mat frame
-			putStrings(350, 100, 1, frame);
-			putStrings(500, 100, 2, frame);
+			putStrings(200, 130, 0, frame); //recognizes colour at x,y and puts strings in mat frame
+			putStrings(350, 160, 1, frame);
+			putStrings(500, 130, 2, frame);
 			//MIDDLE
-			putStrings(200, 250, 3, frame);
-			putStrings(350, 250, 4, frame);
-			putStrings(500, 250, 5, frame);
+			putStrings(240, 270, 3, frame);
+			putStrings(350, 270, 4, frame);
+			putStrings(450, 270, 5, frame);
 			//DOWN
 			putStrings(200, 400, 6, frame);
-			putStrings(350, 400, 7, frame);
-			putStrings(500, 400, 8, frame);
+			putStrings(350, 390, 7, frame);
+			putStrings(500, 410, 8, frame);
 
 
 			//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1002,9 +990,6 @@ private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  
 
 			this->button4->Enabled = "True";
 		this->label3_STATUS->Text = "Camera Closed";
-		this->trackBar1->Enabled = "False";
-		this->trackBar2->Enabled = "False";
-		this->trackBar3->Enabled = "False";
 		this->button5->Enabled = "False";
 		this->button7->Enabled = "False";
 		this->button8->Enabled = "False";
@@ -1041,9 +1026,6 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 	backgroundWorker1->CancelAsync();												//cancel backgroundworker1
 	this->button4->Enabled = "True";
 	this->label3_STATUS->Text = "Camera Closed";
-	this->trackBar1->Enabled = false;
-	this->trackBar2->Enabled = false;
-	this->trackBar3->Enabled = false;
 	this->button5->Enabled = false;
 	this->button7->Enabled = false;
 	this->button8->Enabled = false;
@@ -1063,27 +1045,13 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 	*/
 
 }
-private: System::Void trackBar1_Scroll(System::Object^  sender, System::EventArgs^  e) {//red trackbar
-	red_value = this->trackBar1->Value;
-	this->label4->Text = red_value.ToString();
-}
-private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
-	//red value label
-}
-private: System::Void trackBar2_Scroll(System::Object^  sender, System::EventArgs^  e) {//yellow-green trackbar
-yellow_value = this->trackBar2->Value;
-this->label8->Text = yellow_value.ToString();
-}
-private: System::Void label7_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {//blue-white trackbar
-blue_value = this->trackBar3->Value;
-this->label9->Text = blue_value.ToString();
-}
 
+//private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {//blue-white trackbar
+//blue_value = this->trackBar3->Value;
+//this->label9->Text = blue_value.ToString();
+//}
 
-
-		 //clear
+	     //clear
 private: System::Void button9_Click(System::Object^  sender, System::EventArgs^  e) {
 	char finalstr1[55] = "_______up____right____front_____down_____left_____back";
  char finalencodedstr1[53] = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -1099,17 +1067,13 @@ private: System::Void button9_Click(System::Object^  sender, System::EventArgs^ 
 	 
 	;
 }
-		
-
-
-
 
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void label8_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 		 
-public: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
+/*public: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 	
 	
 	System::String^ timerstr = timerlabel->Text;
@@ -1118,12 +1082,13 @@ public: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e)
 	timerlabel->Text = a.ToString();
 
 
-}
+}*/
 	
 		
 		int scan()
-		{scanst:
-			int error=0;
+		{
+			int error = 0; 
+		scanst:
 			saved_face_string = face_string;
 			for (int i = 0; i < (saved_face_string.length()); i++)
 			{
@@ -1131,6 +1096,10 @@ public: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e)
 				{
 					error++;
 					goto dontsave;
+					AllocConsole();
+					freopen("conout$", "w", stdout);
+					cout << saved_face_string << endl;
+
 				}
 				
 			}
@@ -1158,20 +1127,22 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 
 			this->label3_STATUS->Text = "Starting Camera..";
 
-			System::Threading::Thread::Sleep(6 * 1000);
+			System::Threading::Thread::Sleep(7 * 1000);
 
-			backgroundWorker2->RunWorkerAsync(10);//start timer
+			//backgroundWorker2->RunWorkerAsync(10);//start timer
 
 			AllocConsole();
 			freopen("conout$", "w", stdout);
 
 			//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//start
-
+			restart:
 			System::String^ name = this->serialPort1->PortName;
 			if (this->serialPort1->IsOpen)
 			{
 				this->serialPort1->WriteLine("Start.");
 
+				cout << "Start Written" << endl;
+				printf("Start Written\n");
 
 				while (1)
 				{
@@ -1180,17 +1151,18 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 
 						std::string inp = msclr::interop::marshal_as<std::string>(input);//string^ to string
 						cout << inp << endl;
-						if (strcmp(inp.c_str(), "Start.") == 0)
+						if (strcmp(inp.c_str(), "Ready.") == 0)
 						{
-							cout << "Ready Received." << endl;
+							printf("Ready Received\n");
+
 							this->label3_STATUS->Text = "Ready Received.";
 							//////////
-							if (scan() > 10)
+							if (scan() < 1)
 							{
-								break;
+								goto right;
 							}
 							else{
-								cout << "Error in Colour Calibration" << endl;
+								printf( "Error in Colour Calibration\n" );
 								goto end;
 							}
 							/////////
@@ -1198,21 +1170,19 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 					}
 					catch (TimeoutException^){
 						this->label3_STATUS->Text = "Timeout Exception@Ready";
-						break;
+						goto restart;
 					}
 				}
-
+				
 				//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
+				
 			right:
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
-
+					
 					this->serialPort1->WriteLine("Right.");
 
-					cout << "Right Written" << endl;
+					printf("Right Written\n");
 
 					while (1)
 					{
@@ -1223,14 +1193,14 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpR << endl;
 							if (strcmp(inpR.c_str(), "Right.") == 0)
 							{
-								cout << "Right Received." << endl;
+								printf("Right Received.\n" );
 								//////////
-								if (scan() > 10)
+								if (scan() < 1)
 								{
-									break;
+									goto front;
 								}
 								else{
-									cout << "Error in Colour Calibration" << endl;
+									printf("Error in Colour Calibration");
 									goto end;
 								}
 								/////////
@@ -1247,12 +1217,10 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 			front:
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
-
+					
 					this->serialPort1->WriteLine("Front.");
 
-					cout << "Front Written" << endl;
+					printf("Front Written\n" );
 
 					while (1)
 					{
@@ -1263,13 +1231,13 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpF << endl;
 							if (strcmp(inpF.c_str(), "Front.") == 0)
 							{
-								cout << "Front Received." << endl;//////////
-								if (scan() > 10)
+								printf("Front Received.\n");//////////
+								if (scan() < 1)
 								{
-									break;
+									goto down;
 								}
 								else{
-									cout << "Error in Colour Calibration" << endl;
+									printf("Error in Colour Calibration");
 									goto end;
 								}
 								/////////
@@ -1285,12 +1253,9 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 			down:
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
-
 					this->serialPort1->WriteLine("Down.");
 
-					cout << "Down Written" << endl;
+					printf("Down Written\n" );
 
 					while (1)
 					{
@@ -1301,13 +1266,13 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpD << endl;
 							if (strcmp(inpD.c_str(), "Down.") == 0)
 							{
-								cout << "Down Received." << endl;//////////
-								if (scan() > 10)
+								printf("Down Received.\n" );//////////
+								if (scan() < 1)
 								{
-									break;
+									goto left;
 								}
 								else{
-									cout << "Error in Colour Calibration" << endl;
+									printf("Error in Colour Calibration");
 									goto end;
 								}
 								/////////
@@ -1323,12 +1288,10 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 			left:
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
-
+					
 					this->serialPort1->WriteLine("Left.");
 
-					cout << "Left Written" << endl;
+					printf("Left Written\n");
 
 					while (1)
 					{
@@ -1339,13 +1302,13 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpL << endl;
 							if (strcmp(inpL.c_str(), "Left.") == 0)
 							{
-								cout << "Left Received." << endl;//////////
-								if (scan() > 10)
+								printf("Left Received.\n" );//////////
+								if (scan() < 1)
 								{
-									break;
+									goto back;
 								}
 								else{
-									cout << "Error in Colour Calibration" << endl;
+									printf("Error in Colour Calibration");
 									goto end;
 								}
 								/////////
@@ -1361,12 +1324,9 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 			back:
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
-
 					this->serialPort1->WriteLine("Back.");
 
-					cout << "Back Written" << endl;
+					printf("Back Written\n");
 
 					while (1)
 					{
@@ -1377,13 +1337,13 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpB << endl;
 							if (strcmp(inpB.c_str(), "Back.") == 0)
 							{
-								cout << "Back Received." << endl;//////////
-								if (scan() > 10)
+								printf("Back Received.\n");//////////
+								if (scan() < 1)
 								{
-									break;
+									goto sol;
 								}
 								else{
-									cout << "Error in Colour Calibration" << endl;
+									printf("Error in Colour Calibration\n");
 									goto end;
 								}
 								/////////
@@ -1398,20 +1358,21 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 				encodestring();
 				handleoutput();
 				//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//back
-
+			sol:
+				
+				cout << "Back Received\n" << solutionofcube << "\n"<<endl;
 				if (this->serialPort1->IsOpen)
 				{
-					fflush(stdout);
-					fflush(stdin);
+					printf(finalencodedstr);
+					printf("\n");
 
-
-					
+					strcat(solutionofcube, ".");
 					System::String^ solution = msclr::interop::marshal_as<System::String^>(solutionofcube);
 
 					this->serialPort1->WriteLine(solution);
-
-					cout << "Solution Sent" << endl;
-					System::Threading::Thread::Sleep(1000 * 4); //wait atleast 4 sec before tring to read
+					printf(solutionofcube);
+					printf("\nSolution Sent\n" );
+					//System::Threading::Thread::Sleep(1000 * 4); //wait atleast 4 sec before tring to read
 					while (1)
 					{
 					wait:
@@ -1422,9 +1383,10 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 							cout << inpDone << endl;
 							if (strcmp(inpDone.c_str(), "Done") == 0)
 							{
+								printf("Done Received. \n\nSolving Complete.\n");
 								backgroundWorker2->CancelAsync();
 
-								break;
+								goto end;
 							}
 
 
@@ -1456,13 +1418,31 @@ private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  
 	
 		//timer backworker
 private: System::Void backgroundWorker2_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
-	this->timer1->Enabled = "true";
-	if (backgroundWorker2->CancellationPending) //if it was cancelled
+	while (1)
 	{
-		e->Cancel = true;
-		
+		cout << "_" << endl;
+		backgroundWorker2->ReportProgress(1);  //reporting progress
+
+		cout << "." << endl;
+		//	this->timer1->Enabled = "true";
+		if (backgroundWorker2->CancellationPending) //if it was cancelled
+		{
+			e->Cancel = true;
+			break;
+		}
 	}
 }
+
+		 void backgroundWorker2_ProgressChanged(Object^ /*sender*/, ProgressChangedEventArgs^ e)
+		 {
+			 /////
+//			 System::String^ timerstr = timerlabel->Text;
+
+	//		 float a = (float)(Convert::ToDouble(timerstr) + 00.019);
+//			 timerlabel->Text = a.ToString();
+			 /////
+		 }
+
 		 //hold button
 private: System::Void button11_Click(System::Object^  sender, System::EventArgs^  e) {
 	grabbed = 1;
@@ -1523,6 +1503,106 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 			}
 		}
 	}
+
+}
+
+
+
+		 /*
+private: System::Void button13_Click(System::Object^  sender, System::EventArgs^  e) {
+	AllocConsole();
+	freopen("conout$", "w", stdout);
+	int abcd = scan();
+	if (abcd < 1)
+	{
+		encodestring();
+		printf(finalencodedstr);
+		printf("Successs");
+		cout << "Succes" << endl;
+	}
+	else{
+		printf("Error in Colour Calibration\n");
+		cout << "Error" << abcd<< endl;
+	}
+}*/
+//start
+private: System::Void button13_Click(System::Object^  sender, System::EventArgs^  e) {
+	
+	
+	if (this->serialPort1->IsOpen)
+			this->serialPort1->WriteLine("Start.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+	labelA:
+	while (1)
+	{
+		try{
+			System::String^ input = this->serialPort1->ReadLine();
+			std::string inp = msclr::interop::marshal_as<std::string>(input);
+
+			if (strlen(inp.c_str()) >= 1)
+			{
+				this->label3_STATUS->Text = input;
+				break;
+			}	}
+		catch (TimeoutException^){
+			this->label3_STATUS->Text = "Timeout Exception @START";
+			break;
+		}
+	}
+}
+		 //right
+private: System::Void button14_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (this->serialPort1->IsOpen)
+		this->serialPort1->WriteLine("Right.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+
+}
+		 //front
+private: System::Void button15_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (this->serialPort1->IsOpen)
+		this->serialPort1->WriteLine("Front.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+
+}
+		 //Down
+private: System::Void button16_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (this->serialPort1->IsOpen)
+		this->serialPort1->WriteLine("Down.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+
+}
+		 //left
+private: System::Void button17_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (this->serialPort1->IsOpen)
+		this->serialPort1->WriteLine("Left.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+
+}
+		 //back
+private: System::Void button18_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (this->serialPort1->IsOpen)
+		this->serialPort1->WriteLine("Back.");
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
+
+}
+		 //send
+private: System::Void button19_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (this->serialPort1->IsOpen)
+	{
+		System::String^ solution1 = msclr::interop::marshal_as<System::String^>(solutionofcube);
+
+		this->serialPort1->WriteLine(solution1);
+		cout << "Solution Sent :\n"<< solutionofcube << endl;
+	}
+	else
+		this->label3_STATUS->Text = "Port Not Opened";
 
 }
 };
