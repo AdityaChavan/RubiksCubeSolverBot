@@ -1,6 +1,6 @@
 #include "MyForm.h"
 
-
+//Visual Studio CLR Application, Go to MyForm.h for actual code
 
 using namespace System;
 using namespace System::Windows::Forms;
