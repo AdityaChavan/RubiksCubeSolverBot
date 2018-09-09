@@ -736,7 +736,7 @@ return TestStr;
 			 finalencodedstr[i] = 'F';
 		 else finalencodedstr[i] = 'X';
 	 }
-
+	//Decoding: 
 	 //123456789123456789123456789123456789123456789123456789
 	 //UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB
 	 //000000000011111111112222222222333333333344444444445555
@@ -745,77 +745,7 @@ return TestStr;
 	 //UF UR UB UL DF DR DB DL FR FL BR BL UFR URB UBL ULF DRF DFL DLB DBR
 	 //0000000000111111111122222222223333333333444444444455555555556666666
 	 //0123456789012345678901234567890123456789012345678901234567890123456
-	 /*soln[00] = finalencodedstr[07];
-	 soln[1] = finalencodedstr[19];
-
-	 soln[3] = finalencodedstr[05];
-	 soln[4] = finalencodedstr[10];
 	 
-	 soln[6] = finalencodedstr[01];
-	 soln[7] = finalencodedstr[46];
-	 
-	 soln[9] = finalencodedstr[03];
-	 soln[10] = finalencodedstr[37];
-	 
-	 soln[12] = finalencodedstr[28];
-	 soln[13] = finalencodedstr[25];
-	 
-	 soln[15] = finalencodedstr[32];
-	 soln[16] = finalencodedstr[16];
-	 
-	 soln[18] = finalencodedstr[34];
-	 soln[19] = finalencodedstr[52];
-	 
-	 soln[21] = finalencodedstr[30];
-	 soln[22] = finalencodedstr[43];
-	 
-	 soln[24] = finalencodedstr[23];
-	 soln[25] = finalencodedstr[12];
-	 
-	 soln[27] = finalencodedstr[21];
-	 soln[28] = finalencodedstr[41];
-
-	 soln[30] = finalencodedstr[48];
-	 soln[31] = finalencodedstr[14];
-	 
-	 soln[33] = finalencodedstr[50];
-	 soln[34] = finalencodedstr[39];
-
-	 soln[36] = finalencodedstr[8];
-	 soln[37] = finalencodedstr[20];
-	 soln[38] = finalencodedstr[9];
-	 
-	 soln[40] = finalencodedstr[2];
-	 soln[41] = finalencodedstr[11];
-	 soln[42] = finalencodedstr[45];
-	 
-	 soln[44] = finalencodedstr[0];
-	 soln[45] = finalencodedstr[47];
-	 soln[46] = finalencodedstr[36];
-	 
-	 soln[48] = finalencodedstr[6];
-	 soln[49] = finalencodedstr[38];
-	 soln[50] = finalencodedstr[18];
-	 
-	 soln[52] = finalencodedstr[29];
-	 soln[53] = finalencodedstr[15];
-	 soln[54] = finalencodedstr[26];
-	 
-	 soln[56] = finalencodedstr[27];
-	 soln[57] = finalencodedstr[24];
-	 soln[58] = finalencodedstr[44];
-
-	 soln[60] = finalencodedstr[33];
-	 soln[61] = finalencodedstr[42];
-	 soln[62] = finalencodedstr[53];
-	 
-	 soln[64] = finalencodedstr[35];
-	 soln[65] = finalencodedstr[51];
-	 soln[66] = finalencodedstr[17];
-	 char spc= ' ';
-	 soln[2] = soln[5] = soln[8] = soln[11] = soln[14] = soln[17] = soln[20] = soln[23] = soln[26] = soln[29] = soln[32] = soln[35] = soln[39] = soln[43] = soln[47] = soln[51] = soln[55] = soln[59] = soln[63] = spc;
-	 */
-
  }
  void handleoutput()
  {
