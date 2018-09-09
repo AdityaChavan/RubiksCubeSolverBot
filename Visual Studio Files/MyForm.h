@@ -21,8 +21,6 @@
 #include <cxcore.h>
 #include <highgui.h>
 
-
-using namespace cv;
 using namespace std;
 namespace SerialComm1 {
 
